@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:c="http://www.springframework.org/schema/c"
+	xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd  
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+	<!-- -->
+	
+	<!-- securityManager -->
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="realm" ref="realm" />
+	</bean>
+
+	<!-- Shiro Filter 拦截器相关配置 -->
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<!-- securityManager -->
+		<property name="securityManager" ref="securityManager" />
+		<!-- 登录路径 -->
+		<property name="loginUrl" value="/login" />
+		<!-- 用户访问无权限的链接时跳转此页面 -->
+		<property name="unauthorizedUrl" value="/redirect.jsp" />
+		<!-- 过滤链定义 -->
+		<property name="filterChainDefinitions">
+			<value>
+				/admin/login=anon
+				/resources/**=anon
+				/**/*.css=anon
+				/**/*.js=anon
+				/**/*.png=anon
+				/**/*.jpg=anon
+				/*.jsp=anon
+				<!-- /userList=roles[admin] -->
+				/userList=authc,perms[/userList]
+				/toDeleteUser=authc,perms[/toDeleteUser]
+				/** = authc
+			</value>
+		</property>
+	</bean>
+	
+	
+	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor" />
+</beans>

@@ -1,0 +1,114 @@
+{
+  "id": "",
+  "name": "行政区划导航",
+  "type": "treeformview",
+  "maptype": "gwc",
+  "theme": "bootstrap",
+  "style": "primary",
+  "button": [
+  		{"id":"01","name":"add","title":"添加同级","icon":"glyphicon glyphicon-plus","clickevent":"addNextNode('行政区划')"},
+  		{"id":"02","name":"add","title":"添加子级","icon":"glyphicon glyphicon-plus","clickevent":"addChildNode('行政区划')"},
+  		{"id":"03","name":"save","title":"保存","icon":"glyphicon glyphicon-ok","clickevent":"saveFormData('saveXZQHInfo','保存行政区划信息')"},
+  		{"id":"04","name":"remove","title":"删除","icon":"glyphicon glyphicon-remove","clickevent":"delTreeNode('delXZQHInfoById','删除的行政区划')"}
+	],
+  "formpage":[
+  	{
+      "id": "1",
+      "type":"design",
+      "name": "treeformview-bootstrap"
+    }
+  ],
+  "datainterface":{
+		   
+		  "treeview":[
+			    {
+			      "id": "",
+			      "name": "getXZQHTree",
+			      "title":"行政区划导航",
+			      "initall":false,
+			      "levels":1,
+			      "showCheckbox":false,
+			      "type": "querydata",
+			      "treecontextMenu":[
+			      ]
+			    }
+			  ],
+		"mapview": {
+		"gwc":{
+				"extent": [326335.701161546,222498.798765796,685640.586437984,460359.691154248],
+				"projection": {
+					"code":"EPSG:2422", 
+					"units":"m", 
+					"extent": [326335.701161546,222498.798765796,685640.586437984,460359.691154248],
+					"proj4":"+proj=tmerc +lat_0=0 +lon_0=75 +k=1 +x_0=500000 +y_0=0 +ellps=krass +towgs84=15.8,-154.4,-82.3,0,0,0,0 +units=m +no_defs"
+				},
+				"resolutions": [280.0, 140.0, 70.0, 27.999999999999996, 13.999999999999998, 6.999999999999999, 2.8, 1.4, 0.7, 0.504],
+				"matrixset": "bj54",
+				"wmtsurl": "/service/wmts",
+				"wmtslayers": ["baseimgnew", "swyztDEMnew", "swyztnew", "swyztzhujinew"],
+				"baselayer_vector": "swyztDEMnew",
+				"baselayer_satellite": "baseimgnew",
+				"defaultlayer": "baselayer_satellite",
+				"center": [509908.14380, 341849.24496],
+				"initzoom": 0,
+				"maxResolution": 280.0,
+				"minResolution": 0.504,
+				"format": "image/png",
+				"style": "default",
+				"mapbar": [
+					"pedit"
+				],
+				"tools": {
+					"mainbar": true,
+					"point": false,
+					"ledit": false,
+					"pedit": false,
+					"share": false,
+					"globe": false
+				},
+				"exttools":[
+				],
+				"linstring": {
+					"show": false,
+					"dataset": "getYhrLinstring",
+					"params": {}
+				},
+				"pointpoi": false,
+				"poioption": {
+					"dataset": "queryWeizhi",
+					"params": {},
+					"poishadow": "true",
+					"poiform": "marker",
+					"poigradient": "false",
+					"poifontsize": "1",
+					"poiradius": "15",
+					"poirotation": "0",
+					"poistrokecolor": "white",
+					"poifillcolor": "green",
+					"poicolor": "white",
+					"poiborder": "3",
+					"poifont": "fa-pied-piper-alt"
+				},
+				"poilight": false,
+				"popup": true,
+				"popupoption": {
+					"dataset": "landinfo",
+					"params": {
+						"uuid": "20348a79-552e-4d5e-942c-3d15e211bf85"
+					}
+				},
+				"globalheight": {
+					"show": true,
+					"dataset": "querywktbyid"
+				}
+			}
+		}
+  },
+  "formcontent": [
+		{"id":"0","name":"id","title":"","type":"hidden"},
+   		{"id":"2","name":"xzqhcode","title":"行政区划编码","type":"text","datainterface":"","isnull":false,"min":1,"max":50,"rule":"","info":""},
+   		{"id":"3","name":"xzqhname","title":"行政区划名称","type":"text","datainterface":"","isnull":false,"min":1,"max":50,"rule":"","info":""},
+  		{"id":"4","name":"mapgeometry","title":"空间位置","type":"map","pageview":"drawpolygon","datainterface":"","min":1,"isnull":true,"defaultvalue":""}
+  ],
+	"extend_js":["xzqhgl"]
+}

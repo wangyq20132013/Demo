@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+
+<properties>
+	<!--查询组织机构-->
+	<entry key="getUserGroupTreeNode">
+		 <![CDATA[
+		 	select USERID as uuid, userparentid as parentid , USERWBSCODE as treecode, USERTITLE AS name,* From TA_USERS where userisgroup = -1 order by USERORDERINDEX,USERWBSCODE
+	    ]]>
+	</entry>
+	
+	<!--查询用户-->
+	<entry key="getUsers">
+		<![CDATA[
+		SELECT * FROM 
+			(
+				SELECT * FROM 
+				(SELECT *,(case loginwrongtimes when 3 then '锁定' else '活动' end) as userstatus FROM TA_LOGIN) TL,
+				(SELECT USERID,USERTITLE,USERWBSCODE FROM TA_USERS) TU 
+				
+				WHERE TL.LUSERID = TU.USERID AND TU.USERWBSCODE LIKE (SELECT USERWBSCODE FROM TA_USERS WHERE USERID = :UUID)||'%' AND TL.LTYPE != 1
+			) as A
+			<#if keyword?? && keyword != "">
+				where LOGINNAME like :keyword or LOGINTITLE like :keyword
+			</#if>
+			order by lid desc
+		]]>
+	</entry>
+	
+	<!--查询用户是否存在 -->
+	<entry key="queryUserSFCZ">
+ 		<![CDATA[
+	    	select * from ta_login where loginname=:loginname and lid != :lid
+	    ]]>
+	</entry>
+</properties>

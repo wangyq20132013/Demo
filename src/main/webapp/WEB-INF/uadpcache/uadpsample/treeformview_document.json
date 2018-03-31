@@ -1,0 +1,41 @@
+{
+  "id": "",
+  "name": "开发文档维护",
+  "type": "treeformview",
+  "maptype": "gwc",
+  "theme": "bootstrap",
+  "style": "primary",
+  "button": [
+  		{"id":"03","name":"save","title":"保存","icon":"glyphicon glyphicon-ok","clickevent":"saveFormData('saveDocumentInfo','保存文档信息')"}
+	],
+  "formpage":[
+  	{
+      "id": "1",
+      "type":"design",
+      "name": "treeformview-bootstrap"
+    }
+  ],
+  "datainterface":{
+		   
+		  "treeview":[
+			    {
+			      "id": "",
+			      "name": "queryDocTree",
+			      "title":"文档结构",
+			      "initall":false,
+			      "levels":1,
+			      "showCheckbox":false,
+			      "type": "querydata",
+			      "treecontextMenu":[
+			      ]
+			    }
+			  ]
+  },
+  "formcontent": [
+			{"id":"0","name":"id","title":"","type":"hidden"},
+   		{"id":"1","name":"name","title":"英文名称","type":"text","datainterface":"","isnull":false,"min":1,"max":20,"rule":"","info":""},
+   		{"id":"2","name":"title","title":"标题","type":"text","datainterface":"","isnull":false,"min":1,"max":20,"rule":"","info":""},
+   		{"id":"3","name":"content","title":"内容","type":"editor","datainterface":"","isnull":false,"min":1,"max":50,"rule":"","info":""}
+  ],
+	"extend_js":[]
+}

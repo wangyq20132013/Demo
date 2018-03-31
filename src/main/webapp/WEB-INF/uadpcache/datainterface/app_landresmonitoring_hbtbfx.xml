@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<!-- 环比同比分析-->
+	
+	
+	<!--两期监测图斑总面积、个数的对比-->
+	<entry key="queryTwoDate_SumAreaSumNum">
+		<![CDATA[
+			SELECT
+				row_number() over() as index,
+				B .period,
+				case when A.num is null then 0 else A.num end as num,
+				round((case when A.area is null then 0 else A.area end)::numeric, 1) as area,
+				B. NAME
+			FROM
+				(
+					SELECT
+						period,
+						SUM (landnum) as num,
+						SUM (landarea) as area
+					FROM
+						app_qth_datadisplay_statistics
+					WHERE
+						navtype = :TREESTATUS
+					AND period IN ( :monitoringdateArr)
+					
+					<#if CODE?? && CODE != ''>
+						AND citycode like '${CODE}%'
+					</#if>
+					GROUP BY
+						period
+				) AS A
+			RIGHT JOIN (
+				SELECT
+					period,
+					name
+				FROM
+					app_qth_datadisplay_period
+				WHERE
+					period IN ( :monitoringdateArr)
+				AND navtype = :TREESTATUS
+			) AS B ON A .period = B.period
+			order by B.period asc
+    	]]>
+	</entry>
+	
+	
+	<!--两期各城市用地面积(变化土地面积总和)的增幅从高到低-->
+	<entry key="queryTwoDate_EveryCity_SumChangeArea">
+		<![CDATA[
+			<#if monitoringdateArr?? && monitoringdateArr?size gte 2>
+			select 
+				row_number() over() as index,
+				C.* 
+			from 
+				(
+					SELECT
+						case when A .code is null then B.code else a.code end as code,
+						case when A .NAME is null then B.NAME else a.NAME end as NAME,
+						round((case when A.area is null then 0 else A.area end)::numeric, 1) as qarea,
+						round((case when b.area is null then 0 else b.area end)::numeric, 1) as harea,
+						round((b.area - A .area)::numeric,1) AS change
+					FROM
+						(
+							SELECT
+								<#if CODE?? && CODE != '' && CODE?length gte 2>
+									citycode as code,
+									cityname as name,
+								<#else>
+									procode as code,
+									proname as name,
+								</#if>
+								SUM (landarea) AS area
+							FROM
+								(
+									SELECT
+										*
+									FROM
+										app_qth_datadisplay_statistics
+									WHERE
+										navtype = :TREESTATUS
+									AND period = '${monitoringdateArr[0]}'
+									<#if CODE?? && CODE != ''>
+										AND citycode like '${CODE}%'
+									</#if>
+								) AS XX
+							GROUP BY
+								<#if CODE?? && CODE != '' && CODE?length gte 2>
+									citycode,
+									cityname
+								<#else>
+									procode,
+									proname
+								</#if>
+						) AS A
+					FULL JOIN (
+						SELECT
+							<#if CODE?? && CODE != '' && CODE?length gte 2>
+								citycode as code,
+								cityname as name,
+							<#else>
+								procode as code,
+								proname as name,
+							</#if>
+							SUM (landarea) AS area
+						FROM
+							(
+								SELECT
+									*
+								FROM
+									app_qth_datadisplay_statistics
+								WHERE
+									navtype = :TREESTATUS
+								AND period = '${monitoringdateArr[1]}'
+								<#if CODE?? && CODE != ''>
+									AND citycode like '${CODE}%'
+								</#if>
+							) AS XX
+						GROUP BY
+							<#if CODE?? && CODE != '' && CODE?length gte 2>
+								citycode,
+								cityname
+							<#else>
+								procode,
+								proname
+							</#if>
+					) AS B ON A .code = B.code
+					
+					<#if sortOrder?? && sortOrder == 'desc'>
+						order by change desc
+					<#else>
+						order by change asc
+					</#if>
+				)as C
+			<#else>
+				${monitoringdateArr[0]}
+			</#if>	
+    	]]>
+	</entry>
+	
+	
+	<!--两期各地类增减幅情况、各性质增减幅情况-->
+	<entry key="queryTwoDate_EveryLandType_EveryNature">
+		<![CDATA[
+			SELECT
+				row_number() over() as index,
+				M.typecode,
+				M.qtypenum,
+				round(M.qtypearea::numeric, 1) as qtypearea,
+				M.htypenum,
+				round(M.htypearea::numeric,1) as htypearea,
+				N.name
+			FROM
+				(
+					SELECT
+						case when xx.typecode is null then yy.typecode else xx.typecode end as typecode,
+						case when xx.typenum is null then 0 else xx.typenum end qtypenum,
+						case when xx.typearea is null then 0 else xx.typearea end qtypearea,
+						case when yy.typenum is null then 0 else yy.typenum end htypenum,
+						case when yy.typearea is null then 0 else yy.typearea end htypearea
+					FROM
+						(
+							SELECT
+								typecode,
+								sum(typenum) as typenum,
+								sum(typearea) as typearea
+							FROM
+								app_qth_datadisplay_statistics AS A,
+								app_qth_datadisplay_statistics_data AS B
+							WHERE
+								A . ID = B.statisticsid
+							AND A .navtype = :TREESTATUS
+							AND A .period = '${monitoringdateArr[0]}'
+							AND B .type = :type
+							<#if CODE?? && CODE != ''>
+								AND A .citycode like '${CODE}%'
+							</#if>
+							group by typecode
+						) AS XX
+					FULL JOIN (
+						SELECT
+							typecode,
+							sum(typenum) as typenum,
+							sum(typearea) as typearea
+						FROM
+							app_qth_datadisplay_statistics AS A,
+							app_qth_datadisplay_statistics_data AS B
+						WHERE
+							A . ID = B.statisticsid
+						AND A .navtype = :TREESTATUS
+						AND A .period = '${monitoringdateArr[1]}'
+						AND B .type = :type
+						<#if CODE?? && CODE != ''>
+							AND A .citycode like '${CODE}%'
+						</#if>
+						group by typecode
+					) AS YY ON XX.typecode = YY.typecode
+				)as M LEFT JOIN app_qth_datadisplay_dict as N on M.typecode = N.code
+						
+    	]]>
+	</entry>
+	
+	
+</properties>

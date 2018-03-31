@@ -1,0 +1,57 @@
+1.引用；
+
+<script type="text/javascript" src="plug/jwplayer/jwplayer.js"></script>
+<div id="playerCon"></div>
+<script>
+function mp4() {
+        jwplayer('playerCon').setup({
+                'flashplayer': 'plug/jwplayer/player.swf',
+                'file': "http://192.168.0.144/Plug/video/1.mp4",
+                'image': 'http://192.168.0.144/Plug/video/1.jpg',
+                'provider': 'http',
+                'http.startparam': 'start',
+                'skin': 'plug/jwplayer/skin/playcasso.zip',
+                'wmode': 'opaque',
+                'autostart': 'false',
+                'frontcolor': '000000',
+                'lightcolor': 'cc9900',
+                'screencolor': '000000',
+                'controlbar': 'bottom',
+                'width': '720',
+                'height': '420'
+        });
+}
+mp4();
+</script>
+
+
+2.API
+
+
+'flashplayer': 'plug/jwplayer/player.swf',
+'image': "/uploads/myPoster.jpg",
+'file': "/uploads/myVideo.mp4",
+'skin': 'http://image.wanda.cn/statics/js/mobile/beelden.zip',
+'width': '590',
+'height': '312',
+'autostart': 'true',
+'mute': 'true',
+'controls': 'false',
+'wmode': 'opaque',
+'controlbar': 'none'/over/top/bottom,
+'frontcolor': '000000',
+'lightcolor': 'cc9900',
+'screencolor' :'#fff'//播放器颜色
+'provider' : 'http',
+'http.startparam' : 'start',
+'repeat':'always';
+				
+
+
+
+
+
+
+4.皮肤已整理共87款;
+
+jwplayer的运行测试环境需要配置虚拟运行环境皮肤有会有体现;

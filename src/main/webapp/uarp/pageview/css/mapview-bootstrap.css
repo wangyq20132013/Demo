@@ -1,0 +1,217 @@
+html,body{
+	height: 100%;
+	width: 100%;
+	font-family: '微软雅黑';
+	overflow: hidden;
+}
+.mapview {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+.onemap {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+}
+.left_map{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 50%;
+	bottom: 0px;
+	border-right: 1px solid #000;
+}
+.right_map{
+	position: absolute;
+	top: 0px;
+	left: 50%;
+	right: 0px;
+	bottom: 0px;
+}
+
+.top_left_map{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 50%;
+	bottom: 50%;
+	border-right: 1px solid #000;
+	border-bottom: 1px solid #000;
+}	
+.top_right_map{
+	position: absolute;
+	top: 0px;
+	left: 50%;
+	right: 0px;
+	bottom: 50%;
+	border-bottom: 1px solid #000;
+}
+.bottom_left_map{
+	position: absolute;
+	top: 50%;
+	left: 0px;
+	right: 50%;
+	bottom: 0px;
+	border-right: 1px solid #000;
+}
+.bottom_right_map{
+	position: absolute;
+	left: 50%;
+	right: 0px;
+	top: 50%;
+	bottom: 0px;
+}
+
+.switchLayer-panel{
+	top: 10px;
+	left: auto;
+	right: 10px;
+	display: block;
+}
+.switchLayer-panel .panel-body{
+	padding: 0px 15px;
+}
+.switchLayer-panel ul li a{
+	padding: 5px 5px;
+}
+
+#maptoolbar_bootstrap {
+	position: absolute;
+	right: 80px;
+	top: 10px;
+	z-index:  1000;
+}
+
+#measureResult{
+	background:#F8B75C;
+	border-radius: 4px;
+	font-size:12px;
+	font-family: '微软雅黑';
+	padding:4px;
+	color:#fff;
+}
+		
+.ol-control{
+	z-index: 99;
+}
+
+.search_box{
+	position: absolute;
+	z-index: 199;
+	left: 50px;
+	top: 5%;
+	width: 300px;
+	height: auto;
+	max-height: 80%;
+	border-radius: 5px;
+	/*background-color: rgba(238, 238, 238, 0.98);*/
+}
+.table_box{
+	position: absolute;
+	z-index: 199;
+	right: 10px;
+	bottom: 0;
+	width: 50%;
+	height: auto;
+	max-height: 395px;
+	border-radius: 5px;
+}
+.panel{
+	height: 100%;
+	margin-bottom: 0px;
+}
+.popupDiv{
+	position: absolute;
+	width: 400px;
+	height: 300px;
+}
+.nav-tabs.nav-justified>.active>a,.nav-tabs.nav-justified>.active>a:focus, .nav-tabs.nav-justified>.active>a:hover{
+	color: #337ab7;
+}
+a {
+	text-decoration: none;
+	color: #454545;
+}
+
+img {
+	border: none;
+}
+
+ul,
+p {
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+
+
+
+.tucengkz {
+	z-index: 1;
+	width: 38px;
+	height: 37px;
+	position: absolute;
+	top: 10px;
+	right: 15px;
+	display: none;
+}
+
+.tucengkongzhi {
+	position: absolute;
+	right: 0px;
+	top: 0px;
+}
+
+.tucengkongzhi ul {}
+
+.tucengkongzhi ul li {
+	float: left;
+	margin-left: 24px;
+	margin-top: 30px;
+}
+
+.tucengkongzhi ul li img {
+	border: 2px solid #dddddd;
+}
+
+.tucengkongzhi ul li img:hover {
+	border: 2px solid #09F;
+}
+
+.tucengkongzhi ul li img.active {
+	border: 2px solid #09F;
+}
+
+.ol-popup-content::-webkit-scrollbar {
+	width: 10px;
+	height: 10px;
+}
+
+.ol-popup-content::-webkit-scrollbar-button {
+	background-color: #FF7677;
+	display: none;
+}
+
+.ol-popup-content::-webkit-scrollbar-track {
+	background: rgba(255, 255, 255, 0.15);
+}
+
+.ol-popup-content::-webkit-scrollbar-track-piece {
+	background: rgba(255, 255, 255, .1);
+}
+
+.ol-popup-content::-webkit-scrollbar-thumb {
+	background: #333;
+	border-radius: 10px;
+}
+
+.ol-popup-content::-webkit-scrollbar-corner {
+	background: #82AFFF;
+}
+
+.ol-popup-content::-webkit-scrollbar-resizer {
+	background: #FF0BEE;
+}

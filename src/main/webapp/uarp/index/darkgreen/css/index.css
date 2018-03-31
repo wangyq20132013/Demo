@@ -1,0 +1,91 @@
+html,body {font-family: '微软雅黑';width: 100%;height: 100%;}
+.navbar {width:100%; background:#1c9842 url(../images/bannerbg.png) no-repeat 30% 0px; height:90px; border-bottom:6px solid #40d0a2;-webkit-box-shadow:5px 5px -6px rgba(12,152,94,0.9); }
+.title{ line-height:90px; margin:15px;}
+.title img {width:347px; height: 34px;}
+#Hui-userbar {position: absolute; margin-top: 57px; width: 350px; left: 35px;}
+#Hui-navlist {float: right; margin-top: 0px;    position: absolute;right: 0px;}
+#Hui-navlist > ul > li,#Hui-navlist > ul > li > a {line-height: 35px; font-size: 14px;}
+#Hui-navlist > ul > li > a img {margin-top: 10px;width:40px;height:40px;}
+.main_iframe {position: absolute; padding-top: 90px; top: 0; right: 0; left: 0; bottom: 0;height:100%;}
+.leftwrap{ width:19%; position:absolute; left:0px; bottom:0px; top:96px; -webkit-box-shadow:4px 0px 6px rgba(0,0,0,0.3)}
+
+
+.fixed-table-header{background:#0c9059;border-radius: 4px;}
+.fixed-table-header table {border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-spacing: 0px;}
+.fixed-table-header table thead { display: table-row-group; vertical-align: middle; border-color: inherit;}
+.fixed-table-body table tbody tr {text-align: center;}
+.fixed-table-header table thead tr {border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-spacing: 0px;}
+.fixed-table-header table thead tr th {border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-spacing: 0px;}
+.fixed-table-header table thead tr th .th-inner{color: white;text-align:center;}
+.fixed-table-body table tbody .selected td{background-color: #b8dab8;}
+
+
+.panel{margin-bottom: 0px;}
+.panel-body{padding-top: 10px;}
+.panel-group {margin-bottom: 10px;}
+.panel-success>.panel-heading{background:#0c9059;}
+.panel-success .panel-header {color: white;};
+
+
+
+
+.dropDown.hover .dropDown_A, .dropDown.open .dropDown_A {text-decoration: none; background-color: transparent; color: #ffffff;}
+.nav .open>a, .nav .open>a:focus, .nav .open>a:hover {background-color: transparent; border-color: #337ab7;}
+#Hui-userbar > ul > li, #Hui-userbar > ul > li > a {line-height: 33px; font-size: 14px;}
+.pngfix{background:url(../image/icon_arrow.png) no-repeat 0 0}
+.pngfix2{background:url(../image/icon_arrow2.png) no-repeat 0 0}
+
+.menu_active{background-color: #1f801f;color: white!important}
+
+
+.c-red{color:red}
+
+.bg-green{
+	background: #00a65a !important;
+}
+.color-green{
+	color: #00a65a !important;
+}
+.bg-red{
+	background-color: #f56954 !important;
+}
+.color-red{
+	color: #f56954 !important;
+}
+.bg-aqua{
+	background-color: #00c0ef !important;
+}
+.color-aqua{
+	color: #00c0ef !important;
+}
+.bg-yellow{
+	background-color: #f39c12 !important;
+}
+.color-yellow{
+	color: #f39c12 !important;
+}
+
+
+.tztg_mes ul li {
+	padding: 0px 10px 10px 10px;
+	display: block;
+	font-weight: normal;
+	margin-top: 0px;
+	font-size: 15px;
+}
+.yg_Mes_time {
+	float:right;
+	margin: 0px 0px 0px 30px;
+}
+	.yg_Mes {
+	width: 100%;
+	height: auto;
+	border-bottom: 1px dashed #e5e5e5; 
+}
+.yg_Mes_user {
+	float: right;
+	margin: 0;
+}
+ .yg_Mes_title {
+	cursor: pointer;
+}

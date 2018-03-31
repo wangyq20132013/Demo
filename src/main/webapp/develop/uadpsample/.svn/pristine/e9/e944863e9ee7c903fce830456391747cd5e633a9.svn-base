@@ -1,0 +1,155 @@
+html,body {font-family: '微软雅黑';width: 100%;height: 100%;background-color: #f0f3f4;}
+.navbar {width:100%; background: rgb(6, 46, 82) url(../image/bannerbg.png) no-repeat 30% 0px; height:90px; border-bottom:6px solid #40d0a2;-webkit-box-shadow:5px 5px -6px rgba(12,152,94,0.9); }
+.title{ line-height:90px; margin:15px;}
+.title img {width:347px; height: 34px;}
+.leftwrap{ width:19%; position:absolute; left:0px; bottom:0px; top:96px; -webkit-box-shadow:4px 0px 6px rgba(0,0,0,0.3)}
+
+/*
+.btn-primary{ color: #FFFFFF!important; background-color: #0055ff!important;}
+.btn-primary:hover{ color: #FFFFFF!important; background-color: #0036c5!important;}
+.panel-primary > .panel-heading {background-color: #0055ff!important;}
+.nav-pills >li.active>a {background-color: #0055ff!important;}
+li.node-selected{background-color: #0055ff!important;}
+
+*/
+
+
+
+.fixed-table-header{background:#337ab7;border-radius: 4px;}
+.fixed-table-header table {border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-spacing: 0px;}
+.fixed-table-header table thead { display: table-row-group; vertical-align: middle; border-color: inherit;}
+.fixed-table-header table thead tr {border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-spacing: 0px;}
+.fixed-table-header table thead tr th {border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-spacing: 0px;}
+.fixed-table-header table thead tr th .th-inner{color: white;text-align:center;}
+.fixed-table-body table thead{background:#337ab7;text-align: center;}
+.fixed-table-body table thead tr th .th-inner{color: white;text-align:center;}
+.fixed-table-body table tbody tr td{text-align:center;}
+.fixed-table-body table tbody .selected td{background-color: #d9edf7;}
+
+.pagination>.active>a,.pagination>.active>a:hover{
+	/*background-color: #337ab7;*/
+}
+.pagination>li>a,.pagination>li>a:hover,.pagination>li>a>span,.pagination>li>a>span:hover{
+	/*color: #0055ff;*/
+}
+
+
+#panel_main {
+	margin-bottom: 0px;
+}
+.panel-body{
+	padding: 15px 15px 0px 15px;
+}
+.modal-body{
+	padding: 0px;
+	height: 100%;
+}
+.dropdown-menu a{
+	cursor: pointer;
+}
+.page-container{
+	padding: 0px 15px 0px 15px;
+	height: inherit;
+}
+
+.modal-header{
+	height: 50px;
+}
+
+#bodyform{
+	max-height: calc(100% - 56px);
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+.ol-popup .closeBox{
+	position: absolute;
+	right: 0.5em;
+	top:1.2em;
+	z-index: 999;
+}
+.ol-popup.hasclosebox .content{
+	margin-right: 0px;
+}
+.c-red{color:red}
+
+/*3.4.8 表单验证*/
+/*文本框的错误状态*/
+.Validform_error,input.error,select.error{background-color:#fbe2e2!important; border-color:#c66161; color:#c00}
+.Validform_wrong,.Validform_right,.Validform_warning{display:inline-block;height:20px;font-size:12px;vertical-align:middle; padding-left:25px}
+/*错误*/
+.Validform_wrong{background:url(../images/validform/iconpic-error.png) no-repeat 0 center;color:#ef392b}
+/*正确*/
+.Validform_right{background:url(../images/validform/iconpic-right.png) no-repeat 0 center}
+/*警告*/
+.Validform_warning{background:url(../images/validform/iconpic-warning.png) no-repeat 0 center;color:#777}
+label.error{ position: absolute; right: 20px; bottom: -20px;color:#ef392b; font-size: 12px}
+.checkbox label.error,
+.radiobox label.error{ right:auto; width:150px; left:210px;top:-2px}
+/*密码等级*/
+.passwordStrength b{font-weight:400}
+.passwordStrength b,.passwordStrength span{display:inline-block; vertical-align:middle;line-height:16px;line-height:18px\9;height:16px}
+.passwordStrength span{width:57px;text-align:center;background-color:#d0d0d0;	border-right:1px solid #fff}
+.passwordStrength .last{border-right:none}
+.passwordStrength .bgStrength{color:#fff;background-color:#fcc900}
+/*Validform对话框*/
+#Validform_msg{font-size:14px;width:300px; -webkit-box-shadow:2px 2px 3px #aaa; -moz-box-shadow:2px 2px 3px #aaa; background:#fff; position:absolute; top:0px; right:50px; z-index:99999; display:none;filter: progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=135, Color='#999999'); box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1)}
+#Validform_msg .iframe{position:absolute; left:0px; top:-1px; z-index:-1}
+#Validform_msg .Validform_title{font-size:20px; padding:10px;text-align:left;color:#fff; position:relative; background-color:#fcc900}
+#Validform_msg a.Validform_close:link,#Validform_msg a.Validform_close:visited{position:absolute; right:8px; top:6px; color:#fff; text-decoration:none; font-family:Verdana}
+#Validform_msg a.Validform_close:hover{color:#fff}
+#Validform_msg .Validform_info{padding:10px;border:1px solid #bbb; border-top:none; text-align:left}
+@media (max-width: 767px) {
+	.responsive .Validform_checktip{margin-top:10px}
+}
+.bg-green{
+	background: #00a65a !important;
+}
+.color-green{
+	color: #00a65a !important;
+}
+.bg-red{
+	background-color: #f56954 !important;
+}
+.color-red{
+	color: #f56954 !important;
+}
+.bg-aqua{
+	background-color: #00c0ef !important;
+}
+.color-aqua{
+	color: #00c0ef !important;
+}
+.bg-yellow{
+	background-color: #f39c12 !important;
+}
+.color-yellow{
+	color: #f39c12 !important;
+}
+
+
+
+/*页面框架*/
+.menu {
+	background-color: #1c2b36;
+	border-right: 1px solid #e5e5e5
+}
+/*左侧菜单*/
+.menu .menu_dropdown dl{ margin-bottom:0}
+.menu .menu_dropdown dt{display:block;line-height:40px;padding-left:15px;cursor:pointer;position:relative;border-bottom: 0px solid #e5e5e5;font-weight:normal;color: #869fb1;font-size: 14px;font-weight: 700;}
+.menu .menu_dropdown dt .menu_dropdown-arrow{ position:absolute;overflow: hidden; top:0; right:15px;transition-duration:0.3s ;transition-property:all}
+.menu .menu_dropdown dd{ display:none}
+.menu .menu_dropdown dd.selected{display:block; margin-left:0px}
+.menu .menu_dropdown ul{padding:0px}
+.menu .menu_dropdown li{line-height:35px;overflow:hidden;zoom:1}
+.menu .menu_dropdown li a{padding-left:15px; display:block;font-weight: bold; margin:0;color: #869fb1;}
+.menu .menu_dropdown li a i{ font-weight: normal}
+.menu .menu_dropdown dd ul{padding:3px 8px}
+.menu .menu_dropdown dd li{line-height:32px}
+.menu .menu_dropdown dd li a{line-height:32px;padding-left:26px; border-bottom:none; font-weight:normal}
+.menu .menu_dropdown li a:hover{text-decoration:none}
+.menu .menu_dropdown li.current a,.menu_dropdown li.current a:hover{background-color:rgba(255,255,255,0.2)}
+.menu .menu_dropdown dt:hover{color:#e5e5e5;background-color:rgba(255, 255, 255,0.1);border-radius:5px}
+.menu .menu_dropdown .selected {color:#FFFFFF;background-color:rgba(255, 255, 255,0.1);border-radius:5px}
+.menu_active{background-color: rgba(255, 255, 255,0.1);color:#FFFFFF!important; border-radius: 5px;text-decoration:none!important;}
+

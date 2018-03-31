@@ -1,0 +1,96 @@
+{
+	"id": "1",
+	"name": "点数据聚合示例",
+	"type": "cluster",
+	"maptype": "gwc",
+	"theme": "bootstrap",
+	"style": "primary",
+	"formpage":[
+		{
+			"id":"",
+			"type":"design",
+			"name":"cluster_mapview_bootstrap"
+		}
+	],
+	"datainterface": {
+		"mapview": {
+				"type":"tianditu",
+				"view":{
+					"extent": [ -3000000, 1000000, 3000000, 7000000 ],
+					"projection": {
+						"code":"EPSG:45556", 
+						"units":"m"
+					},
+					"center": [0, 3000000],
+					"initzoom": 0,
+					"maxZoom": 9,
+					"minZoom": 1,
+					"tilenum":9,
+					"tileSize":256,
+					"format": "image/png",
+					"style": "default"
+				},
+				"mapNumber":1,
+				"maps":[
+					{	
+						"title":"一期影像",
+						"layertype":"tianditu",
+						"layerurl": "/tms/attile?T={layername}&l={z}&x={x}&y={y}",
+						"layernames": ["qthimg201711"],
+						"baselayer_vector": "qthimg201711",
+						"baselayer_satellite": "qthimg201711",
+						"defaultlayer": "baselayer_satellite",
+						"originFlag":"bottomleft"
+					}
+				],
+				"tools": {
+					"mainbar": false,
+					"fullscreen": false,
+					"globe": false,
+					"choose": false,
+					"move": false,
+					"zoomin": false,
+					"zoomout": false,
+					"measureline": false,
+					"measurearea": false,
+					"pointsearch": false, 
+					"boxsearch": false,
+					"polygonsearch": false,
+					"clear":false,
+					"export":false,
+					"print":false,
+					"buffertool":false,
+					"drawtool":true
+				},
+				"exttools":[
+					
+				]
+				
+			},
+			"listview":[
+				{
+					"id":"01",
+					"name":"/atservices/waterassets/group?service=Group&layers=testtimebar&format=JSON",
+					"type": "querydata",
+					"data":[
+						{"TITLE":"2012年","layerurl":"/service/wmts","layername":"baseimgnew"},
+						{"TITLE":"2013年","layerurl":"/service/wmts","layername":"swyztDEMnew"},
+						{"TITLE":"2015年","layerurl":"/service/wmts","layername":"baseimgnew"},
+						{"TITLE":"2017年","layerurl":"/service/wmts","layername":"swyztDEMnew"}
+					]
+				},
+				{
+					"id":"01",
+					"name":"/atservices/waterassets/group?service=Group&layers=testtimebar&format=JSON",
+					"type": "querydata",
+					"data":[
+						{"TITLE":"2011年","layerurl":"/service/wmts","layername":"swyztDEMnew"},
+						{"TITLE":"2014年","layerurl":"/service/wmts","layername":"baseimgnew"},
+						{"TITLE":"2016年","layerurl":"/service/wmts","layername":"swyztDEMnew"},
+						{"TITLE":"2018年","layerurl":"/service/wmts","layername":"baseimgnew"}
+					]
+				}
+			]
+	},
+	"extend_js":[]
+}

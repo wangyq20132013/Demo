@@ -1,0 +1,16 @@
+{
+  "id": "1",
+  "name": "环比分析",
+  "type": "extendview",
+  "theme": "bootstrap",
+  "style": "blue",
+  "formpage": [
+    {
+      "id": "1",
+      "type":"develop",
+      "name": "landresmonitoring_hbtbfx"
+    }
+  ],
+  "extend_css":["hbtbfx"],
+  "extend_js":["public","hbtbfx","hbfx"]
+}

@@ -1,0 +1,60 @@
+{
+  "id": "",
+  "name": "树维护示例",
+  "type": "treelistview",
+  "theme": "bootstrap",
+  "style": "primary",
+  "button": [
+  	{"id":"01","name":"","title":"新增子办公室","icon":"glyphicon glyphicon-plus","clickevent":"addRecord('form','新增子办公室','sample03','modal',{});"},
+  	{"id":"02","name":"","title":"编辑办公室","icon":"glyphicon glyphicon-edit","clickevent":"editRecord('form','编辑办公室','sample03','modal',{});"},
+  	{"id":"03","name":"","title":"删除办公室","icon":"glyphicon glyphicon-remove","clickevent":"deleteRow('删除办公室');"}
+],
+  "formpage":[
+    {
+      "id": "1",
+      "type":"design",
+      "name": "treelistview-bootstrap"
+    }
+  ],
+  "datainterface":{
+		   "listview":[{
+		      "id": "",
+		      "name": "queryBgsList",
+		      "title": "查询办公室列表",
+		      "type": "querydata",
+		      "metadata": [
+		        {"checkbox":true},
+	       		{"field":"AUSID","title":"办公室编号"},
+				{"field":"AUSDEP","title":"使用部门"},
+				{"field":"AUSRENT","title":"月租金"},
+				{"field":"AUSNUM","title":"入住人数"},
+				{"field":"AUSREP","title":"是否维修","hidden":true},
+				{"field":"AUSREPTITLE","title":"是否维修"},
+				{"field":"AUSTIME","title":"维修时间"},
+				{"field":"AUSDESC","title":"描述"},
+				{"field":"REPNUM","title":"报修次数"}
+		      ]
+		    }
+		   ],
+		  "treeview":[
+			    {
+			      "id": "",
+			      "name": "getBgsTreeNode",
+			      "title":"办公室导航",
+			      "initall":true,
+			      "levels":1,
+			      "showCheckbox":false,
+			      "type": "querydata",
+			      "treecontextMenu":[
+			      	{"name":"新增办公室","iconClass":"glyphicon glyphicon-plus","clickevent":"addNode('form','新增办公室','sample02','modal',{'updatetype':'add'});"},
+			      	{"name":"修改办公室","iconClass":"glyphicon glyphicon-edit","clickevent":"editNode('form','修改办公室','sample02','modal',{'updatetype':'edit'});","blackhidden":true},
+			      	{"name":"删除办公室","iconClass":"glyphicon glyphicon-trash","clickevent":"deleteUserGroup();","isdelete":true,"blackhidden":true}
+			      ]
+			    }
+			  ]
+  },
+  "query": [
+  	{"id":"1","name":"keyword","title":"关键字","type": "text","isfuzzy":true}
+  ] 
+      
+}

@@ -1,0 +1,62 @@
+html,body {
+	height: 100%;
+	width: 100%;
+}
+
+/*页面框架*/
+.menu {
+	position: absolute;
+	top: 0;
+	padding: 0px;
+	left: 0;
+	bottom: 0;
+	width: 180px;
+	z-index: 99;
+	overflow: auto;
+	background-color: #44546e;
+	border-right: 0px solid #e5e5e5
+}
+
+.active{color: #48cc97;background-color: #303c52;border-radius: 0px;}
+.page-box{position: absolute;right:0;top: 0;bottom: 0;left:180px; overflow:hidden; z-index:1; background-color:#fff}
+.menu,.page-box,.dislpayArrow{-moz-transition: all 0.2s ease 0s;-webkit-transition: all 0.2s ease 0s;-ms-transition: all 0.2s ease 0s;-o-transition: all 0.2s ease 0s;transition: all 0.2s ease 0s}
+.big-page .page-box,.big-page .dislpayArrow,.big-page .breadcrumb{left:0px}
+.big-page .menu{ left:-200px}
+.page-container{ padding:20px}
+@media (max-width: 767px) {
+	.page-container{ padding:15px}
+}
+.page-box iframe {
+	height: 100%;
+	width: 100%;
+	border: 0px;
+}
+/*左侧菜单*/
+.menu .menu_dropdown dl{ margin-bottom:0; color: #b4c6d6}
+.menu .menu_dropdown dt{display:block;line-height:35px;padding-left:25px;cursor:pointer;position:relative;border-bottom: 1px solid #303c52;font-weight:normal}
+.menu .menu_dropdown dt .menu_dropdown-arrow{ position:absolute;overflow: hidden; top:0; right:15px;transition-duration:0.3s ;transition-property:all}
+.menu .menu_dropdown dd{ display:none}
+.menu .menu_dropdown dd.selected{display:block; margin-left:0px}
+.menu .menu_dropdown ul{padding:0px}
+.menu .menu_dropdown li{line-height:35px;overflow:hidden;zoom:1}
+.menu .menu_dropdown li a{padding-left:15px; display:block;font-weight: bold; margin:0}
+.menu .menu_dropdown li a i{ font-weight: normal}
+.menu .menu_dropdown dd ul{padding:3px 8px}
+.menu .menu_dropdown dd li{line-height:32px}
+.menu .menu_dropdown dd li a{line-height:32px;padding-left:26px; border-bottom:none; font-weight:normal}
+.menu .menu_dropdown li a:hover{text-decoration:none}
+.menu .menu_dropdown li.current a,.menu_dropdown li.current a:hover{background-color:rgba(255,255,255,0.2)}
+.menu .menu_dropdown dt:hover{color:#48cc97;background-color:#303c52;border-radius:0px}
+.menu .menu_dropdown .selected {color:#48cc97;background-color:#303c52;border-radius:0px}
+
+
+/*菜单收缩切换*/
+.dislpayArrow{position: absolute;top: 0;bottom: 0;left:180px;width:0px; height:100%;z-index:10}
+.dislpayArrow a{ position:absolute; display:block; width:17px; height:61px;top:50%; margin-top:-30px;outline:none;background:url(icon_arrow.png) no-repeat 0 0}
+.dislpayArrow a.open{ background-position:0 -61px}
+.dislpayArrow a:hover{ text-decoration:none; background-position:right 0;}
+.dislpayArrow a.open:hover{background-position:right -61px}
+
+.dislpayBtn {width:100%;height:39px;text-align:center;background-color: #303c52}
+.dislpayBtn a {color: #b4c6d6;font-size: 16px;transform: rotate(90deg);}
+.dislpayBtn a:HOVER {color: #48cc97;}

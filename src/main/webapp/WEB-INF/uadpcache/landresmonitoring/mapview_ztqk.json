@@ -1,0 +1,80 @@
+{
+	"id": "1",
+	"name": "总体情况",
+	"type": "mapview_develop",
+	"maptype": "attile",
+	"theme": "bootstrap",
+	"style": "blue",
+	"formpage":[
+		{
+			"id":"",
+			"type":"design",
+			"name":"mapview-bootstrap"
+		},
+		{
+			"id":"",
+			"type":"develop",
+			"name":"landresmonitoring_ztqk"
+		}
+	],
+	"datainterface": {
+		"mapview": {
+		"attile":{
+				"projection": {
+					"code":"EPSG:45556", 
+					"units":"m",
+					"extent": [ -4000000, 1000000, 4000000, 7000000 ]
+				},
+				"center": [-32388, 3767578],
+				"initZoom": 2,
+				"maxZoom": 12,
+				"minZoom": 1,
+				"tilenum":9,
+				"tileSize":256,
+				"format": "image/png",
+				"style": "default",
+				"wmsurl":"/tms/wms",
+				"layerurl": "/tms/attile?T={layername}&l={z}&x={x}&y={y}",
+				"layernames": ["qthimg201711"],
+				"baselayer_vector": "",
+				"baselayer_satellite": "",
+				"defaultlayer": "baselayer_vector",		
+				"basechange":true,
+				"mapNumber":1,			
+				"mapbar": [
+					"pedit"
+				],
+				"tools": {
+					"mainbar": false,
+					"fullscreen": false,
+					"globe": false,
+					"move": false,
+					"zoomin": false,
+					"zoomout": false,
+					"measureline": false,
+					"measurearea": false,
+					"pointsearch": false, 
+					"boxsearch": false,
+					"polygonsearch": false,
+					"clear":false,
+					"export":false,
+					"buffertool": false,
+					"drawtool": false,
+					"drawpoint":false
+				},
+				"exttools":[
+				
+				],
+				"popupText":[
+					{"name":"JCBH","title":"图斑编号"},
+					{"name":"BHHDLMC","title":"地类名称"},
+					{"name":"JCMJ","title":"面积"},
+					{"name":"HSX","title":"日期"},
+					{"name":"XMC","title":"行政区名"}
+				]
+			}
+		}
+	},
+	"extend_css":["ztqk"],
+	"extend_js":["public","ztqk"]
+}

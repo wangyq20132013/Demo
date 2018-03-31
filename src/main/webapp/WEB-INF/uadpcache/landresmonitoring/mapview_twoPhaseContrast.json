@@ -1,0 +1,82 @@
+{
+	"id": "1",
+	"name": "两期对比",
+	"type": "mapview",
+	"maptype": "attile",
+	"theme": "bootstrap",
+	"style": "primary",
+	"formpage":[
+		{
+			"id":"",
+			"type":"design",
+			"name":"mapview-bootstrap"
+		}
+	],
+	"datainterface": {
+		"mapview": {
+				"type":"attile",
+				"view":{
+					"projection": {
+						"code":"EPSG:45556", 
+						"units":"m",
+						"extent":[ -4000000, 1000000, 4000000, 7000000 ]
+					},
+					"center": [-32388, 3767578],
+					"initZoom": 2,
+					"maxZoom": 12,
+					"minZoom": 1,
+					"tilenum":9,
+					"tileSize":256,
+					"format": "image/png",
+					"style": "default"
+				},
+				"mapNumber":2,
+				"basechange":false,
+				"maps":[
+					{	
+						"layertype":"attile",
+						"layerurl": "/tms/attile?T={layername}&l={z}&x={x}&y={y}",
+						"wmsurl":"/tms/wms",
+						"layernames": [],
+						"baselayer_vector": "",
+						"baselayer_satellite": "",
+						"defaultlayer": "baselayer_vector"
+					},
+					{	
+						"layertype":"attile",
+						"layerurl": "/tms/attile?T={layername}&l={z}&x={x}&y={y}",
+						"wmsurl":"/tms/wms",
+						"layernames": [],
+						"baselayer_vector": "",
+						"baselayer_satellite": "",
+						"defaultlayer": "baselayer_satellite"
+					}
+				],
+				"tools": {
+					"mainbar": false,
+					"fullscreen": false,
+					"globe": false,
+					"choose": false,
+					"move": false,
+					"zoomin": false,
+					"zoomout": false,
+					"measureline": false,
+					"measurearea": false,
+					"pointsearch": false, 
+					"boxsearch": false,
+					"polygonsearch": false,
+					"clear":false,
+					"export":false,
+					"print":false,
+					"buffertool":false,
+					"drawtool":true
+				},
+				"exttools":[
+					
+				]
+				
+			}
+	},
+	"extend_css":["home"],
+	"extend_js":["public","twoPhaseContrast"]
+}

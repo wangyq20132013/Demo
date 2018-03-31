@@ -1,0 +1,16 @@
+{
+  "id": "1",
+  "name": "主题地图",
+  "type": "extendview",
+  "theme": "bootstrap",
+  "style": "blue",
+  "formpage": [
+    {
+      "id": "1",
+      "type":"develop",
+      "name": "landresmonitoring_ztdu"
+    }
+  ],
+  "extend_css":["/develop/landresmonitoring/css/animate.css","superSlide","ztdu"],
+	"extend_js":["/resources/jquery/jquery.SuperSlide2.1.2.js","public"]
+}

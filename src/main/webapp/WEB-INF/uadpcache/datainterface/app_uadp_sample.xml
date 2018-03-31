@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+	<!--根据条件查询办公室信息列表-->
+	<entry key="queryApprovalList">
+		<![CDATA[
+			select *,to_char(updatetime,'yyyy-mm-dd') as lastupdatetime from at_uadp_approvalnum where 1=1
+			<#if name??>
+	 			<#if name != "">
+	 				and name like '%${name}%'
+	 			</#if>
+		 	</#if>
+		 	<#if title??>
+	 			<#if title != "">
+	 				and title like '%${title}%'
+	 			</#if>
+		 	</#if>
+		 	order by updatetime desc
+    	]]>
+	</entry>
+	
+	<!--保存办公室信息-->
+	<entry key="saveApprovalInfo">
+		<![CDATA[
+	 		<#if id??>
+	 			<#if id == "">
+			 		insert into at_uadp_approvalnum(id,name,title,constant,dateformat,sqlformat,serialnumber,serialsize,createtime,updatetime,descpt) 
+					values (:uuid,:name,:title,:constant,:dateformat,:sqlformat,0,:serialsize::integer,now(),now(),:descpt)
+				<#else>
+					update at_uadp_approvalnum set name=:name,title=:title,constant=:constant,dateformat=:dateformat
+					,sqlformat=:sqlformat,serialsize=:serialsize::integer,updatetime=now(),descpt=:descpt where id = :id
+	 			</#if>
+		 	</#if>
+    	]]>
+	</entry>
+	
+	<!--删除办公室信息-->
+	<entry key="delApproval">
+		<![CDATA[
+			delete from at_uadp_approvalnum where id = :ID
+    	]]>
+	</entry>
+	
+	<!--根据条件查询办公室信息列表-->
+	<entry key="queryDocTree">
+		<![CDATA[
+			select id as treeid,name,title as treename,parentid as treeparentid,'true' as open 
+			from at_uadp_document 
+			where type is null or type = ''
+			order by id
+    	]]>
+	</entry>
+	
+	<!--根据条件查询办公室信息列表-->
+	<entry key="queryBgsList">
+		<![CDATA[
+			select case when asss.repnum is null then '0' else asss.repnum end as repnum,aid,ausid,ausdep,ausrent,ausnum,ausrep,(case when ausrep=1 then '是' when ausrep=0 then '否' end) as ausreptitle,to_char(austime,'yyyy-mm-dd') as austime,ausdesc from (select asssid,count(asssid) as repnum from app_uadp_sample01_sapple02 group by asssid) asss right join app_uadp_sample01 on asss.asssid=app_uadp_sample01.aid where 1=1
+			<#if ausid??>
+	 			<#if ausid != "">
+	 				and ausid like '%${ausid}%'
+	 			</#if>
+		 	</#if>
+		 	<#if ausdep??>
+	 			<#if ausdep != "">
+	 				and ausdep like '%${ausdep}%'
+	 			</#if>
+		 	</#if>
+		 		 	
+		 	order by ausdep,ausid asc
+    	]]>
+	</entry>
+	
+	<!--查询表的字段名-->
+	<entry key="queryColumn">
+		<![CDATA[
+	 		select column_name from information_schema.columns where table_name = :tablename;
+	    ]]>
+	</entry>
+	
+	<!--添加报修信息记录-->
+	<entry key="RepairInfo">
+		<![CDATA[
+	 		insert into app_uadp_sample01_sapple02(bid,asssid,repdate) values (:uuid,:AID,now())
+	    ]]>
+	</entry>
+	
+	<!--Excel数据导入-->
+	<entry key="saveFileInfo">
+		<![CDATA[
+	 		insert into app_uadp_sample01 (aid,ausid) values(:uuid,:ausid);
+			update app_uadp_sample01 set
+			<#if ausdep!="">
+				ausdep = :ausdep,
+			</#if>
+			<#if ausrent!="">
+				ausrent = :ausrent::double precision,
+			</#if>
+			<#if ausnum!="">
+				ausnum = :ausnum::integer,
+			</#if>
+			<#if austime!="">
+				austime = :austime::date,
+			</#if>
+			<#if ausdesc!="">
+				ausdesc = :ausdesc::text,
+			</#if>
+				ausdate = now() where aid = :uuid;
+    	]]>
+	</entry>
+	
+	<!--保存办公室信息-->
+	<entry key="saveBgsInfo">
+		<![CDATA[
+	 		<#if aid??>
+	 			<#if aid == "">
+			 		insert into app_uadp_sample01(aid,ausid,ausdep,ausdate,ausrent,ausnum,ausrep,austime,ausdesc
+			 		<#if treeparentid??>
+			 			<#if treeparentid != "">
+			 				,apid
+			 			</#if>
+				 	<#elseif apid??>
+			 			<#if apid != "">
+			 				,apid
+			 			</#if>
+				 	</#if>
+			 		) 
+					values (:uuid,:ausid,:ausdep,now(),:ausrent::double precision,:ausnum::integer,:ausrep::integer,:austime::date,:ausdesc::text
+					<#if treeparentid??>
+			 			<#if treeparentid != "">
+			 				,:treeparentid
+			 			</#if>
+				 	<#elseif apid??>
+			 			<#if apid != "">
+			 				,:apid
+			 			</#if>
+				 	</#if>
+					)
+				<#else>
+					update app_uadp_sample01 set ausid=:ausid,ausdep = :ausdep,ausdate = now(),ausrent = :ausrent::double precision,ausnum = :ausnum::integer,
+					ausrep = :ausrep::integer,austime = :austime::date,ausdesc = :ausdesc::text where aid = :aid
+	 			</#if>
+		 	</#if>
+    	]]>
+	</entry>
+	
+	<!--删除办公室信息-->
+	<entry key="delBgs">
+		<![CDATA[
+			delete from app_uadp_sample01 where ausid = :AUSID
+    	]]>
+	</entry>
+	
+	<entry key="getAusrep">
+		<![CDATA[
+	 		select ausrep as id,(case when ausrep=1 then '是' when ausrep=0 then '否' end) as title from app_uadp_sample01 group by id
+	 	]]>
+	</entry>
+	
+	<!--查询组织机构-->
+	<entry key="getBgsTreeNode">
+		 <![CDATA[
+		 	select aid as treeid, apid as treeparentid , ausid AS name,* From app_uadp_sample01 order by ausdate
+	    ]]>
+	</entry>
+	
+	
+	<entry key="getRZPersons">
+		 <![CDATA[
+		 	select *,to_char(updatetime,'yyyy-mm-dd') as lastupdatetime From app_uadp_sample02 where 1=1
+		 	<#if AID??>
+	 			<#if AID != "">
+	 				and aid = :AID
+	 			</#if>
+		 	</#if>
+		 	order by updatetime
+	    ]]>
+	</entry>
+	
+	<!--保存办公室信息-->
+	<entry key="savePersonInfo">
+		<![CDATA[
+	 		<#if aussid??>
+	 			<#if aussid == "">
+			 		insert into app_uadp_sample02(aussid,ausname,aussex,ausage,ausphone,ausemail,createtime,updatetime,aid
+			 		) 
+					values (:uuid,:ausname,:aussex,:ausage::integer,:ausphone,:ausemail,now(),now(),:aid
+					)
+				<#else>
+					update app_uadp_sample02 set ausname=:ausname,aussex=:aussex,ausage=:ausage::integer,
+					ausphone=:ausphone,ausemail=:ausemail,updatetime=now()
+					 where aussid = :aussid
+	 			</#if>
+		 	</#if>
+    	]]>
+	</entry>
+	
+	<entry key="getCodeTableList">
+		 <![CDATA[
+		 	select * From ro_dict_codetable where 1=1
+		 	
+		 	order by codetabletitle
+	    ]]>
+	</entry>
+	
+	<entry key="getCodeTableContent">
+		 <![CDATA[
+		 <#if CODETABLEID??>
+	 		<#if CODETABLEID != "">
+		 		select code as treeid,chnname as treename,parentcode as treeparentid From ro_dict_codetabledata where 1=1
+		 		and codetableid = :CODETABLEID
+		 		order by codetableid
+		 	</#if>
+		 <#else>
+		 		select code as treeid,chnname as treename,parentcode as treeparentid From ro_dict_codetabledata where 1=2
+		 		order by codetableid
+		 </#if>
+	    ]]>
+	</entry>
+	
+	<entry key="getGeometry_sample">
+		<![CDATA[
+	 		select st_astext(geometry) as mapgeometry from app_uadp_sample
+	 	]]>
+	</entry>
+	
+	<!--根据条件查询办公室信息列表-->
+	<entry key="queryPersonList">
+		<![CDATA[
+			select * from app_uadp_sample09 where 1=1
+			<#if pname??>
+	 			<#if pname != "">
+	 				and pname like '%${pname}%'
+	 			</#if>
+		 	</#if>
+		 		 	
+		 	order by updatetime desc
+    	]]>
+	</entry>
+	
+	<!--保存办公室信息-->
+	<entry key="savePersonInfo">
+		<![CDATA[
+	 		<#if pid??>
+	 			<#if pid == "">
+			 		insert into app_uadp_sample09(pid,pno,pname,psex,perage,plover,paddress,createtime,updatetime
+			 		) 
+					values (:uuid,:pno,:pname,:psex::integer,:perage::integer,:plover,:paddress,now(),now()
+					)
+				<#else>
+					update app_uadp_sample09 set pno=:pno,pname = :pname,psex = :psex::integer,perage = :perage::integer
+					,plover = :plover,paddress = :paddress,updatetime = now() where pid = :pid
+	 			</#if>
+		 	</#if>
+    	]]>
+	</entry>
+	
+	<!--删除办公室信息-->
+	<entry key="delPerson">
+		<![CDATA[
+			delete from app_uadp_sample09 where pid = :PID
+    	]]>
+	</entry>
+	
+	<!--根据条件查询办公室信息列表-->
+	<entry key="queryMemberList">
+		<![CDATA[
+			select * from app_uadp_sample0901 where 1=1
+			<#if PID??>
+	 			<#if PID != "">
+	 				and pid = :PID
+	 			</#if>
+		 	</#if>
+		 	order by updatetime desc
+    	]]>
+	</entry>
+	
+	<!--保存办公室信息-->
+	<entry key="saveMemberInfo">
+		<![CDATA[
+	 		<#if mid??>
+	 			<#if mid == "">
+			 		insert into app_uadp_sample0901(mid,mname,msex,mage,mrelation,createtime,updatetime,pid
+			 		) 
+					values (:uuid,:mname,:msex::integer,:mage::integer,:mrelation,now(),now(),:PID
+					)
+				<#else>
+					update app_uadp_sample0901 set mname = :mname,mage = :mage::integer,msex = :msex::integer
+					,mrelation = :mrelation,updatetime = now() where mid = :mid
+	 			</#if>
+		 	</#if>
+    	]]>
+	</entry>
+	
+	<!--删除办公室信息-->
+	<entry key="delMember">
+		<![CDATA[
+			delete from app_uadp_sample0901 where mid = :MID
+    	]]>
+	</entry>
+	
+</properties>

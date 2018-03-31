@@ -1,0 +1,29 @@
+@charset "utf-8";
+/* CSS Document */
+body{ margin:0px; padding:0px; background:url(../images/loginBg.png) repeat-x; font-family:'微软雅黑'; font-size:12px;}
+p{margin:0px; padding:0px;}
+a{ text-decoration:none;}
+
+.login{ position:absolute; top:50%; margin-top:-250px; left:50%; margin-left:-500px;}
+.loginLogo{ background:url(../images/loginbt.png); width: 635px;height: 45px;position: absolute;top: 210px;left: 54%;z-index: 100;}
+.loginBox{ width:985px; height:357px; background:#fff; border:4px solid #dedede; margin-top:20px;}
+.boxLeft{ float:left;}
+.boxLeft img{ width:649px; height:357px;}
+.boxRight{ float:right; width:280px; margin-right:25px;}
+.welcome{ font-size:18px; border-bottom:1px dashed #c5c5c5; line-height:40px; text-indent:2px; margin-top:8px;}
+.loginMain{ margin-top:10px;}
+.loginMain th{ text-align:left; font-weight:normal; height:32px; }
+.loginMain td{ height:32px;}
+.loginMain td input{ width:238px; height:34px; line-height:30px; border-left:1px solid #e2e2e2; border-top:1px solid #e2e2e2; border-bottom:1px solid #e2e2e2; border-right:none; float:left; color:#858585; text-indent:5px;}
+.loginMain td img{ float:left; }
+
+.yzmInput{border-right:1px solid #e2e2e2 !important; width:120px !important; margin-right:10px;}
+.forget{ float:right; margin-top:10px; margin-right:8px;}
+.forget a{ color:#a7a6a6;}
+.forget a:hover{ color:#095f01;}
+.loginBtn{ background:url(../images/loginBtn.png); width:273px; height:40px; border:none; color:#fff; font-size:16px; font-weight:bold; text-align:center; margin-top:10px; cursor:pointer;}
+
+
+.footer{width:1300px; position:absolute; top:70%; margin-top:250px; left:0px; right:0px; background:url(../images/footBg.png) repeat-x; height:34px; text-align:center; line-height:35px;line-width:140px; color:#898989;}
+.sweet-alert button.cancel {background-color: #Aedef4;}
+.sweet-alert button.cancel:hover {background-color: #Aedef4;}

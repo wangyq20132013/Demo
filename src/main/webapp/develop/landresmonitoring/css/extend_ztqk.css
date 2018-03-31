@@ -1,0 +1,31 @@
+.left_data{
+	position:absolute;
+	top:0px;
+	left: 0px;
+	bottom:0px;
+	width:300px;
+}
+.main_data{
+	position:absolute;
+	top:0px;
+	left: 300px;
+	right:0px;
+	bottom:0px;
+}
+.main_body{
+	position:absolute;
+	top: 42px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	overflow-y: auto;
+}
+.panel-box{
+	border: 1px solid #337ab7;
+	margin-bottom: 20px;
+}
+#text{
+	padding-top: 2em;
+	text-indent: 2em;
+	line-height: 2em;
+}

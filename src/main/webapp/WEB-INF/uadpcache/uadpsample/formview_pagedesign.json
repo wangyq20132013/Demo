@@ -1,0 +1,91 @@
+{
+  "id": "1",
+  "name": "页面视图配置",
+  "type": "formview",
+  "theme": "bootstrap",
+  "style": "primary",
+  "formpage": [
+    {
+      "id": "1",
+      "type":"design",
+      "name": "formview-bootstrap"
+    }
+  ],
+  "formcontent": [
+  	{"id":"1","name":"pageview","title":"基本信息","type":"group","items":
+		[
+			{"id":"11","name":"id","title":"页面视图标识","type":"serial","datainterface":"pageview","defaultvalue":"","info":"页面视图标识"},
+	   		{"id":"12","name":"name","title":"页面视图名称","type":"text","isnull":false,"min":5,"max":10,"defaultvalue":"","info":"页面视图名称"},
+	   		{"id":"13","name":"type","title":"页面视图类型","type":"select","options":[{"id":"listview","title":"列表"},{"id":"formview","title":"表单"}],"info":"页面视图类型"},
+	   		{"id":"14","name":"theme","title":"页面视图风格","type":"radio","options":[{"id":"bootstrap","title":"bootstrap"},{"id":"easyui","title":"easyui"}],"info":"页面视图风格"},
+	   		{"id":"15","name":"style","title":"页面视图样式","type":"select","options":[{"id":"listview","title":"列表"},{"id":"formview","title":"表单"}],"info":"页面视图样式"},
+	   		{"id":"16","name":"extend_js","title":"扩展JS","type":"text","info":"扩展JS,多个以,分割"}
+		]
+	},
+	{"id":"2","name":"button","title":"操作信息","type":"group","items":
+		[
+			{"id":"21","name":"id","title":"按钮标识","type":"serial","datainterface":"button","defaultvalue":"","info":"按钮标识"},
+	   		{"id":"22","name":"name","title":"按钮名称","type":"text","isnull":false,"min":2,"max":10,"defaultvalue":"","info":"按钮名称"},
+	   		{"id":"23","name":"title","title":"按钮显示名称","type":"text","isnull":false,"min":2,"max":10,"defaultvalue":"","info":"按钮显示名称"},
+	   		{"id":"24","name":"icon","title":"按钮图标","type":"text","info":"按钮图标"},
+	   		{"id":"25","name":"clickevent","title":"按钮事件","type":"text","info":"按钮事件"}
+		]
+	},
+	{"id":"3","name":"query","title":"查询信息","type":"group","items":
+		[
+			{"id":"22","name":"id","title":"查询标识","type":"serial","datainterface":"query","defaultvalue":"","info":"查询标识"},
+	   		{"id":"23","name":"name","title":"查询字段名称","type":"text","isnull":false,"min":5,"max":10,"defaultvalue":"","info":"查询字段名称"},
+	   		{"id":"24","name":"title","title":"查询显示名称","type":"select","info":"查询显示名称"},
+	   		{"id":"24","name":"type","title":"查询控件类型","type":"select","info":"查询控件类型"},
+	   		{"id":"24","name":"datainterface","title":"控件初始化数据接口","type":"text","info":"控件初始化数据接口"},
+	   		{"id":"24","name":"options","title":"控件初始化数据集","type":"text","info":"控件初始化数据集"}
+		]
+	},
+	{"id":"4","name":"formpage","title":"视图页面","type":"group","items":
+		[
+			{"id":"22","name":"id","title":"查询标识","type":"serial","datainterface":"query","defaultvalue":"","info":"查询标识"},
+	   		{"id":"23","name":"name","title":"查询字段名称","type":"text","isnull":false,"min":5,"max":10,"defaultvalue":"","info":"查询字段名称"},
+	   		{"id":"24","name":"type","title":"查询控件类型","type":"select","info":"查询控件类型"}
+		]
+	},
+	{"id":"5","name":"formcontent","title":"表单内容","type":"group","items":
+		[
+			{"id":"22","name":"id","title":"查询标识","type":"serial","datainterface":"query","defaultvalue":"","info":"查询标识"},
+	   		{"id":"23","name":"name","title":"查询字段名称","type":"text","isnull":false,"min":5,"max":10,"defaultvalue":"","info":"查询字段名称"},
+	   		{"id":"24","name":"title","title":"查询显示名称","type":"select","info":"查询显示名称"},
+	   		{"id":"24","name":"type","title":"查询控件类型","type":"select","info":"查询控件类型"},
+	   		{"id":"24","name":"datainterface","title":"控件初始化数据接口","type":"text","info":"控件初始化数据接口"},
+	   		{"id":"24","name":"options","title":"控件初始化数据集","type":"text","info":"控件初始化数据集"}
+		]
+	},
+	{"id":"6","name":"datainterface","title":"listview数据接口","type":"group","items":
+		[
+			{"id":"22","name":"id","title":"按钮标识","type":"serial","datainterface":"pageno","defaultvalue":"","info":"页面视图标识"},
+	   		{"id":"23","name":"name","title":"按钮名称","type":"text","isnull":false,"min":5,"max":10,"defaultvalue":"","info":"页面视图名称"},
+	   		{"id":"24","name":"title","title":"按钮显示名称","type":"select","info":"页面视图类型"}
+		]
+	},
+	{"id":"7","name":"datainterface","title":"treeview数据接口","type":"group","items":
+		[
+			{"id":"22","name":"id","title":"按钮标识","type":"serial","datainterface":"pageno","defaultvalue":"","info":"页面视图标识"},
+	   		{"id":"23","name":"name","title":"按钮名称","type":"text","isnull":false,"min":5,"max":10,"defaultvalue":"","info":"页面视图名称"},
+	   		{"id":"24","name":"title","title":"按钮显示名称","type":"select","info":"页面视图类型"}
+		]
+	},
+	{"id":"8","name":"datainterface","title":"mapview数据接口","type":"group","items":
+		[
+			{"id":"22","name":"id","title":"按钮标识","type":"serial","datainterface":"pageno","defaultvalue":"","info":"页面视图标识"},
+	   		{"id":"23","name":"name","title":"按钮名称","type":"text","isnull":false,"min":5,"max":10,"defaultvalue":"","info":"页面视图名称"},
+	   		{"id":"24","name":"title","title":"按钮显示名称","type":"select","info":"页面视图类型"}
+		]
+	},
+	{"id":"9","name":"query","title":"查询信息","type":"group","items":
+		[
+			{"id":"20","name":"ftable","title":"字表维护","type":"table","pageview":"sample02"}
+		]
+	}
+  ],
+  "button": [
+  		{"id":"01","name":"ok","title":"保存","icon":"up","clickevent":""}
+  ]
+}

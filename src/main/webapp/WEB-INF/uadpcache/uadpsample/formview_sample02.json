@@ -1,0 +1,29 @@
+{
+  "id": "1",
+  "name": "表单例子",
+  "type": "formview",
+  "theme": "bootstrap",
+  "formpage": [
+    {
+      "id": "1",
+      "type":"design",
+      "name": "formview-bootstrap"
+    }
+  ],
+  "formcontent": [
+  		{"id":"0","name":"aid","title":"主键","type":"hidden"},
+   		{"id":"1","name":"ausid","title":"办公室编号","type":"text","min":1,"isnull":true,"rule":"","defaultvalue":""},
+   		{"id":"2","name":"ausdep","title":"使用部门","type":"select","min":1,"initdata":true,"options":[{"id":"1","title":"IT"},{"id":"2","title":"软件产品部"},{"id":"3","title":"人力资源部"},{"id":"4","title":"区域应用产品部"},{"id":"5","title":"技术研究院"},{"id":"6","title":"大客户部"},{"id":"7","title":"信息产品部"},{"id":"8","title":"生态环境事业部"},{"id":"9","title":"国土应用事业部"},{"id":"10","title":"测绘应用事业部"},{"id":"11","title":"北京中心"},{"id":"12","title":"农业统计事业部"},{"id":"13","title":"增值产品部"}]},
+   		{"id":"3","name":"ausrent","title":"月租金","type":"text","min":1,"isnull":true,"rule":"","defaultvalue":""},
+   		{"id":"4","name":"ausnum","title":"入住人数","type":"number","min":1,"isnull":true,"defaultvalue":""},
+   		{"id":"5","name":"ausrep","title":"是否维修","type":"radio","initdata":true,"min":1,"datainterface":"","options":[{"id":"-1","title":"是"},{"id":"1","title":"否"}]},
+   		{"id":"6","name":"austime","title":"维修时间","type":"date","initdata":true},
+   		{"id":"7","name":"ausdesc","title":"描述","type":"textarea","min":1,"isnull":true,"defaultvalue":""},
+  		{"id":"8","name":"apid","title":"主键","type":"hidden","defaultvalue":"-1"},
+  		{"id":"9","name":"treeparentid","title":"树父级ID","type":"hidden","defaultvalue":""}
+
+  ],
+  "button": [
+  		{"id":"01","name":"ok","title":"保存","icon":"up","clickevent":"saveFormData('saveBgsInfo','办公室信息')"}
+  ]
+}

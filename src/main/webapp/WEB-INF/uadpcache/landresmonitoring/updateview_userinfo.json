@@ -1,0 +1,17 @@
+{
+  "id": "1",
+  "name": "用户信息",
+  "type": "updateview",
+  "theme": "bootstrap",
+  "formpage": [
+    {
+      "id": "1",
+      "type":"develop",
+      "name": "landresmonitoring_userinfo"
+   }
+  ],
+  "button": [
+  		{"id":"01","name":"ok","title":"确定","icon":"up","clickevent":"userinformationsave();"}
+  ]
+
+}

@@ -1,0 +1,79 @@
+{
+	"id": "1",
+	"name": "历史轮播",
+	"type": "mapview",
+	"maptype": "attile",
+	"theme": "bootstrap",
+	"style": "primary",
+	"formpage":[
+		{
+			"id":"",
+			"type":"design",
+			"name":"mapview-bootstrap"
+		},
+		{
+			"id":"",
+			"type":"develop",
+			"name":"landresmonitoring_history"
+		}
+	],
+	"datainterface": {
+		"mapview": {
+				"type":"attile",
+				"view":{
+					"extent": [ -4000000, 1000000, 4000000, 7000000 ],
+					"projection": {
+						"code":"EPSG:45556", 
+						"units":"m",
+						"extent": [ -4000000, 1000000, 4000000, 7000000 ]
+					},
+					"center": [-32388, 3767578],
+					"initZoom": 2,
+					"maxZoom": 12,
+					"minZoom": 1,
+					"tilenum":9,
+					"tileSize":256,
+					"format": "image/png",
+					"style": "default"
+				},
+				"mapNumber":1,
+				"maps":[
+					{	
+						"layertype":"attile",
+						"layerurl": "/tms/attile?T={layername}&l={z}&x={x}&y={y}",
+						"wmsurl":"/tms/wms",
+						"layernames": [],
+						"baselayer_vector": "qthimg201711",
+						"baselayer_satellite": "qthimg201711",
+						"defaultlayer": "baselayer_vector",
+						"originFlag":"bottomleft"
+					}
+				],
+				"tools": {
+					"mainbar": false,
+					"fullscreen": false,
+					"globe": false,
+					"choose": false,
+					"move": false,
+					"zoomin": false,
+					"zoomout": false,
+					"measureline": false,
+					"measurearea": false,
+					"pointsearch": false, 
+					"boxsearch": false,
+					"polygonsearch": false,
+					"clear":false,
+					"export":false,
+					"print":false,
+					"buffertool":false,
+					"drawtool":false
+				},
+				"exttools":[
+					
+				]
+				
+			}
+	},
+	"extend_css":["superSlide"],
+	"extend_js":["/resources/jquery/jquery.SuperSlide2.1.2.js","public","history"]
+}

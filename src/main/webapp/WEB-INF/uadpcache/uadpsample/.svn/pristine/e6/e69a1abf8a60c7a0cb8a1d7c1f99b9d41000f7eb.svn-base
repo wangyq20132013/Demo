@@ -1,0 +1,158 @@
+{
+	"id": "1",
+	"name": "点数据聚合示例",
+	"type": "cluster",
+	"maptype": "gwc",
+	"theme": "bootstrap",
+	"style": "primary",
+	"formpage":[
+		{
+			"id":"",
+			"type":"design",
+			"name":"cluster_mapview_bootstrap"
+		}
+	],
+	"datainterface": {
+		"mapview": {
+				"type":"gwc",
+				"view":{
+					"extent": [326335.701161546,222498.798765796,685640.586437984,460359.691154248],
+					"projection": {
+						"code":"EPSG:2422", 
+						"units":"m", 
+						"extent": [326335.701161546,222498.798765796,685640.586437984,460359.691154248],
+						"proj4":"+proj=tmerc +lat_0=0 +lon_0=75 +k=1 +x_0=500000 +y_0=0 +ellps=krass +towgs84=15.8,-154.4,-82.3,0,0,0,0 +units=m +no_defs"
+					},
+					"resolutions": [280.0, 140.0, 70.0, 27.999999999999996, 13.999999999999998, 6.999999999999999, 2.8, 1.4, 0.7, 0.504],
+					"matrixset": "bj54",
+					"center": [529908.14380, 341849.24496],
+					"initzoom": 1,
+					"maxResolution": 280.0,
+					"minResolution": 2.8,
+					"format": "image/png",
+					"style": "default"
+				},
+				"mapNumber": 4,
+				"maps":[
+					{	
+						"title":"一期影像",
+						"layertype":"wmts",
+						// "layerurl": "/service/wmts",
+						// "layernames": [ "swyztDEMnew","baseimgnew", "swyztnew", "swyztzhujinew"],
+						// "baselayer_vector": "swyztDEMnew",
+						// "baselayer_satellite": "baseimgnew",
+						// "defaultlayer": "baselayer_vector"
+						"wmtsurl": "",
+						"wmtslayers": ["baseimg_2012", "HydroMap_DEM", "HydroMap_Vector", "HydroMap_Anno"],
+						"baselayer_vector": "HydroMap_DEM",
+						"baselayer_satellite": "baseimg_2012",
+						"defaultlayer": "baselayer_vector"						
+					},
+					{	
+						"title":"二期影像",
+						"layertype":"wmts",
+						// "layerurl": "/service/wmts",
+						// "layernames": [ "swyztDEMnew","baseimgnew", "swyztnew", "swyztzhujinew"],
+						// "baselayer_vector": "swyztDEMnew",
+						// "baselayer_satellite": "baseimgnew",
+						// "defaultlayer": "baselayer_vector"
+						"wmtsurl": "",
+						"wmtslayers": ["baseimg_2012", "HydroMap_DEM", "HydroMap_Vector", "HydroMap_Anno"],
+						"baselayer_vector": "HydroMap_DEM",
+						"baselayer_satellite": "baseimg_2012",
+						"defaultlayer": "baselayer_vector"						
+					},
+					{
+						"title":"三期影像",
+						"layertype":"wmts",
+						// "layerurl": "/service/wmts",
+						// "layernames": [ "swyztDEMnew","baseimgnew", "swyztnew", "swyztzhujinew"],
+						// "baselayer_vector": "swyztDEMnew",
+						// "baselayer_satellite": "baseimgnew",
+						// "defaultlayer": "baselayer_vector"
+						"wmtsurl": "",
+						"wmtslayers": ["baseimg_2012", "HydroMap_DEM", "HydroMap_Vector", "HydroMap_Anno"],
+						"baselayer_vector": "HydroMap_DEM",
+						"baselayer_satellite": "baseimg_2012",
+						"defaultlayer": "baselayer_vector"							
+					},
+					{
+						"title":"四期影像",
+						"layertype":"wmts",
+						// "layerurl": "/service/wmts",
+						// "layernames": [ "swyztDEMnew","baseimgnew", "swyztnew", "swyztzhujinew"],
+						// "baselayer_vector": "swyztDEMnew",
+						// "baselayer_satellite": "baseimgnew",
+						// "defaultlayer": "baselayer_vector"
+						"wmtsurl": "",
+						"wmtslayers": ["baseimg_2012", "HydroMap_DEM", "HydroMap_Vector", "HydroMap_Anno"],
+						"baselayer_vector": "HydroMap_DEM",
+						"baselayer_satellite": "baseimg_2012",
+						"defaultlayer": "baselayer_vector"							
+					},
+					{
+						"title":"五期影像",
+						"layertype":"wmts",
+						// "layerurl": "/service/wmts",
+						// "layernames": [ "swyztDEMnew","baseimgnew", "swyztnew", "swyztzhujinew"],
+						// "baselayer_vector": "swyztDEMnew",
+						// "baselayer_satellite": "baseimgnew",
+						// "defaultlayer": "baselayer_vector"
+						"wmtsurl": "",
+						"wmtslayers": ["baseimg_2012", "HydroMap_DEM", "HydroMap_Vector", "HydroMap_Anno"],
+						"baselayer_vector": "HydroMap_DEM",
+						"baselayer_satellite": "baseimg_2012",
+						"defaultlayer": "baselayer_vector"							
+					}
+				],
+				"tools": {
+					"mainbar": true,
+					"fullscreen": true,
+					"globe": true,
+					"choose": false,
+					"move": true,
+					"zoomin": true,
+					"zoomout": true,
+					"measureline": true,
+					"measurearea": true,
+					"pointsearch": true, 
+					"boxsearch": true,
+					"polygonsearch": true,
+					"clear":true,
+					"export":true,
+					"print":true,
+					"buffertool":true,
+					"drawtool":true
+				},
+				"exttools":[
+					
+				]
+				
+			},
+			"listview":[
+				{
+					"id":"01",
+					"name":"/atservices/waterassets/group?service=Group&layers=testtimebar&format=JSON",
+					"type": "querydata",
+					"data":[
+						{"TITLE":"2012年","layerurl":"/service/wmts","layername":"baseimgnew"},
+						{"TITLE":"2013年","layerurl":"/service/wmts","layername":"swyztDEMnew"},
+						{"TITLE":"2015年","layerurl":"/service/wmts","layername":"baseimgnew"},
+						{"TITLE":"2017年","layerurl":"/service/wmts","layername":"swyztDEMnew"}
+					]
+				},
+				{
+					"id":"01",
+					"name":"/atservices/waterassets/group?service=Group&layers=testtimebar&format=JSON",
+					"type": "querydata",
+					"data":[
+						{"TITLE":"2011年","layerurl":"/service/wmts","layername":"swyztDEMnew"},
+						{"TITLE":"2014年","layerurl":"/service/wmts","layername":"baseimgnew"},
+						{"TITLE":"2016年","layerurl":"/service/wmts","layername":"swyztDEMnew"},
+						{"TITLE":"2018年","layerurl":"/service/wmts","layername":"baseimgnew"}
+					]
+				}
+			]
+	},
+	"extend_js":[]
+}

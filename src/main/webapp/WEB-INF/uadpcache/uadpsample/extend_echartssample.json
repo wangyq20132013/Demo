@@ -1,0 +1,13 @@
+{
+  "id": "1",
+  "name": "通用设备专题",
+  "type": "extendview",
+  "theme": "bootstrap",
+  "formpage": [
+    {
+      "id": "1",
+      "type":"develop",
+      "name": "uadpsample_echartssample"
+    }
+  ]
+}

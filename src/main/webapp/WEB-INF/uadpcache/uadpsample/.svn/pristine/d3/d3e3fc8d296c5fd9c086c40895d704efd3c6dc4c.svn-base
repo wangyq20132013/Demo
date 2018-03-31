@@ -1,0 +1,106 @@
+{
+	"id": "1",
+	"name": "点数据聚合示例",
+	"type": "cluster",
+	"maptype": "gwc",
+	"theme": "bootstrap",
+	"style": "primary",
+	"formpage":[
+		{
+			"id":"",
+			"type":"design",
+			"name":"cluster_mapview_bootstrap"
+		}
+	],
+	"datainterface": {
+		"mapview": {
+				"type":"tianditu",
+				"view":{
+					"extent": [-180,-90,180,90],
+					"projection": {
+						"code":"EPSG:4326", 
+						"units":"degrees"
+					},
+					"center": [116.4619572, 40.2503743],
+					"initzoom": 9,
+					"maxZoom": 19,
+					"minZoom": 8,
+					"tilenum":16,
+					"tileSize":256,
+					"format": "image/png",
+					"style": "default"
+				},
+				"mapNumber": 2,
+				"maps":[
+					{	
+						"title":"一期影像",
+						"layertype":"tianditu",
+						"layerurl": "http://172.24.3.164:8080/sisp/tms/attile.do?appname=wbj&request=gettile&layername={layername}&z={z}&x={x}&y={y}",
+						"layernames": ["wbjimage201601","fdfa"],
+						"baselayer_vector": "wbjimage201601",
+						"baselayer_satellite": "wbjimage201601",
+						"defaultlayer": "baselayer_satellite",
+						"originFlag":"bottomleft"					
+					},
+					{	
+						"title":"一期影像",
+						"layertype":"tianditu",
+						"layerurl": "http://172.24.3.164:8080/sisp/tms/attile.do?appname=wbj&request=gettile&layername={layername}&z={z}&x={x}&y={y}",
+						"layernames": ["wbjimage201601","fdfa"],
+						"baselayer_vector": "wbjimage201601",
+						"baselayer_satellite": "wbjimage201601",
+						"defaultlayer": "baselayer_vector",
+						"originFlag":"bottomleft"			
+					}
+				],
+				"tools": {
+					"mainbar": false,
+					"fullscreen": false,
+					"globe": false,
+					"choose": false,
+					"move": false,
+					"zoomin": false,
+					"zoomout": false,
+					"measureline": false,
+					"measurearea": false,
+					"pointsearch": false, 
+					"boxsearch": false,
+					"polygonsearch": false,
+					"clear":false,
+					"export":false,
+					"print":false,
+					"buffertool":false,
+					"drawtool":true
+				},
+				"exttools":[
+					
+				]
+				
+			},
+			"listview":[
+				{
+					"id":"01",
+					"name":"/atservices/waterassets/group?service=Group&layers=testtimebar&format=JSON",
+					"type": "querydata",
+					"data":[
+						{"TITLE":"2012年","layerurl":"/service/wmts","layername":"baseimgnew"},
+						{"TITLE":"2013年","layerurl":"/service/wmts","layername":"swyztDEMnew"},
+						{"TITLE":"2015年","layerurl":"/service/wmts","layername":"baseimgnew"},
+						{"TITLE":"2017年","layerurl":"/service/wmts","layername":"swyztDEMnew"}
+					]
+				},
+				{
+					"id":"01",
+					"name":"/atservices/waterassets/group?service=Group&layers=testtimebar&format=JSON",
+					"type": "querydata",
+					"data":[
+						{"TITLE":"2011年","layerurl":"/service/wmts","layername":"swyztDEMnew"},
+						{"TITLE":"2014年","layerurl":"/service/wmts","layername":"baseimgnew"},
+						{"TITLE":"2016年","layerurl":"/service/wmts","layername":"swyztDEMnew"},
+						{"TITLE":"2018年","layerurl":"/service/wmts","layername":"baseimgnew"}
+					]
+				}
+			]
+	},
+	"extend_js":[]
+}

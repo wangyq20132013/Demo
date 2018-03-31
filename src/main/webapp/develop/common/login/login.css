@@ -1,0 +1,23 @@
+@charset "utf-8";
+html,
+body {
+	height: 100%;
+	width: 100%;
+}
+#logo{
+	margin-top: 12%;
+	margin-bottom: 40px;
+}
+#content {
+	margin: 0 auto;
+	width: 400px;
+	height: auto;
+}
+
+label {
+	color: #FFFFFF;
+}
+
+a {
+	color: #FFFFFF;
+}

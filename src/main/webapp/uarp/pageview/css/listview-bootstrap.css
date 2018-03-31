@@ -1,0 +1,14 @@
+#query .form-group{
+	text-align: left;
+	/*margin-bottom: 15px;*/
+	padding: 5px;
+}
+.total-row{
+	font-weight: 600;
+}
+.panel-group{
+	margin-bottom: 10px;
+}
+form .form-group{
+	position: relative;
+}

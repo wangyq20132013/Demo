@@ -1,0 +1,82 @@
+{
+	"id": "1",
+	"name": "credit",
+	"type": "mapview_develop",
+	"maptype": "attile",
+	"theme": "bootstrap",
+	"style": "blue",
+	"formpage":[
+		{
+			"id":"",
+			"type":"design",
+			"name":"mapview-bootstrap"
+		},
+		{
+			"id":"",
+			"type":"develop",
+			"name":"landresmonitor_ztdu"
+		}
+	],
+	"datainterface": {
+		"mapview": {
+				"type":"attile",
+				"view":{
+					"projection": {
+						"code":"EPSG:45556", 
+						"units":"m",
+						"extent":[ -4000000, 1000000, 4000000, 7000000 ],
+						"proj4":"+proj=aea +lat_1=29.833333333333336 +lat_2=45.833333333333336 +lat_0= +lon_0=-96.0 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m no_defs"
+					},
+					"center": [-32388, 3767578],
+					"initZoom": 2,
+					"maxZoom": 9,
+					"minZoom": 2,
+					"tilenum":9,
+					"tileSize":256,
+					"format": "image/png",
+					"style": "default"
+				},
+				"mapNumber":1,
+				"basechange":false,
+				"maps":[
+					{	
+						"layertype":"wms",
+						"layerurl": "/tms/wms",
+						"layernames": ["china_city_alberss"],
+						"baselayer_vector": "",
+						"baselayer_satellite": "",
+						"defaultlayer": "baselayer_vector"
+					}
+				],
+				"tools": {
+					"mainbar": false,
+					"fullscreen": false,
+					"globe": false,
+					"move": false,
+					"zoomin": false,
+					"zoomout": false,
+					"measureline": false,
+					"measurearea": false,
+					"pointsearch": false, 
+					"boxsearch": false,
+					"polygonsearch": false,
+					"clear":false,
+					"export":false,
+					"buffertool": false,
+					"drawtool": false,
+					"drawpoint":false
+				},
+				"exttools":[
+					
+				],
+				"popupText":[
+//					{"name":"gdstitle","title":"市名称"},
+//					{"name":"gdsid","title":"市编码"},
+//					{"name":"creditrating","title":"评分"}
+				]
+			
+		}
+	},
+	"extend_css":["/develop/landresmonitoring/css/animate.css","superSlide","ztdu"],
+	"extend_js":["/resources/jquery/jquery.SuperSlide2.1.2.js","public","/develop/landresmonitoring/js/commonData.js","ztduMap","ztduEchart"]
+}

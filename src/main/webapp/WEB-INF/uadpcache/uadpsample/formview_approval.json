@@ -1,0 +1,26 @@
+{
+  "id": "1",
+  "name": "流水号信息",
+  "type": "formview",
+  "theme": "bootstrap",
+  "formpage": [
+    {
+      "id": "1",
+      "type":"design",
+      "name": "formview-bootstrap"
+    }
+  ],
+  "formcontent": [
+  		{"id":"0","name":"id","title":"主键","type":"hidden"},
+  		{"id":"1","name":"name","title":"名称","type":"text","isnull":false,"min":4,"max":50,"rule":"illegality","defaultvalue":""},
+   		{"id":"2","name":"title","title":"中文名称","type":"text","isnull":false,"min":4,"max":50,"rule":"","defaultvalue":""},
+   		{"id":"3","name":"constant","title":"常量前缀","type":"text","isnull":false,"min":4,"max":10,"rule":"illegality","defaultvalue":""},
+   		{"id":"4","name":"dateformat","title":"时间格式","type":"select","datainterface":"","options":[{"id":"YYYYMMddHHmmss","title":"年月日时分秒"},{"id":"YYYYMMdd","title":"年月日"}]},
+   		{"id":"5","name":"sqlformat","title":"SQL格式","type":"textarea","isnull":true,"min":5,"max":500,"defaultvalue":"","info":"根据系统关键字，查询数据库获取常量值，关键字包括：userid、username、deptid、userparentid、deptname、deptcode、roleid、rolename"},
+   		{"id":"6","name":"serialsize","title":"流水号位数","type":"number","isnull":false,"min":0,"max":50,"rule":"isInteger","defaultvalue":"4"},
+   		{"id":"7","name":"descpt","title":"描述","type":"textarea","isnull":true,"min":2,"max":500,"defaultvalue":""}
+  ],
+  "button": [
+  		{"id":"01","name":"ok","title":"保存","icon":"up","clickevent":"saveFormData('saveApprovalInfo','流水号信息')"}
+  ]
+}

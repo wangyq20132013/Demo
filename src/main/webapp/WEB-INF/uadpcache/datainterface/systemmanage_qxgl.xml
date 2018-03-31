@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<!--角色树查询-->
+	<entry key="queryJSTree">
+		<![CDATA[
+	 		select roleid as uuid,'-1' as parentid,roletitle as name,* from ta_roles order by roletype desc
+    	]]>
+	</entry>
+	<!--权限资源查询-->
+	<entry key="queryQxRes">
+		<![CDATA[
+	 		select * from ta_functions where frestype in ('91','92','93','94','95') order by forderindex
+    	]]>
+	</entry>
+	<!--根据权限资源类型查询功能节点-->
+	<entry key="queryFuncByQxRes">
+		<![CDATA[
+	 		select rid as uuid,rparentid as parentid,rtitle as name,* from ta_resources where rtype= :resType order by rtreecode
+    	]]>
+	</entry>
+	<!--查询组织机构或角色权限-->
+	<entry key="queryQx">
+		<![CDATA[
+	 		select * from ta_org2power where uroid= :uroid and urotype= :urotype and urptype= :urptype
+    	]]>
+	</entry>
+	
+	<!--查询组织机构或角色权限-->
+	<entry key="savePowerCfg">
+		<![CDATA[
+			delete from ta_org2power where uroid = :uroid  and urotype = :urotype and urptype = :urptype;
+			<#list urpid_Arr as urpid>
+				insert into ta_org2power (uroid, urotype, urpid, urptype, uroperatetype, urcount, urrecursive) values 
+				(:uroid, :urotype, ${urpid}, :urptype, :uroperatetype, :urcount, :urrecursive);
+			</#list>
+    	]]>
+	</entry>
+	
+	<!--查询权限资源更新参数-->
+	<entry key="getResUpdateParam">
+		<![CDATA[
+			SELECT * FROM TA_RESTYPE2DATA WHERE RDTYPEID = :resType
+    	]]>
+	</entry>
+	
+</properties>

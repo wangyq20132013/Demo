@@ -1,0 +1,193 @@
+.left_data {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	bottom: 0px;
+	width: 300px;
+}
+
+.main_data {
+	position: absolute;
+	top: 0px;
+	left: 300px;
+	right: 350px;
+	bottom: 0px;
+	padding: 0px;
+	overflow: hidden;
+}
+
+.right_data {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	width: 350px;
+}
+
+.history-btn {
+	float: right;
+	padding: 1px 5px;
+	height: 26px;
+	border-color: #fff;
+}
+
+.history-btn:hover {
+	color: #fff;
+	border: 1px solid #E5E5E5;
+}
+
+.fx-list {
+	height: calc(100% - 42px);
+}
+
+.ztfx {
+	height: 100px;
+}
+
+.qyfx {
+	height: calc((100% - 100px)/2);
+}
+
+.dlfx {
+	height: calc((100% - 100px)/2);
+}
+
+.indent {
+	text-indent: 2em;
+}
+
+
+/*两期对比 监测日期select位置样式*/
+
+.monitordate_box {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	z-index: 1;
+}
+
+
+/* 监测图斑 地图监测日期select位置样式*/
+
+.monitoringDate_box {
+	position: absolute;
+	top: 10px;
+	left: 50px;
+	z-index: 1;
+}
+
+.popupTable_box {
+	position: absolute;
+	top: 80px;
+	left: 0px;
+	width: auto;
+	height: auto;
+	z-index: 999;
+}
+
+.popupTable_box .popupTable_open {
+	position: absolute;
+	left: 10px;
+}
+
+.popupTable_box .popupTable_close {
+	top: -8px;
+	right: -8px;
+	z-index: 1111;
+	float: right;
+	font-size: 20px;
+	cursor: pointer;
+}
+
+.popupTable_box .panel {
+	position: absolute;
+	top: 0px;
+	left: -350px;
+	width: 300px;
+	height: 400px;
+	z-index: 0;
+}
+
+#maptoolbar_bootstrap {
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	z-index: 1000;
+}
+
+.fixed-table-pagination div.pagination,
+.fixed-table-pagination .pagination-detail {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.fixed-table-pagination .pagination a {
+	padding: 4px 5px;
+}
+
+.fixed-table-pagination .pagination-info .btn {}
+
+.fixed-table-pagination .pagination-info {
+	line-height: 0px;
+}
+
+.border_leftTop {
+	position: absolute;
+	top: -15px;
+	left: -15px;
+}
+
+.border_rightBottom {
+	position: absolute;
+	right: -15px;
+	bottom: -15px;
+	transform: rotate(180deg);
+	-webkit-transform: rotate(180deg);
+}
+
+.history_dateline {
+	position: absolute;
+	bottom: -100px;
+	width: 500px;
+	height: 100px;
+	left: 30%;
+	background: #00A65A;
+}
+
+.timeline_box {
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	height: auto;
+	margin: 0;
+	background-color: white;
+	border-radius: 5px;
+	
+	background-color: white;
+	padding: 10px 0px;
+}
+.tempWrap {
+	padding-left: 45%;
+}
+
+.boxSerchInfo {
+	color: #F39C12;
+}
+.timeline_play{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 50px;
+	height: 50px;
+    padding: 5px 10px 10px 10px;
+	background-color: #FFFFFF;
+}
+.timeline_play .playState {
+	height: 30px;
+	width: 30px;
+	background-image: url(../image/play.png) ;
+}
+.timeline_play .pauseState {
+	background-image: url(../image/pause.png) ;
+}

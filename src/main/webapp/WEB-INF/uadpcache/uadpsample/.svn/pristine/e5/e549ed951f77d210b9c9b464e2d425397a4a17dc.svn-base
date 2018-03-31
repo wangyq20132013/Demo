@@ -1,0 +1,55 @@
+{
+  "id": "",
+  "name": "树列表维护示例",
+  "type": "listtreeview",
+  "theme": "bootstrap",
+  "style": "primary",
+  "button": [
+  	{"id":"01","name":"","title":"新增数据字典","icon":"glyphicon glyphicon-plus","clickevent":"addRecord('form','新增数据字典','sample03','modal',{});"},
+  	{"id":"02","name":"","title":"修改数据字典","icon":"glyphicon glyphicon-edit","clickevent":"editRecord('form','编辑数据字典','sample03','modal',{});"},
+  	{"id":"03","name":"","title":"删除数据字典","icon":"glyphicon glyphicon-remove","clickevent":"deleteRow('删除数据字典');"}
+],
+  "formpage":[
+    {
+      "id": "1",
+      "type":"design",
+      "name": "listtreeview-bootstrap"
+    }
+  ],
+  "datainterface":{
+		   "listview":[{
+		      "id": "",
+		      "name": "getCodeTableList",
+		      "title": "查询数据字典",
+		      "type": "querydata",
+		      "metadata": [
+		        {"checkbox":true},
+		       		{"field":"CODETABLEID","title":"CODETABLEID","hidden":true},
+					{"field":"CODETABLETITLE","title":"名称","width":"20%"},
+					{"field":"CODETABLETYPE","title":"类型","width":"10%"},
+					{"field":"CODETABLESQL","title":"SQL"}
+		      ]
+		    }
+		   ],
+		  "treeview":[
+			    {
+			      "id": "",
+			      "name": "getCodeTableContent",
+			      "title":"代码表",
+			      "initall":true,
+			      "levels":1,
+			      "showCheckbox":false,
+			      "type": "querydata",
+			      "treecontextMenu":[
+			      	{"name":"新增代码","iconClass":"glyphicon glyphicon-plus","clickevent":"addNode('form','新增代码','sample02','modal',{'updatetype':'add'});"},
+			      	{"name":"修改代码","iconClass":"glyphicon glyphicon-edit","clickevent":"editNode('form','修改代码','sample02','modal',{'updatetype':'edit'});","blackhidden":true},
+			      	{"name":"删除代码","iconClass":"glyphicon glyphicon-trash","clickevent":"deleteUserGroup();","isdelete":true,"blackhidden":true}
+			      ]
+			    }
+			  ]
+  },
+  "query": [
+  	{"id":"1","name":"keyword","title":"关键字","type": "text","onkeydown": "getInputDatalsit(this);","isfuzzy":true}
+  ] 
+      
+}

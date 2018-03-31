@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<!--个人信息查询 -->
+	<entry key="queryUserInformation">
+		<![CDATA[
+	 		select logintitle,lmobilephone,laddress,lemail,luserid from ta_login where loginname = :username
+	    ]]>
+	</entry>
+	<!--获取组织机构编码 -->
+	<entry key="queryOrganizationCode">
+		<![CDATA[
+	 		select userwbscode from ta_users where userid=:deptid
+	    ]]>
+	</entry>
+	
+	<!--获取组织机构名称 -->
+	<entry key="queryOrganizationName">
+		<![CDATA[
+	 		select usertitle from ta_users where userwbscode in (${code}) order by userorderindex
+	    ]]>
+	</entry>
+	
+	<!--保存用户个人信息 -->
+	<entry key="saveUserInformation">
+		<![CDATA[
+	    	update ta_login set logintitle=:logintitle,lmobilephone=:lmobilephone,laddress=:laddress,lemail=:lemail where loginname=:username
+	    ]]>
+	</entry>
+</properties>

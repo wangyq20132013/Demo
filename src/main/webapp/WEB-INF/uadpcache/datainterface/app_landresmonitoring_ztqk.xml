@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<!--查询所有期数 -->
+	<entry key="queryAllPeriod">
+		<![CDATA[
+	 		(select 
+					id as treeid,
+					'' as imgservice,'' as imglayername,'' as landservice,'' as landlayername,'' as coverageservice,'' as coveragelayername,
+					'' as cloudsnowservice,'' as cloudsnowlayername,
+					name as treename,
+					pid as treeparentid,
+					type,
+					case when treeindex >= 2 then 'false' else 'true' end as open,
+					case when exists(select id from app_qth_datadisplay_nav where pid = A.id) = true then 'true' else 'false' end as isparent
+					from 
+					app_qth_datadisplay_nav as A where length(id)<5
+			 		order by treecode)
+					union all
+					(select n.period as treeid,n.imgservice,n.imglayername,n.landservice,n.landlayername,n.coverageservice,
+					n.coveragelayername,n.cloudsnowservice,n.cloudsnowlayername,
+					 n.name as treename,m.treeid as treeparentid,m.type,'false' as open,'false' as isparent   from (select 
+					id as treeid,					
+					name as treename,
+					pid as treeparentid,
+					refid,
+					code,
+					type,
+					type as treestatus,
+					case when treeindex >= 2 then 'false' else 'true' end as open,
+					case when exists(select id from app_qth_datadisplay_nav where pid = A.id) = true then 'true' else 'false' end as isparent
+					from 
+					app_qth_datadisplay_nav as A where length(id)<5
+			 		order by treecode ) m , app_qth_datadisplay_period n where m.type=n.navtype order by treeid desc)
+    	]]>
+	</entry>
+
+	
+	
+	<!--查询所有期数 -->
+	<entry key="queryInfoText">
+		<![CDATA[
+			SELECT
+				B. TEXT
+			FROM
+				app_qth_datadisplay_period A,
+				app_qth_datadisplay_info B
+			WHERE
+				A . ID = B.periodid
+			AND A .period = :period
+			AND navtype = :navtype
+			AND B.infotype = :infotype
+    	]]>
+	</entry>
+	
+	
+	
+	<!--查询全国数据采集影像有效覆盖率 -->
+	<entry key="queryAllImgCoverage">
+		<![CDATA[
+		<#if infotype?? && infotype =='1'>
+			SELECT count(*) as count,
+					count(*),
+					SUM (cityarea) AS cityarea,
+					SUM (imgarea) AS imgarea,
+					(SUM (imgarea)/SUM (cityarea))::numeric(22,6) AS imgover
+				FROM
+					app_qth_datadisplay_coverageratio
+				WHERE
+					period = :period and type=:navtype
+		</#if>		
+		<#if infotype?? && infotype =='2'>
+		
+		</#if>
+		<#if infotype?? && infotype =='3'>
+				select a.count,(a.landarea/(b.area/667))::numeric(22,6) as imgover from
+				(SELECT count(*) as count,SUM (landarea) as landarea										
+				FROM
+					app_qth_datadisplay_statistics 
+				WHERE
+					period = :period and navtype=:navtype) a,
+					(select area from ro_global_dim_space where gdsparentid='-1') b
+		</#if>
+    	]]>
+	</entry>
+	
+	<!--查询各省份表格数据 -->
+	<entry key="queryPROTableData">
+		<![CDATA[
+			<#if radioval?? && radioval =='1'>
+				select procode,proname,sum(imgarea)::numeric(22,1) as imgarea,
+				sum(cityarea)::numeric(22,1) as cityarea,(sum(imgarea)/sum(cityarea)*100)::numeric(22,1)||'%' as bfb 
+				from app_qth_datadisplay_coverageratio where period=:id and type=:type group by procode,proname order by procode
+			</#if>
+			<#if radioval?? && radioval =='2'>
+			
+			</#if>
+			<#if radioval?? && radioval =='3'>
+				select a.*,(a.landarea/(b.area/667)*100)::numeric(22,4)||'%' as bfb from 
+				(select procode||'0000' as procode,proname,sum(landnum) as landnum,
+				sum(landarea)::numeric(22,1) as landarea from app_qth_datadisplay_statistics 
+				  where period=:id and navtype=:type group by procode,proname order by procode)a 
+				  left join ro_global_dim_space b on a.procode=b.gdsid
+			</#if>
+    	]]>
+	</entry>
+
+</properties>

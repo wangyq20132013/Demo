@@ -1,0 +1,14 @@
+{
+  "id": "1",
+  "name": "总体情况",
+  "type": "extendview",
+  "theme": "bootstrap",
+  "style": "blue",
+  "formpage": [
+    {
+      "id": "1",
+      "type":"develop",
+      "name": "landresmonitoring_ztqk"
+    }
+  ]
+}

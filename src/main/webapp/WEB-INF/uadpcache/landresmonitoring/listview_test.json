@@ -1,0 +1,49 @@
+{
+  "id": "",
+  "name": "数据提交",
+  "type": "listview",
+  "theme": "bootstrap",
+  "style": "primary",
+  "button": [
+		{"id":"01","name":"up","title":"提交","icon":"glyphicon glyphicon-edit","clickevent":"executeDataInterfaceForRows('executesaveDataSubmit','提交检查','ID');"},
+  	{"id":"02","name":"up","title":"查看空间位置","icon":"glyphicon glyphicon-globe","clickevent":"editRecord('map','','showVector','layer')"}
+  ],
+  "formpage": [
+    {
+      "id": "1",
+      "type":"design",
+      "name": "listview-bootstrap"
+    }
+  ],
+  "dataset": {
+	  "listview":[{
+	      "id": "",
+	      "name": "queryJSTree",
+	      "title":"获取待提交资产",
+	      "type": "querydata",
+	      "keyid": "ID",
+        "pageList":[30,100,200,500],
+        "pagination": false,
+	      "dblclick":"editRecord('map','','showVector','layer')",
+	      "metadata": {
+	      		"key":"queryJSTree",
+	      		"data":[
+		      		{"checkbox":true,"width":"3%"},
+		      		{"field":"SerialNumber","title":"序号","formatter":"serialNumber"},
+		      		{"field":"ID","title":"ID","hidden":"true"},
+							{"field":"ZICMC","title":"资产名称","width":"20%"},
+							{"field":"ZICFL","title":"资产类型","width":"20%"},
+							{"field":"ORGUNITNAME","title":"局属单位","width":"20%"},
+							{"field":"SHIYRNAME","title":"使用人","width":"15%"},
+							{"field":"UPDATESTATUS","title":"变动类型","width":"5%"}
+							//,
+							//{"field":"VERIFYSTATUS","title":"审核状态","width":"8%","cellStyle":"STATUScellStyle"}			
+						]
+						
+				}
+	    }]
+  },
+  "query":[
+  ],
+  "extend_js":[]
+ }

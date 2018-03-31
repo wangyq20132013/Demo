@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<!-- 首页 -->
+	
+	<!-- 获取所有检测节点 -->
+	<entry key="queryAllMonitoring">
+		<![CDATA[
+			<#if TREEID?? && TREEID != ''>
+				select 
+					id as treeid,
+					name as treename,
+					pid as treeparentid,
+					refid,
+					code,
+					type as treestatus,
+					'true' as open,
+					case when exists(select id from app_qth_datadisplay_nav where pid = A.id) = true then 'true' else 'false' end as isparent
+				from 
+					app_qth_datadisplay_nav as A
+					
+				where pid = :TREEID
+			<#else>
+				select 
+					id as treeid,
+					name as treename,
+					pid as treeparentid,
+					refid,
+					code,
+					type as treestatus,
+					case when treeindex >= 2 then 'false' else 'true' end as open,
+					case when exists(select id from app_qth_datadisplay_nav where pid = A.id) = true then 'true' else 'false' end as isparent
+				from 
+					app_qth_datadisplay_nav as A
+					
+			</#if>
+			 order by treecode
+    	]]>
+	</entry>
+	
+	<!-- 获取全国行政区划 -->
+	<entry key="queryAllxzqh">
+		<![CDATA[
+			<#if TREEID?? && TREEID != ''>
+				select 
+					gdsid as treeid,
+					gdstitle as treename,
+					gdsparentid as treeparentid,
+					0 as treestatus,
+					'true' as open,
+					case when exists(select gdsid from ro_global_dim_space where gdsparentid = A.gdsid) = true then 'true' else 'false' end as isparent,
+					leftx,rightx,topy,bottomy
+				from 
+					ro_global_dim_space as A 
+				where gdsparentid = :TREEID
+			<#else>
+				select gdsid as treeid,gdstitle as treename,gdsparentid as treeparentid,0 as treestatus,'true' as open,'true' as isparent,leftx,rightx,topy,bottomy from ro_global_dim_space where gdstreelevel < 2
+			</#if>
+			 order by treeid
+    	]]>
+	</entry>
+	
+	
+	<!-- 获取检测期数 -->
+	<entry key="getMonitoringDate">
+		<![CDATA[
+			<#if type??>
+				select 
+					period as id,name,imgservice,imglayername,landservice,landlayername
+				from 
+					app_qth_datadisplay_period 
+				where navtype = :type
+			
+				<#if sortOrder?? && sortOrder == 'asc'>
+					order by id asc
+				<#else>
+				 	order by id desc
+				</#if>
+			
+			</#if>
+    	]]>
+	</entry>
+	
+	<!--查询 土地房屋构筑物Geometry-->
+	<entry key="getMapGeometry_ById">
+		<![CDATA[
+			select st_astext(gdsgeometry) as mapgeometry from ro_global_dim_space where gdsid = :id 
+    	]]>
+	</entry>
+	
+	
+	
+	<!--查询监测图斑-->
+	<entry key="queryJctbList">
+		<![CDATA[
+			select gid as id,bhhdlbm code,bhhdlmc as name from qth_jctb where hdatatime = :monitoringdate
+    	]]>
+	</entry>
+	
+	
+	
+	<!--总体分析-->
+	<entry key="query_ztfx">
+		<![CDATA[
+			SELECT
+				A .*, B. NAME
+			FROM
+				(
+					SELECT
+						period,
+						SUM (landnum) as num,
+						SUM (landarea) as area
+					FROM
+						app_qth_datadisplay_statistics
+					WHERE
+						navtype = :TREESTATUS
+					AND period IN (
+						:monitoringdate,
+						(
+							SELECT
+								MAX (period)
+							FROM
+								app_qth_datadisplay_period
+							WHERE
+								navtype = :TREESTATUS
+							AND period < :monitoringdate
+						)
+					)
+					<#if CODE?? && CODE != ''>
+						AND citycode like '${CODE}%'
+					</#if>
+					GROUP BY
+						period
+				) AS A
+			LEFT JOIN app_qth_datadisplay_period AS B ON A .period = B.period
+			WHERE
+				B.navtype = :TREESTATUS
+			order by period asc				
+    	]]>
+	</entry>
+	
+	
+	
+	
+	
+	
+	<!--区域分析-->
+	<entry key="query_qyfx">
+		<![CDATA[
+			
+			SELECT
+				row_number() over (
+					<#if CODE?? && CODE != '' && CODE?length gte 2>
+						order by citycode
+					<#else>
+						order by procode
+					</#if>
+				
+				) as index,
+				
+				<#if CODE?? && CODE != '' && CODE?length gte 2>
+					citycode as code,
+					cityname as name,
+				<#else>
+					procode as code,
+					proname as name,
+				</#if>
+				SUM (landnum) AS num,
+				round(SUM (landarea)::numeric, 1) AS area
+			FROM
+				(
+					SELECT
+						*
+					FROM
+						app_qth_datadisplay_statistics
+					WHERE
+						navtype = :TREESTATUS
+						AND period = :monitoringdate
+						
+						<#if CODE?? && CODE != ''>
+							AND citycode like '${CODE}%'
+						</#if>
+					
+				) AS XX
+			GROUP BY
+			
+				<#if CODE?? && CODE != '' && CODE?length gte 2>
+					citycode,
+					cityname
+				<#else>
+					procode,
+					proname
+				</#if>
+			
+			 
+    	]]>
+	</entry>
+	
+	<!--地类分析-->
+	<entry key="query_dlfx">
+		<![CDATA[
+			SELECT
+				row_number() over (order by C .code) as index,
+				C .*, D. NAME
+			FROM
+				(
+					SELECT
+						B.typecode as code,
+						sum(B.typenum) as num,
+						round(sum(B.typearea)::numeric, 1) as area
+					FROM
+						app_qth_datadisplay_statistics AS A,
+						app_qth_datadisplay_statistics_data AS B
+					WHERE
+						A . ID = B.statisticsid
+					AND A .navtype = :TREESTATUS
+					AND period = :monitoringdate
+					
+					<#if CODE?? && CODE != ''>
+						AND citycode like '${CODE}%'
+					</#if>
+					group by code
+				) AS C
+			RIGHT JOIN app_qth_datadisplay_dict AS D ON C .code = D.code
+			WHERE
+				D. TYPE = 'landtype'
+    	]]>
+	</entry>
+	
+	
+	
+</properties>

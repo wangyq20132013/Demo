@@ -1,0 +1,40 @@
+{
+  "id": "",
+  "name": "学生信息采集",
+  "type": "listview",
+  "theme": "bootstrap",
+  "style": "primary",
+  "button": [
+		{"id":"01","name":"addapp","title":"录入","icon":"glyphicon glyphicon-plus","clickevent":"addRecord('form','添加人员信息','sample09','in',{},100,100);"},
+		{"id":"02","name":"editapp","title":"修改","icon":"glyphicon glyphicon-pencil","clickevent":"editRecord('form','编辑人员信息','sample09','in',{},100,98);"},
+		{"id":"03","name":"delapp","title":"删除","icon":"glyphicon  glyphicon-trash","clickevent":"deleteRecords('delPerson','删除人员信息');"}
+  ],
+  "formpage": [
+    {
+      "id": "1",
+      "type":"design",
+      "name": "listview-bootstrap"
+    }
+  ],
+  "datainterface": {
+	  "listview":[{
+	      "id": "",
+	      "name": "queryPersonList",
+	      "title": "查询人员列表",
+	      "type": "querydata",
+	      "metadata": [
+	      		{"checkbox":true},
+	       		{"field":"PID","title":"办公室编号","hidden":true},
+	       		{"field":"PNO","title":"学号"},
+				{"field":"PNAME","title":"姓名"},
+				{"field":"PSEX","title":"性别"},
+				{"field":"PERAGE","title":"年龄"},
+				{"field":"PLOVER","title":"爱好","hidden":true},
+				{"field":"PADDRESS","title":"家庭住址"}
+	      ]
+	    }]
+	  },
+      "query": [
+   		    {"id":"1","name":"pname","title":"姓名","type":"text"}
+      ]
+}

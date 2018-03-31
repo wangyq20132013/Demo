@@ -1,0 +1,101 @@
+{
+	"id": "1",
+	"name": "地图二次开发",
+	"type": "mapview_develop",
+	"maptype": "gwc",
+	"theme": "bootstrap",
+	"style": "primary",
+	"formpage":[
+		{
+			"id":"",
+			"type":"design",
+			"name":"mapview-bootstrap"
+		},
+		{
+			"id":"",
+			"type":"develop",
+			"name":"uadpsample_samplemap"
+		}
+	],
+	"datainterface": {
+		"listview":[{
+	      "id": "",
+	      "name": "getGYZCList",
+	      "title":"国有资产维护",
+	      "type": "querydata",
+	      "click":"showZCinfo(name, row);",
+	      "metadata": [
+	      			{"checkbox":false},
+	      			{"field":"BILLCODE","title":"资产编号"},
+					{"field":"ZICMC","title":"资产名称"},
+					{"field":"ZICFL","title":"资产分类名称"},
+					{"field":"SHIYZK","title":"使用状况"},
+					{"field":"MIANJ","title":"面积（平方米）"},
+					{"field":"CHANQXS","title":"产权形式"},
+					{"field":"JIAZLX","title":"价值类型"},
+					{"field":"QUANSZH","title":"权属证号"},
+					{"field":"SHIYGLBM","title":"使用/管理部门"},
+					{"field":"ZUOLWZ","title":"坐落位置","hidden":true},
+					{"field":"DILYT","title":"地类（用途）","hidden":true},
+					{"field":"BEIZ","title":"备注","hidden":true},
+					{"field":"VECTORID","title":"空间ID","hidden":true},
+					{"field":"X","title":"空间X","hidden":true},
+					{"field":"Y","title":"空间Y","hidden":true}
+				]
+	    }],
+		"mapview": {
+		"gwc":{
+
+				"extent": [326335.701161546,222498.798765796,685640.586437984,460359.691154248],
+				"projection": {
+					"code":"EPSG:2422", 
+					"units":"m", 
+					"extent": [326335.701161546,222498.798765796,685640.586437984,460359.691154248],
+					"proj4":"+proj=tmerc +lat_0=0 +lon_0=75 +k=1 +x_0=500000 +y_0=0 +ellps=krass +towgs84=15.8,-154.4,-82.3,0,0,0,0 +units=m +no_defs"
+				},
+				"resolutions": [280.0, 140.0, 70.0, 27.999999999999996, 13.999999999999998, 6.999999999999999, 2.8, 1.4, 0.7, 0.504],
+				"matrixset": "bj54",
+				// "wmtsurl": "/service/wmts",
+				// "wmtslayers": ["baseimgnew", "swyztDEMnew", "swyztnew", "swyztzhujinew"],
+				// "baselayer_vector": "swyztDEMnew",
+				// "baselayer_satellite": "baseimgnew",
+				// "defaultlayer": "baselayer_satellite",
+				"wmtsurl": "",
+				"wmtslayers": ["baseimg_2012", "HydroMap_DEM", "HydroMap_Vector", "HydroMap_Anno"],
+				"baselayer_vector": "HydroMap_DEM",
+				"baselayer_satellite": "baseimg_2012",
+				"defaultlayer": "baselayer_satellite",					
+				"center": [529908.14380, 341849.24496],
+				"initzoom": 0,
+				"maxResolution": 280.0,
+				"minResolution": 2.8,
+				"format": "image/png",
+				"style": "default",
+				"mapbar": [
+					"pedit"
+				],
+				"tools": {
+					"mainbar": true,
+					"fullscreen": false,
+					"globe": true,
+					"move": true,
+					"point": false,
+					"measureline": true,
+					"measurearea": true,
+					"pointsearch": false, 
+					"boxsearch": false,
+					"clear":true,
+					"export":false
+				},
+				"exttools":[
+					
+				]
+			}
+		}
+	},
+	"query":[
+	  	{"id":"01","name":"billcode","title":"资产编号","type":"text"},
+	  	{"id":"02","name":"zicmc","title":"资产名称","type":"text"}
+	],
+	"extend_js":["/uarp/pageview/listview-query.js","/uarp/pageview/listview-button.js","/uarp/pageview/listview-bootstrap.js","samplemap"]
+}

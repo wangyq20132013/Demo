@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wangyq.uacp.dao.LoginDao">
+
+	<select id="login" parameterType="java.util.Map" resultType="com.at21.uarp.bean.User">
+		SELECT L.LID,L.LOGINNAME,L.LTYPE,L.LOGINWRONGTIMES,L.LOGINFLAG,L.PASSWORD,U.USERWBSCODE,L.LOGINTITLE,U.USERID,U.USERPARENTID,U.USERTITLE,U.USERMEMO FROM TA_LOGIN L,TA_USERS U WHERE L.LUSERID=U.USERID AND LOWER(L.LOGINNAME)= #{loginname}
+	</select>
+	
+</mapper>

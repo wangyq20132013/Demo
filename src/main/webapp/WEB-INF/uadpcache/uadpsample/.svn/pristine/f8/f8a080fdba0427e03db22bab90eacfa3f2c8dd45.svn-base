@@ -1,0 +1,47 @@
+{
+  "id": "",
+  "name": "单点登录应用列表",
+  "type": "listview",
+  "theme": "bootstrap",
+  "style": "primary",
+  "button": [
+		{"id":"01","name":"addapp","title":"增加","icon":"glyphicon glyphicon-plus","clickevent":"addRecord('form','添加自定义表单信息','sample01','layer',{},100,100);"},
+		{"id":"02","name":"editapp","title":"修改","icon":"glyphicon glyphicon-pencil","clickevent":"editRecord('form','编辑自定义表单信息','sample01','modal',{},100,98);"},
+		{"id":"03","name":"delapp","title":"删除","icon":"glyphicon  glyphicon-trash","clickevent":"deleteRecords('delBgs','删除办公室信息');"},
+		{"id":"04","name":"exportyhjh","title":"导出","icon":"glyphicon glyphicon-log-out","clickevent":"exportExcel('公司办公室信息表');"},
+		{"id":"05","name":"import","title":"导入","icon":"glyphicon glyphicon-log-in","clickevent":"importData('import', 'excel', 'app_uadp_sample01', 'saveFileInfo');"},
+		{"id":"06","name":"repairs","title":"报修","icon":"glyphicon glyphicon-wrench","clickevent":"executeDataInterfaceForRows('RepairInfo','报修');"}
+  ],
+  "formpage": [
+    {
+      "id": "1",
+      "type":"design",
+      "name": "listview-bootstrap"
+    }
+  ],
+  "datainterface": {
+	  "listview":[{
+	      "id": "",
+	      "name": "queryBgsList",
+	      "title": "查询办公室列表",
+	      "type": "querydata",
+	      "dblclick": "showdetail(name, row);",
+	      "metadata": [
+	      		{"checkbox":true},
+	       		{"field":"AUSID","title":"办公室编号"},
+				{"field":"AUSDEP","title":"使用部门"},
+				{"field":"AUSRENT","title":"月租金"},
+				{"field":"AUSNUM","title":"入住人数"},
+				{"field":"AUSREP","title":"是否维修","hidden":true},
+				{"field":"AUSREPTITLE","title":"是否维修"},
+				{"field":"AUSTIME","title":"维修时间"},
+				{"field":"AUSDESC","title":"描述"},
+				{"field":"REPNUM","title":"报修次数"}
+	      ]
+	    }]
+	  },
+      "query": [
+   		    {"id":"1","name":"ausid","title":"办公室编号","type":"text"},
+			{"id":"2","name":"ausdep","title":"使用部门","type":"select","min":1,"options":[{"id":"1","title":"IT"},{"id":"2","title":"软件产品部"},{"id":"3","title":"人力资源部"},{"id":"4","title":"区域应用产品部"},{"id":"5","title":"技术研究院"},{"id":"6","title":"大客户部"},{"id":"7","title":"信息产品部"},{"id":"8","title":"生态环境事业部"},{"id":"9","title":"国土应用事业部"},{"id":"10","title":"测绘应用事业部"},{"id":"11","title":"北京中心"},{"id":"12","title":"农业统计事业部"},{"id":"13","title":"增值产品部"}]}
+      ]
+}

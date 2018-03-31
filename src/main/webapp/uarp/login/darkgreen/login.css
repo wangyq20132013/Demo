@@ -1,0 +1,33 @@
+@charset "utf-8";
+/* CSS Document */
+html{ height:100%;}
+.body{ margin:0px; padding:0px; background: url(images/loginbg.png) repeat-x left center;  width:100%; font-family:'微软雅黑'; font-size:14px; color:#666;}
+btn{ font-family:'微软雅黑'; cursor:pointer;}
+p,ul{ margin:0px; padding:0px; list-style:none;}
+
+
+.login{ background:url(images/leftimg.png); width:1193px; height:392px; position:absolute; left:50%; top:50%; margin-left:-596.5px; margin-top:-210px;}
+.loginbt{ position:absolute; top:-70px; left:30px;}
+.loginbt span{font-size:40px; font-weight:bold;  color:white; line-height:56px; float:left; margin-left:20px;}
+.loginright{ float:right;  margin-right:35px; margin-top:65px; background:white; width:386px; height:379px; background:url(images/loginbox.png); }
+
+.loginright p{ font-weight:bold; font-size:24px; color:#50a853; width:70%;  margin:0px auto; padding-top:35px;}
+.loginright dl{ width:70%; margin:0px auto; padding-top:70px;}
+.loginright dl dt{ padding-top:20px;}
+.loginright dl dt input{ width:180px; height:24px; border:1px solid #8dd298; vertical-align:middle; line-height:24px;}
+.loginright ul{ width:60%;  padding-top:8px; margin-left:120px;}
+.lbtn{ background:url(images/btnbglink.png); width:161px; height:31px; border:none; color:white; font-size:14px; font-family:'微软雅黑'; cursor:pointer; margin-right:10px; }
+.qbtn{ background:url(images/btndeal.png); width:132px; height:31px; border:none; font-size:14px;  font-family:'微软雅黑'; cursor:pointer;}
+.loginright ul li input{ vertical-align:-2px;}
+.loginright ul li{ line-height:30px;}
+.yzm{ width:75px !important;}	
+
+
+.copyright{position:absolute; bottom:-20px; left:30px;}
+.sweet-alert button.cancel {
+    background-color: #EC6C62;
+}
+
+.sweet-alert button.cancel:hover {
+    background-color: #EC6C62;
+}

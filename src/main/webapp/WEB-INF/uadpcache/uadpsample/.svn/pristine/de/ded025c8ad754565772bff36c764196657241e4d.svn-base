@@ -1,0 +1,173 @@
+{
+	"id": "1",
+	"name": "点数据聚合示例",
+	"type": "cluster",
+	"maptype": "gwc",
+	"theme": "bootstrap",
+	"style": "primary",
+	"formpage":[
+		{
+			"id":"",
+			"type":"design",
+			"name":"cluster_mapview_bootstrap"
+		}
+	],
+	"datainterface": {
+		"mapview": {
+		"gwc":{
+
+				"extent": [326335.701161546,222498.798765796,685640.586437984,460359.691154248],
+				"projection": {
+					"code":"EPSG:2422", 
+					"units":"m", 
+					"extent": [326335.701161546,222498.798765796,685640.586437984,460359.691154248],
+					"proj4":"+proj=tmerc +lat_0=0 +lon_0=75 +k=1 +x_0=500000 +y_0=0 +ellps=krass +towgs84=15.8,-154.4,-82.3,0,0,0,0 +units=m +no_defs"
+				},
+				"resolutions": [280.0, 140.0, 70.0, 27.999999999999996, 13.999999999999998, 6.999999999999999, 2.8, 1.4, 0.7, 0.504],
+				"matrixset": "bj54",
+				// "wmtsurl": "/service/wmts",
+				// "wmtslayers": ["baseimgnew", "swyztDEMnew", "swyztnew", "swyztzhujinew"],
+				// "baselayer_vector": "swyztDEMnew",
+				// "baselayer_satellite": "baseimgnew",
+				// "defaultlayer": "baselayer_satellite",
+				"wmtsurl": "",
+				"wmtslayers": ["baseimg_2012", "HydroMap_DEM", "HydroMap_Vector", "HydroMap_Anno"],
+				"baselayer_vector": "HydroMap_DEM",
+				"baselayer_satellite": "baseimg_2012",
+				"defaultlayer": "baselayer_satellite",					
+				"center": [529908.14380, 341849.24496],
+				"initzoom": 0,
+				"maxResolution": 280.0,
+				"minResolution": 2.8,
+				"format": "image/png",
+				"style": "default",
+				"mapbar": [
+					"pedit"
+				],
+				"tools": {
+					"mainbar": true,
+					"fullscreen": true,
+					"globe": true,
+					"choose": false,
+					"move": true,
+					"zoomin": true,
+					"zoomout": true,
+					"measureline": true,
+					"measurearea": true,
+					"pointsearch": true, 
+					"boxsearch": true,
+					"polygonsearch": true,
+					"clear":true,
+					"export":true,
+					"print":true,
+					"buffertool":true,
+					"drawtool":true
+				},
+				"exttools":[
+					{"id":"1","name":"save","title":"保存","icon":"fa fa-download","click":"tool_save()"},
+					{"id":"2","name":"print","title":"打印","icon":"glyphicon glyphicon-print","click":"print()"},
+					{"id":"3","name":"pointbuffer","title":"点缓存","icon":"fa fa-genderless","click":"pointbuffer()"},
+					{"id":"4","name":"linebuffer","title":"线缓存","icon":"fa fa-arrows-h","click":"linebuffer()"},
+					{"id":"5","name":"polygonbuffer","title":"面缓存","icon":"fa fa-object-group","click":"polygonbuffer()"},
+					{"id":"6","name":"selectbuffer","title":"选择缓存","icon":"fa fa-table","click":"selectbuffer('queryRiver')"},
+					{"id":"7","name":"drawpoint","title":"绘制点","icon":"fa fa-map-marker","click":"drawpoint()"},
+					{"id":"8","name":"drawline","title":"绘制线","icon":"fa fa-vine","click":"drawline()"},
+					{"id":"9","name":"drawpolygon","title":"绘制面","icon":"fa fa-object-ungroup","click":"drawpolygon()"}
+				],
+				"linstring": {
+					"show": false,
+					"dataset": "getYhrLinstring",
+					"params": {}
+				},
+				"pointpoi": false,
+				"poioption": {
+					"dataset": "queryWeizhi",
+					"params": {},
+					"poishadow": "true",
+					"poiform": "marker",
+					"poigradient": "false",
+					"poifontsize": "1",
+					"poiradius": "15",
+					"poirotation": "0",
+					"poistrokecolor": "white",
+					"poifillcolor": "green",
+					"poicolor": "white",
+					"poiborder": "3",
+					"poifont": "fa-pied-piper-alt"
+				},
+				"poilight": false,
+				"popup": true,
+				"popupoption": {
+					"dataset": "landinfo",
+					"params": {
+						"uuid": "20348a79-552e-4d5e-942c-3d15e211bf85"
+					}
+				},
+				"globalheight": {
+					"show": true,
+					"dataset": "querywktbyid"
+				}
+			},
+		"tianditu" : {
+				"center": [116.35,39.9],
+				"initzoom": 10,
+				"minzoon": 2,
+				"maxzoom": 24,
+				"defaultlayer": "baselayer_satellite",
+				"mapbar": [
+					"pedit"
+				],
+				"tools": {
+					"mainbar": true,
+					"point": true,
+					"ledit": true,
+					"pedit": false,
+					"share": true,
+					"globe": true
+				},
+				"toolbar":[
+					{"id":"1","name":"point","title":"选择","icon":"fa fa-hand-pointer-o","click":"aa()"},
+					{"id":"2","name":"ledit","title":"统计1","icon":"glyphicon glyphicon-signal","click":"bb()"},
+					{"id":"3","name":"pointsearch","title":"点查询","icon":"fa fa-hand-o-down","click":"pointSearch()"},
+					{"id":"4","name":"clear","title":"清除","icon":"fa fa-trash","click":"clear()"},
+					{"id":"5","name":"mapo","title":"图层叠加","icon":"fa fa-map-o","click":"popupDiv()"},
+					{"id":"6","name":"save","title":"保存","icon":"fa fa-download","click":"tool_save()"}
+				],
+				"linstring": {
+					"show": false,
+					"dataset": "getYhrLinstring",
+					"params": {}
+				},
+				"pointpoi": false,
+				"poioption": {
+					"dataset": "queryWeizhi",
+					"params": {},
+					"poishadow": "true",
+					"poiform": "marker",
+					"poigradient": "false",
+					"poifontsize": "1",
+					"poiradius": "15",
+					"poirotation": "0",
+					"poistrokecolor": "white",
+					"poifillcolor": "green",
+					"poicolor": "white",
+					"poiborder": "3",
+					"poifont": "fa-pied-piper-alt"
+				},
+				"poilight": false,
+				"popup": true,
+				"popupoption": {
+					"dataset": "landinfo",
+					"params": {
+						"uuid": "20348a79-552e-4d5e-942c-3d15e211bf85"
+					}
+				},
+				"globalheight": {
+					"show": true,
+					"dataset": "querywktbyid"
+				}
+			}
+		}
+	},
+	"extend_js":["demo"]
+}

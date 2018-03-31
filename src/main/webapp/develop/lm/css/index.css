@@ -1,0 +1,57 @@
+html,body{
+	height: 100%;
+	width: 100%;
+	font: "微软雅黑";
+}
+.header{
+	height: 80px;
+	width: 100%;
+	background: #08a908;
+	border-bottom-color: rgb(100);
+}
+.logo{
+	padding-left: 10px;
+}
+.navitms{
+	position: absolute;
+	right: 10px;
+	top: 40px;
+	height: auto;
+}
+.navitms > ul> li> a{
+	
+	color: #000000;
+	font-size: 15px;
+	padding: 10px 10px 8px 10px;
+	border-radius:4px 4px 0 0;
+}
+
+.userinfo{
+	margin-left: 30px;
+	margin-top:12px ;
+}
+.userinfo a{
+	color: #000000;
+	padding-top: 5px !important;
+	padding-bottom: 5px !important;
+}
+.dropdown-menu{
+	
+}
+.main{
+	height: calc(100% - 100px);
+	width: 100%;
+}
+.main iframe{
+	width: 100%;
+	height: 100%;
+	border: 0px;
+}
+.footer{
+	position: absolute;
+	bottom: 0px;
+	height: 20px;
+	width: 100%;
+	background: #185a9c;
+	color: white;
+}

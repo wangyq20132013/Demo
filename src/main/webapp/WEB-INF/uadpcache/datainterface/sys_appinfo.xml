@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<!--查询应用信息-->
+	<entry key="queryappinfo">
+		<![CDATA[
+	 		select * from sys_appinfo
+    	]]>
+	</entry>
+	
+	<!--编辑应用信息-->
+	<entry key="editappinfo">
+		<![CDATA[
+	 		update sys_appinfo set where  id=:id
+    	]]>
+	</entry>
+	
+	<!--新增应用信息-->
+	<entry key="addappinfo">
+		<![CDATA[
+	 		insert into sys_appinfo () values()
+    	]]>
+	</entry>
+	
+	<!--删除应用信息-->
+	<entry key="delappinfo">
+		<![CDATA[
+	 		delete from sys_appinfo where id=:id
+    	]]>
+	</entry>
+	
+</properties>

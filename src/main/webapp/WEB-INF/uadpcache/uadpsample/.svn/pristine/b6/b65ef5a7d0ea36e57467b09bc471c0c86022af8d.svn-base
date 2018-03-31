@@ -1,0 +1,62 @@
+{
+  "id": "",
+  "name": "树列表维护示例",
+  "type": "treelistview",
+  "theme": "bootstrap",
+  "style": "primary",
+  "button": [
+  	{"id":"01","name":"","title":"新增人员","icon":"glyphicon glyphicon-plus","clickevent":"addRecord('form','新增用户信息','sample03','modal',{});"},
+  	{"id":"02","name":"","title":"修改人员","icon":"glyphicon glyphicon-edit","clickevent":"editRecord('form','编辑用户信息','sample03','modal',{});"},
+  	{"id":"03","name":"","title":"删除人员","icon":"glyphicon glyphicon-remove","clickevent":"deleteRow('删除所选用户');"},
+ 	{"id":"04","name":"","title":"拉入黑名单","icon":"glyphicon glyphicon-user","clickevent":"activeUser();"}
+],
+  "formpage":[
+    {
+      "id": "1",
+      "type":"design",
+      "name": "treelistview-bootstrap"
+    }
+  ],
+  "datainterface":{
+		   "listview":[{
+		      "id": "",
+		      "name": "getRZPersons",
+		      "title": "查询入住人员",
+		      "type": "querydata",
+		      "metadata": [
+		        {"checkbox":true},
+		       		{"field":"AUSID","title":"AUSID","hidden":true},
+					{"field":"AUSNAME","title":"人员姓名"},
+					{"field":"AUSSEX","title":"人员性别"},
+					{"field":"AUSAGE","title":"人员年龄"},
+					{"field":"AUSEMAIL","title":"邮箱"},
+					{"field":"AUSPHONE","title":"电话"},
+					{"field":"LASTUPDATETIME","title":"更新时间"}
+		      ]
+		    }
+		   ],
+		  "treeview":[
+			    {
+			      "id": "",
+			      "name": "getBgsTreeNode",
+			      "title":"办公室导航",
+			      "initall":true,
+			      "levels":1,
+			      "showCheckbox":false,
+			      "type": "querydata",
+			      "treecontextMenu":[
+			      	{"name":"新增办公室","iconClass":"glyphicon glyphicon-plus","clickevent":"addNode('form','新增办公室','sample02','modal',{'updatetype':'add'});"},
+			      	{"name":"修改办公室","iconClass":"glyphicon glyphicon-edit","clickevent":"editNode('form','修改办公室','sample02','modal',{'updatetype':'edit'});","blackhidden":true},
+			      	{"name":"删除办公室","iconClass":"glyphicon glyphicon-trash","clickevent":"deleteUserGroup();","isdelete":true,"blackhidden":true}
+			      ],
+			      "blankcontextMenu":[
+			      	{"name":"新增办公室","iconClass":"glyphicon glyphicon-plus","clickevent":"addRecord('form','新增办公室','sample02','modal',data);"},
+			      ]
+			    },
+			  ],
+  },
+  "query": [
+  	{"id":"1","name":"keyword","title":"关键字","type": "text","onkeydown": "getInputDatalsit(this);","isfuzzy":true}
+  ] 
+      
+}

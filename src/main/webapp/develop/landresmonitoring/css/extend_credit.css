@@ -1,0 +1,174 @@
+.left_data{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	bottom: 0px;
+	width: 5px;
+
+}
+.main_data{
+	width: 100%;
+	height: 100%;
+	padding: 10px;
+	overflow: hidden;
+}
+.top_center_title{
+	position: absolute;
+	top: 0px;
+	left: 50%;
+	margin-left: -50px;
+	z-index: 999;
+}
+.right_data{
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	width: 5px;
+}
+.top_left_box{
+	position: absolute;
+	width: 300px;
+	left: 50px;
+	top: 15px;
+	animation-delay: 1s!important;
+	-webkit-animation-delay: 1s!important;
+}
+.top_right_box {
+	position: absolute;
+	width: 300px;
+	right: 10px;
+	top: 15px;
+	height: calc(50% - 25px);
+	overflow: hidden;
+	animation-delay: 1s!important;
+	-webkit-animation-delay: 1s!important;
+}
+
+
+
+.bottom_right_box {
+	position: absolute;
+	width: 300px;
+	right: 10px;
+	bottom: 15px;
+	height: calc(50% - 25px);
+	overflow: hidden;
+	animation-delay: 1s!important;
+	-webkit-animation-delay: 1s!important;
+}
+
+
+
+.left_center_box{
+	position: absolute;
+	left: 0px;
+	top: 30%;
+	z-index: 999;
+}
+.tab_box{
+	position: absolute;
+	width: 30px;
+}
+
+
+.title-box {
+	width: 100%;
+	height: 30px;
+	text-align: center;
+}
+
+.title {
+	font-size: 18px;
+	font-weight: 800;
+	color: #e9e91f;
+}
+	
+.content {
+	width: 100%;
+	height: calc(100% - 30px);
+}		
+.xylx1{
+	position: absolute;
+	top: 10px;
+	left: 50px;
+	z-index: 1;
+}
+
+
+.xylx2{
+	position: absolute;
+	top: 10px;
+	left: 150px;
+	z-index: 1;
+}
+
+
+.timeline_box {
+	position: absolute;
+	bottom: 10px;
+	left: 100px;
+	right: 320px;
+	height: auto;
+	background-color: white;
+	border-radius: 5px;
+	background-color: white;
+	padding: 10px 5px;
+}
+
+
+
+
+
+.right_top{
+	position: absolute;
+	top:10px;
+	right: 10px;
+	height:220px;
+	width: 300px;
+}
+
+.right_middle{
+   position: absolute;
+   top:240px;
+   right: 10px;
+   width: 300px;
+   height:220px;
+}
+
+.right_bottom{
+	position: absolute;
+	top:470px;
+	right: 10px;
+	width: 300px;
+	/*height:230px;*/
+	bottom: 10px;
+}
+
+.box_right_year{
+	display: none;
+}
+
+.unactive{
+	background-color: white;
+}
+
+.nav>li>a {
+    background-color: white;
+    position: relative;
+    display: block;
+    padding: 5px 10px;
+}
+
+
+.ol-legend{
+	position: absolute;
+	left: 5px;
+	bottom: 35px;
+	z-index: 999;
+}
+.lead{
+	font-size: 16px;
+	text-indent:2em;
+}
+

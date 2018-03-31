@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<node>
+	<node id="001" name="id" title="页面视图标识" type="text" defaultvalue="uuid" info=""/>
+	<node id="002" name="name" title="页面视图标识" type="text" defaultvalue="" info=""/>
+	<node id="003" name="type" title="页面视图标识" type="select" defaultvalue="" info=""/>
+	<node id="004" name="theme" title="页面视图标识" type="select" defaultvalue="" info=""/>
+	<node id="005" name="style" title="页面视图标识" type="select" defaultvalue="" info=""/>
+	<node id="007" name="formpage" title="视图页面配置" type="table" defaultvalue="">
+		<node id="007001" name="id" title="按钮标识" type="text" defaultvalue="uuid" info=""/>
+		<node id="007002" name="type" title="操作名称" type="select" defaultvalue="" options="['design':'平台内容','develop':'二次开发']" info=""/>
+		<node id="007003" name="name" title="按钮显示名称" type="text" defaultvalue="" info=""/>
+	</node>
+	<node id="011" name="datainterface" title="视图操作配置" type="table" defaultvalue="">
+		<node id="011001" name="listview" title="视图操作配置" type="table" defaultvalue="">
+			<node id="011001001" name="id" title="按钮标识" type="text" defaultvalue="uuid" info=""/>
+			<node id="011001002" name="name" title="按钮标识" type="text" defaultvalue="" info=""/>
+			<node id="011001003" name="title" title="按钮标识" type="text" defaultvalue="" info=""/>
+			<node id="011001004" name="type" title="按钮标识" type="text" defaultvalue="" info=""/>
+			<node id="011001005" name="metadata" title="视图操作配置" type="table" defaultvalue="">
+				<node id="011001005001" name="field" title="按钮标识" type="text" defaultvalue="" info=""/>
+				<node id="011001005002" name="title" title="按钮标识" type="text" defaultvalue="" info=""/>
+				<node id="011001005003" name="width" title="按钮标识" type="text" defaultvalue="" info=""/>
+				<node id="011001005004" name="hidden" title="按钮标识" type="text" defaultvalue="" info=""/>
+			</node>
+		</node>
+		<node id="011002" name="treeview" title="视图操作配置" type="table" defaultvalue="">
+			<node id="011002001" name="id" title="按钮标识" type="text" defaultvalue="uuid" info=""/>
+			<node id="011002002" name="name" title="按钮标识" type="text" defaultvalue="" info=""/>
+			<node id="011002003" name="title" title="按钮标识" type="text" defaultvalue="" info=""/>
+			<node id="011002004" name="type" title="按钮标识" type="text" defaultvalue="" info=""/>
+			<node id="011002004" name="initall" title="按钮标识" type="text" defaultvalue="" info=""/>
+			<node id="011002004" name="showCheckbox" title="按钮标识" type="text" defaultvalue="" info=""/>
+			<node id="011002005" name="treecontextMenu" title="视图操作配置" type="table" defaultvalue="">
+				<node id="011002005001" name="id" title="按钮标识" type="text" defaultvalue="" info=""/>
+				<node id="011002005002" name="name" title="按钮标识" type="text" defaultvalue="" info=""/>
+				<node id="011002005003" name="iconClass" title="按钮标识" type="text" defaultvalue="" info=""/>
+				<node id="011002005004" name="clickevent" title="按钮标识" type="text" defaultvalue="" info=""/>
+			</node>
+			<node id="011002005" name="blankcontextMenu" title="视图操作配置" type="table" defaultvalue="">
+				<node id="011002005001" name="id" title="按钮标识" type="text" defaultvalue="" info=""/>
+				<node id="011002005002" name="name" title="按钮标识" type="text" defaultvalue="" info=""/>
+				<node id="011002005003" name="iconClass" title="按钮标识" type="text" defaultvalue="" info=""/>
+				<node id="011002005004" name="clickevent" title="按钮标识" type="text" defaultvalue="" info=""/>
+			</node>
+		</node>
+		<node id="011003" name="mapview" title="视图操作配置" type="table" defaultvalue="">
+			<node id="011003001" name="type" title="按钮标识" type="text" defaultvalue="uuid" info=""/>
+			<node id="011003001" name="mapNumber" title="按钮标识" type="text" defaultvalue="" info=""/>
+			<node id="011003001" name="views" title="按钮标识" type="text" defaultvalue="" info=""/>
+			<node id="011003001" name="maps" title="按钮标识" type="text" defaultvalue="" info=""/>
+			<node id="011003001" name="tools" title="按钮标识" type="text" defaultvalue="" info=""/>
+			<node id="011003001" name="exttools" title="按钮标识" type="text" defaultvalue="" info=""/>
+		</node>
+	</node>
+	<node id="006" name="button" title="视图操作配置" type="table" defaultvalue="">
+		<node id="006001" name="id" title="按钮标识" type="text" defaultvalue="uuid" info=""/>
+		<node id="006002" name="name" title="操作名称" type="text" defaultvalue="" info=""/>
+		<node id="006003" name="title" title="按钮显示名称" type="text" defaultvalue="" info=""/>
+		<node id="006004" name="icon" title="按钮图标" type="select" defaultvalue="" info=""/>
+		<node id="006005" name="clickevent" title="按钮事件" type="select" defaultvalue="" info=""/>
+	</node>
+	<node id="008" name="query" title="视图查询配置" type="table" defaultvalue="">
+		<node id="008001" name="id" title="按钮标识" type="text" defaultvalue="uuid" info=""/>
+		<node id="008002" name="name" title="操作名称" type="text" defaultvalue="" info=""/>
+		<node id="008003" name="title" title="按钮显示名称" type="text" defaultvalue="" info=""/>
+		<node id="008004" name="icon" title="按钮图标" type="select" defaultvalue="" info=""/>
+		<node id="008005" name="clickevent" title="按钮事件" type="select" defaultvalue="" info=""/>
+	</node>
+	<node id="009" name="formcontent" title="表单内容配置" type="table" defaultvalue="">
+		<node id="009001" name="id" title="按钮标识" type="text" defaultvalue="uuid" info=""/>
+		<node id="009002" name="name" title="按钮显示名称" type="text" defaultvalue="" info=""/>
+		<node id="009003" name="title" title="按钮显示名称" type="text" defaultvalue="" info=""/>
+		<node id="009004" name="type" title="按钮显示名称" type="text" defaultvalue="" info=""/>
+		<node id="009005" name="datainterface" title="操作名称" type="select" defaultvalue="" options="" info=""/>
+		<node id="009005" name="options" title="操作名称" type="select" defaultvalue="" options="" info=""/>
+		<node id="009005" name="isnull" title="操作名称" type="select" defaultvalue="" options="" info=""/>
+		<node id="009005" name="min" title="操作名称" type="select" defaultvalue="" options="" info=""/>
+		<node id="009005" name="max" title="操作名称" type="select" defaultvalue="" options="" info=""/>
+		<node id="009005" name="rule" title="操作名称" type="select" defaultvalue="" options="" info=""/>
+	</node>
+	<node id="010" name="extend_js" title="扩展JS" type="select" defaultvalue="" info=""/>
+</node>

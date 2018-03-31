@@ -1,0 +1,76 @@
+{
+  "id": "1",
+  "name": "表单例子",
+  "type": "formview",
+  "theme": "bootstrap",
+  "formpage": [
+    {
+      "id": "1",
+      "type":"design",
+      "name": "formview-bootstrap"
+    }
+  ],
+  "formcontent": [
+
+  			{"id":"0","name":"aussid","title":"分组一","type":"group","items":
+		  			[
+				  		{"id":"0","name":"fhidden","title":"","type":"hidden"},
+				   		{"id":"-1","name":"fserial","title":"流水文号（自动生成）","type":"serial","datainterface":"test","isnull":false,"min":5,"max":50,"defaultvalue":"","info":"文本输入框输入规则提示"},
+				   		{"id":"1","name":"ftext","title":"文本输入框","type":"text","isnull":false,"min":5,"max":10,"defaultvalue":"","info":"文本输入框输入规则提示"},
+				   		{"id":"18","name":"fip","title":"IP地址","type":"text","isnull":false,"rule":"ip","defaultvalue":""},
+				   		{"id":"19","name":"femail","title":"电子邮件","type":"text","isnull":false,"rule":"email","defaultvalue":"1031990542@qq.com","info":"文本输入框输入规则提示","readonly":true},
+				   		{"id":"2","name":"fnumber","title":"数值输入框","type":"number","isnull":true,"min":15,"max":500,"defaultvalue":""},
+				   		{"id":"3","name":"fdatatime","title":"时间选择框","type":"datetime"},
+				   		{"id":"4","name":"fdate","title":"日期选择框","type":"date"},
+				   		{"id":"5","name":"fdoubledate","title":"时间段选择框","type":"doubledate"},
+				   		{"id":"6","name":"fradio","title":"单选框","type":"radio","isnull":false,"datainterface":"","options":[{"id":"-1","title":"审核通过"},{"id":"1","title":"审核未通过"},{"id":"0","title":"审核中"},{"id":"2","title":"共享处理完成"}]},
+				   		{"id":"6","name":"fcheckbox","title":"多选框","type":"checkbox","datainterface":"getJSDW","isnull":false},
+				   		{"id":"7","name":"fselect","title":"下拉框","type":"liveselect","isnull":false,"options":[{"id":"-1","title":"审核通过"},{"id":"1","title":"审核未通过"},{"id":"0","title":"审核中"},{"id":"2","title":"共享处理完成"}]},
+				   		{"id":"8","name":"ftextarea","title":"文本框","type":"textarea","readonly":true,"isnull":false,"min":15,"max":50,"defaultvalue":"","info":"文本输入框输入规则提示"},
+				   		{"id":"9","name":"ffile","title":"单文件文件选择","type":"file","isnull":false},
+				   		{"id":"16","name":"fmultifile","title":"多文件文件选择","type":"multifile","isnull":false},
+				   		{"id":"10","name":"fgeometrypoint","title":"空间字段（绘制点）","type":"mapselect","datainterface":"getGeometry_sample","pageview":"drawpoint","isnull":false},
+				   		{"id":"101","name":"fgeometryline","title":"空间字段（绘制线）","type":"mapselect","datainterface":"getGeometry_sample","pageview":"drawline","isnull":false},
+				   		{"id":"102","name":"fgeometrypolygon","title":"空间字段（绘制面）","type":"mapselect","datainterface":"getGeometry_sample","pageview":"drawpolygon","isnull":false},
+				   		{"id":"103","name":"fgeometry","title":"空间字段（地图内嵌）","type":"map","datainterface":"getGeometry_sample","pageview":"drawpoint","isnull":false},
+				   		{"id":"11","name":"ftreeopen","title":"弹出树选择","type":"treeopenselect"},
+				   		{"id":"12","name":"ftreeselect","title":"树选择","type":"treeselect","datainterface":"getZiCfl","initdata":true,"isnull":false},
+				   		{"id":"15","name":"ftableselect","title":"弹出表格选择","type":"tableselect","pageview":"sample01"},
+				   		{"id":"13","name":"fyear","title":"年选择框","type":"year"},
+				   		{"id":"14","name":"fmonth","title":"月选择框","type":"month"}
+			   		]
+			  },
+	   		{"id":"1","name":"aussid","title":"分组二","type":"group","items":
+		  			[
+				  		{"id":"0","name":"fhidden","title":"","type":"hidden"},
+				   		{"id":"1-1","name":"fserial","title":"流水文号（自动生成）","type":"serial","datainterface":"test","isnull":false,"min":5,"max":50,"defaultvalue":"","info":"文本输入框输入规则提示"},
+				   		{"id":"11","name":"ftext","title":"文本输入框","type":"text","isnull":false,"min":5,"max":10,"defaultvalue":"","info":"文本输入框输入规则提示"},
+				   		{"id":"118","name":"fip","title":"IP地址","type":"text","isnull":false,"rule":"ip","defaultvalue":""},
+				   		{"id":"119","name":"femail","title":"电子邮件","type":"text","isnull":false,"rule":"email","defaultvalue":"1031990542@qq.com","info":"文本输入框输入规则提示","readonly":true},
+				   		{"id":"12","name":"fnumber","title":"数值输入框","type":"number","isnull":true,"min":15,"max":500,"defaultvalue":""},
+				   		{"id":"13","name":"fdatatime","title":"时间选择框","type":"datetime"},
+				   		{"id":"14","name":"fdate","title":"日期选择框","type":"date"},
+				   		{"id":"15","name":"fdoubledate","title":"时间段选择框","type":"doubledate"},
+				   		{"id":"16","name":"fradio","title":"单选框","type":"radio","isnull":false,"datainterface":"","options":[{"id":"-1","title":"审核通过"},{"id":"1","title":"审核未通过"},{"id":"0","title":"审核中"},{"id":"2","title":"共享处理完成"}]},
+				   		{"id":"26","name":"fcheckbox","title":"多选框","type":"checkbox","datainterface":"getJSDW","isnull":false},
+				   		{"id":"17","name":"fselect","title":"下拉框","type":"liveselect","isnull":false,"options":[{"id":"-1","title":"审核通过"},{"id":"1","title":"审核未通过"},{"id":"0","title":"审核中"},{"id":"2","title":"共享处理完成"}]},
+				   		{"id":"28","name":"ftextarea","title":"文本框","type":"textarea","readonly":true,"isnull":false,"min":15,"max":50,"defaultvalue":"","info":"文本输入框输入规则提示"},
+				   		{"id":"19","name":"ffile","title":"单文件文件选择","type":"file","isnull":false},
+				   		{"id":"316","name":"fmultifile","title":"多文件文件选择","type":"multifile","isnull":false},
+				   		{"id":"310","name":"fgeometrypoint","title":"空间字段（绘制点）","type":"mapselect","datainterface":"getGeometry_sample","pageview":"drawpoint","isnull":false},
+				   		{"id":"3101","name":"fgeometryline","title":"空间字段（绘制线）","type":"mapselect","datainterface":"getGeometry_sample","pageview":"drawline","isnull":false},
+				   		{"id":"3102","name":"fgeometrypolygon","title":"空间字段（绘制面）","type":"mapselect","datainterface":"getGeometry_sample","pageview":"drawpolygon","isnull":false},
+				   		{"id":"3103","name":"fgeometry","title":"空间字段（地图内嵌）","type":"map","datainterface":"getGeometry_sample","pageview":"drawpoint","isnull":false},
+				   		{"id":"311","name":"ftreeopen","title":"弹出树选择","type":"treeopenselect"},
+				   		{"id":"312","name":"ftreeselect","title":"树选择","type":"treeselect","datainterface":"getZiCfl","initdata":true,"isnull":false},
+				   		{"id":"135","name":"ftableselect","title":"弹出表格选择","type":"tableselect","pageview":"sample01"},
+				   		{"id":"133","name":"fyear","title":"年选择框","type":"year"},
+				   		{"id":"314","name":"fmonth","title":"月选择框","type":"month"}
+			   		]
+			  }
+
+  ],
+  "button": [
+  		{"id":"01","name":"ok","title":"保存","icon":"up","clickevent":"saveFormData('savePersonInfo','办公室信息')"}
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "id": "",
+  "name": "单点登录应用列表",
+  "type": "listview",
+  "theme": "bootstrap",
+  "style": "primary",
+  "button": [
+		{"id":"04","name":"exportyhjh","title":"导出","icon":"glyphicon glyphicon-log-out","clickevent":"exportExcel('公司办公室信息表');"}
+  ],
+  "formpage": [
+    {
+      "id": "1",
+      "type":"design",
+      "name": "listview-bootstrap"
+    }
+  ],
+  "datainterface": {
+	  "listview":[{
+	      "id": "",
+	      "name": "queryBgsList",
+	      "title": "查询办公室列表",
+	      "type": "querydata",
+	      "pagination":false,
+	      "metadata": [
+	      		[
+	      			{"title":"平原生态林林木资源养护管理资金测算汇总表","colspan":11}
+	      		],[
+								{"field":"AUSDEP","title":"使用部门","rowspan":3,"colspan":1,"valign":"middle","width":100},
+			       		{"field":"AUSID","title":"办公室编号","rowspan":3,"valign":"middle","width":100},
+								{"title":"工程量","colspan":2,"rowspan":2},
+								{"field":"AUSNUM","title":"入住人数","rowspan":3,"valign":"middle","width":100},
+								{"field":"AUSREP","title":"是否维修","rowspan":3,"valign":"middle","width":100},
+								{"field":"AUSREPTITLE","title":"单价</br>（元）","rowspan":3,"valign":"middle"},
+								{"field":"AUSTIME","title":"维修时间","rowspan":3,"valign":"middle"},
+								{"field":"AUSDESC","title":"描述","rowspan":3,"valign":"middle"},
+								{"field":"REPNUM","title":"报修次数","rowspan":3,"valign":"middle"}
+	      		],[
+							
+							
+	      		],[{"field":"AUSRENT","title":"月租金","width":50,"valign":"middle"},
+							{"field":"AUSREP","title":"单位","width":50,"valign":"middle"}
+						]
+	      ],
+	      "mergeCells":[
+	      	{"field":"AUSDEP","sumfield":["AUSRENT","AUSNUM"]},
+	      	{"field":"AUSID"}
+	      ]
+	    }]
+	  },
+      "query": [
+   		    {"id":"1","name":"ausid","title":"办公室编号","type":"text"},
+			{"id":"2","name":"ausdep","title":"使用部门","type":"select","min":1,"options":[{"id":"1","title":"IT"},{"id":"2","title":"软件产品部"},{"id":"3","title":"人力资源部"},{"id":"4","title":"区域应用产品部"},{"id":"5","title":"技术研究院"},{"id":"6","title":"大客户部"},{"id":"7","title":"信息产品部"},{"id":"8","title":"生态环境事业部"},{"id":"9","title":"国土应用事业部"},{"id":"10","title":"测绘应用事业部"},{"id":"11","title":"北京中心"},{"id":"12","title":"农业统计事业部"},{"id":"13","title":"增值产品部"}]}
+      ]
+}

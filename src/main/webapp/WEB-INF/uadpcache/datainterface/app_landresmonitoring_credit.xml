@@ -1,0 +1,135 @@
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<!-- 首页 -->
+	
+	<!-- 获取所有全国范围内检测节点 -->
+	<entry key="queryQgcredit">
+		<![CDATA[
+			<#if TREEID?? && TREEID != ''>
+				select 
+					id as treeid,
+					name as treename,
+					pid as treeparentid,
+					refid,
+					code,
+					type as treestatus,
+					'true' as open,
+					case when exists(select id from app_qth_datadisplay_nav where pid = A.id) = true then 'true' else 'false' end as isparent
+				from 
+					app_qth_datadisplay_nav as A where A.type='0'
+					
+				where pid = :TREEID
+			<#else>
+				select 
+					id as treeid,
+					name as treename,
+					pid as treeparentid,
+					refid,
+					code,
+					type as treestatus,
+					case when treeindex >= 2 then 'false' else 'true' end as open,
+					case when exists(select id from app_qth_datadisplay_nav where pid = A.id) = true then 'true' else 'false' end as isparent
+				from 
+					app_qth_datadisplay_nav as A where A.type='0'
+					
+			</#if>
+			 order by treecode
+    	]]>
+	</entry>
+	
+	<entry key="queryTopLandusecredit">
+	<![CDATA[
+	      select  * from app_qth_datadisplay_landusecredit ORDER BY creditrating DESC LIMIT 10
+	]]>
+	      
+	</entry>
+		
+    <entry key="queryBottomLandusecredit">
+	   <![CDATA[
+	      select  * from app_qth_datadisplay_landusecredit ORDER BY creditrating  LIMIT 10
+	    ]]>
+	</entry>
+		
+		
+		<entry key="queryCreditDate">
+			<![CDATA[
+			    
+				SELECT  creditDate as id, creditDate as name from (select substr(period,1,4) as creditDate from app_qth_datadisplay_assessment )d GROUP BY creditDate
+				<#if sortOrder?? && sortOrder == 'asc'>
+					order by id asc
+				<#else>
+				 	order by id desc
+			    </#if>
+			]]>
+		</entry>
+		
+		
+	<entry key="queryTablebyDate">	
+		<![CDATA[
+					WITH tb as(SELECT 	CASE WHEN gdstitle LIKE '黑龙江%' OR gdstitle LIKE '内蒙古%' THEN  substr(gdstitle, 1, 3)  ELSE
+ 	                    substr(gdstitle, 1, 2) end as pname,r.gdsid as pcode FROM ro_global_dim_space  r WHERE r.gdstreelevel=1
+			       ) 
+
+				SELECT * FROM (SELECT  t.pname,s.code,round(SUM(s.grade)/"count"(*)::NUMERIC,2) as grade,s."name" FROM app_qth_datadisplay_assessment  s 
+					INNER JOIN tb t ON t.pcode=substr(code, 1 ,2)||'0000'
+ 					WHERE s.period LIKE :period || '%' AND  s."level"='2' GROUP BY s."name",t.pname,s.code ORDER BY grade asc ) b WHERE b.grade<60
+		  ]]>
+   </entry>
+   
+   <entry key="queryBarbyDate">	
+		<![CDATA[
+					WITH tb AS (
+								SELECT
+									code,
+									"name",
+									FLOOR (SUM(grade) / "count"(code)) AS grade
+								FROM
+									app_qth_datadisplay_assessment A
+								WHERE
+									A ."level" = 2
+								AND period LIKE :period||'%'
+								GROUP BY
+									A .code,
+									A ."name"
+								HAVING
+									SUM (grade) / "count" (code) < 80
+							) 
+
+							SELECT
+								CASE
+							 WHEN gdstitle LIKE '黑龙江%'
+							 OR gdstitle LIKE '内蒙古%' THEN
+							 	substr(gdstitle, 1, 3)
+							 ELSE
+							 	substr(gdstitle, 1, 2)
+							 END AS pname,
+							  "count" (gdstitle) as pcount
+							FROM
+								tb T
+							INNER JOIN ro_global_dim_space r ON substr(T .code, 1, 2) || '0000' = r.gdscode
+							GROUP BY
+								gdstitle HAVING "count" (gdstitle)>1 ORDER BY pcount DESC
+		  ]]>
+   </entry>
+   
+   <entry key="queryCirclebyDate">	
+		<![CDATA[
+					WITH tb as (
+								SELECT 
+								a.code,
+								CASE WHEN a.grade<60 THEN '不及格' 
+								     WHEN a.grade>=60 AND a.grade<80 THEN '一般'
+								     WHEN a.grade>=80 AND a.grade<90 THEN '较好'
+								     WHEN a.grade>=90 AND a.grade<=100 THEN '好'
+								     else '无图斑' end credit,"count"(a.grade)
+								 FROM (SELECT  s.code,round(SUM(s.grade)/"count"(*)::NUMERIC,2) as grade FROM app_qth_datadisplay_assessment  s 
+					
+ 					WHERE s.period LIKE :period || '%' AND  s."level"='2' GROUP BY s.code ) a GROUP BY a.code,a.grade)
+								
+								SELECT "count"(credit) as value,credit as name FROM(
+								SELECT gdsid,gdstitle,code,CASE WHEN credit IS NULL THEN '无图斑' ELSE credit END as credit,count from tb t 
+								RIGHT JOIN  ro_global_dim_space s 
+								ON t.code||'00' =s.gdsid)c GROUP BY credit 
+		  ]]>
+   </entry>
+</properties>

@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<node id="-1" name="开发手册" title="开发手册" type="text" memo=""><![CDATA[create-2017.09.16-zhaijj
+二次开发约定
+develop\{appname}\css（应用样式）
+develop\{appname}\image（应用图片）
+develop\{appname}\js（应用模块JS）\extend_{modulename}.js
+develop\{appname}\index（主界面资源）
+develop\{appname}\login（登录界面资源）
+WEB-INF\uadpcache\datainterface\ {appname}_{modulename}.xml（数据接口-datainterface）
+WEB-INF\uadpcache\{appname}\{pageviewname}_{modulename}.json（页面视图配置-pageview）
+WEB-INF\develop\{appname}\*.jsp（二次开发页面）
+
+
+平台提供了示例应用，应用名称为uadpsample
+代码详见：
+develop\uadpsample
+WEB-INF\uadpcache\datainterface\app_uadp_sample.xml（数据接口-datainterface）
+WEB-INF\uadpcache\uadpsample\（页面视图配置-pageview）
+WEB-INF\develop\uadpsample\（二次开发页面）]]><node id="000" name="页面视图" title="页面视图" type="text" memo="">
+		<node id="000001" name="listview" title="列表视图" type="text" memo=""><![CDATA[
+listview即列表视图，以表格的形式进行多行记录的分页展示。
+该页面视图主要用于表格数据分页展示、数据条件查询、数据操作。
+二次开发人员可以基于listview进行二次开发]]><node id="000001001" name="id" title="视图唯一标识" type="text" memo="视图唯一标识"/>
+			<node id="000001002" name="name" title="视图名称" type="text" memo="视图名称也叫模块名称，由开发人员自己定义"/>
+			<node id="000001003" name="type" title="视图类型" type="text" memo="视图类型，主要包括：listview、formview、treeview、treelistview、listtreeview、treeformview、mapview、muiltimapview"/>
+			<node id="000001004" name="theme" title="主题" type="text" memo="主题包括：bootstrap、easyui"/>
+			<node id="000001005" name="style" title="风格" type="text" memo="风格：bootstrap（default、primary、success、info、warnning、danger）"/>
+			<node id="000001009" name="formpage" title="视图页面" type="text" memo="视图页面，指该视图读取页面视图配置后返回的页面配置，为json数组">
+				<node id="000001009001" name="id" title="页面唯一标识" type="text" memo="页面唯一标识"/>
+				<node id="000001009002" name="type" title="视图页面类型" type="text" memo=""><![CDATA[
+视图页面类型，包括：design、develop.
+design代表由平台内容的视图页面
+develop代表由二次开发人员开发的视图页面]]></node>
+				<node id="000001009003" name="name" title="页面名称" type="text" memo="页面名称，平台内置的包括：listview_bootstrap，listview_easyui"/>
+			</node>
+			<node id="000001006" name="datainterface" title="数据接口" type="text" memo="数据接口为平台提供统一查询或操作数据库的接口">
+				<node id="000001006001" name="listview" title="风格" type="text" memo="列表视图需要配置listview的数据接口，实现数据表的填充">
+					<node id="000001006001001" name="id" title="数据接口唯一标识" type="text" memo="数据接口唯一标识"/>
+					<node id="000001006001002" name="name" title="数据接口名称" type="text" memo="数据接口名称是一个很重要的配置属性，是xml的配置一个数据接口的唯一标识名称"/>
+					<node id="000001006001003" name="title" title="数据接口标题" type="text" memo="数据接口标题负责对数据接口的内容进行描述，便于理解"/>
+					<node id="000001006001004" name="type" title="数据接口类型" type="text" memo="数据接口类型分为getdata和savedata"/>
+					<node id="000001006001005" name="metadata" title="数据表元数据项描述信息" type="text" memo="数据表元数据项描述信息，是一个json数组"/>
+					<node id="000001006001006" name="dblclick" title="行双击" type="text" memo="行双击，js方法必须写到extend_js里面"/>
+					<node id="000001006001007" name="click" title="行点击" type="text" memo="行点击，js方法必须写到extend_js里面"/>
+					<node id="000001006001008" name="mergeCells" title="表格合并" type="text" memo="表格合并"/>
+				</node>
+			</node>
+			<node id="000001007" name="query" title="查询条件" type="text" memo=""><![CDATA[
+查询条件配置：该节点下为接送数组.
+json属性主要包括：id,name,title,type,datainterface,initdata]]><node id="000001007001" name="id" title="查询标识" type="text" memo="查询唯一标识"/>
+				<node id="000001007002" name="name" title="查询字段名称" type="text" memo="查询字段名称"/>
+				<node id="000001007003" name="title" title="查询显示名称" type="text" memo="查询显示名称"/>
+				<node id="000001007004" name="type" title="查询控件类型" type="text" memo=""><![CDATA[
+查询控件类型包括：
+	hidden
+	text
+	select
+	liveselect
+	treeselect
+	doubledate
+	date
+	datetime
+	year
+	month
+				]]></node>
+				<node id="000001007005" name="datainterface" title="查询控件初始化数据接口" type="text" memo="查询控件初始化数据接口，主要用于select、treeselect"/>
+				<node id="000001007006" name="options" title="查询控件初始化数据接口" type="text" memo="查询控件初始化数据接口，主要用于select、treeselect"/>
+				<node id="000001007007" name="initdata" title="是否初始化" type="text" memo="是否初始化"/>
+			</node>
+			<node id="000001008" name="button" title="操作按钮配置" type="text" memo="页面视图操作按钮配置属性，为json数组">
+				<node id="000001008001" name="id" title="操作唯一标识" type="text" memo="操作唯一标识"/>
+				<node id="000001008002" name="name" title="操作名称" type="text" memo="操作名称"/>
+				<node id="000001008003" name="title" title="操作按钮显示名称" type="text" memo="操作按钮显示名称"/>
+				<node id="000001008004" name="icon" title="操作按钮图标" type="text" memo="操作按钮图标"/>
+				<node id="000001008005" name="clickevent" title="操作按钮事件" type="text" memo=""><![CDATA[
+操作按钮事件包括平台内容的事件和由二次开发人员自定义事件.
+平台内容公用事件：
+	popupPage
+		pageviewtype
+		priviewtitle
+		pageview
+		opentype
+		params
+		w
+		h
+		close
+	popupModalPage
+	openWindowPage
+	openTabPage
+	openInPage
+	closeModal
+	saveData
+listview事件：
+	addRecord
+	editRecord
+	editRecords
+	deleteRecords
+	executeDataInterfaceForRow
+	executeDataInterfaceForRows
+	executeDataInterface
+	importData
+	exportExcel2Server
+	exportExcel2Client
+	exportExcel
+	exportWord
+	downloadFile
+工作流（dealwithWorkflowTask、completeWorkflowTask、backWorkflowTask、claimWorkflowTask、unclaimWorkflowTask）
+treeview事件：
+	addNode
+	editNode
+	delNode
+	addChildrenLevelfortree
+	editRecordsfortree
+	deleteRecordsfortree
+mapview事件：
+	addWMTSLayer
+	addWMSLayer
+	addPOILayer
+	addPieChartLayer
+	drawPieChart
+	addHeatMapLayer
+	addClusterLayer
+	addFlightLayer
+treeformview事件：
+    addNextNode
+    addChildNode
+    delTreeNode
+formview事件：
+    initFormData
+    resetFormData
+    saveFormData]]></node>
+			</node>
+			<node id="000001010" name="extend_js" title="模块JS文件" type="text" memo=""><![CDATA[
+模块JS文件提供了进行模块二次开发的方式，在模块开发是可以引入自己的js扩展事件
+文件路径：二次开发的js文件路径必须放在\develop\{appname}\js
+命名规则：extend_{modulename}.js]]></node>
+		</node>
+		<node id="000002" name="formview" title="表单视图" type="text" memo=""><![CDATA[
+formview即表单视图，以多行二列的方式进行表单项的展示。
+该页面视图主要用于数据维护界面，目前已经支持20多种控件类型，详见formcontent\type。
+该页面视图不提供二次开发方式]]><node id="000002001" name="id" copyid="000001001"/>
+			<node id="000002002" name="name" copyid="000001002"/>
+			<node id="000002003" name="type" copyid="000001003"/>
+			<node id="000002004" name="theme" copyid="000001004"/>
+			<node id="000002005" name="style" copyid="000001005"/>
+			<node id="000002009" name="formpage" copyid="000001009"/>
+			<node id="000002006" name="datainterface" title="数据接口" type="text" memo="数据接口在formview视图没有意义"/>
+			<node id="000002007" name="formcontent" title="表单内容" type="text" memo="表单内容">
+				<node id="000002007001" name="id" title="控件唯一标识" type="text" memo="控件唯一标识"/>
+				<node id="000002007002" name="name" title="字段名称" type="text" memo="字段名称"/>
+				<node id="000002007003" name="title" title="表单项标题" type="text" memo="表单项标题"/>
+				<node id="000002007004" name="type" title="控件类型" type="text" memo=""><![CDATA[
+控件类型包括：
+	hidden（隐藏框）
+	text（文本输入框）
+	number（数字输入框）
+	textarea（大文本框）
+	datetime（日期时间型）
+	date（时间型）
+	year（年）
+	month（月）
+	doubledate（开始时间-结束时间）
+	radio（单选框）
+	checkbox（多选框）
+	select（下拉选择框）:需要配置initdata=true
+	file（单文件）
+	mutilfile（多文件）
+	serial：dateinterface指定序列号获取的名称，具体见流水号管理
+	mapselect：需要配置pageview属性，制定地图页面视图
+	map：需要配置pageview属性，制定地图页面视图
+	treeopenselect：（树选择）
+	treeselect：（树选择）
+	tableselect（表格选择）,需要配置pageview属性，指定listview
+	tableselect（表格）,需要配置pageview属性，指定listview，多用于父子表维护，父页面的所有参数都作为listview的查询条件]]></node>
+				<node id="000002007005" name="datainterface" title="控件初始化数据接口" type="text" memo="控件初始化数据接口"/>
+				<node id="000002007006" name="pageview" title="控件关联视图" type="text" memo="控件关联视图"/>
+				<node id="000002007007" name="defaultvalue" title="默认值" type="text" memo="默认值"/>
+				<node id="000002007008" name="isnull" title="校验：是否为空" type="text" memo="校验：是否为空"/>
+				<node id="000002007009" name="min" title="校验：最小值或最小长度" type="text" memo="校验：最小值或最小长度"/>
+				<node id="000002007010" name="max" title="校验：最大值或最大长度" type="text" memo="校验：最大值或最大长度"/>
+				<node id="000002007011" name="rule" title="校验规则" type="text" memo="输入框的校验规则：ip、email、chinese、english"/>
+				<node id="000002007011" name="options" title="选择项" type="text" memo="选择项，主要用于select、radio、checkbox。格式为：[{'id':'','title':''},{'id':'','title':''}]"/>
+			</node>
+			<node id="000002009" name="button" copyid="000001008"/>
+			<node id="000002010" name="extend_js" copyid="000001010"/>
+		</node>
+		<node id="000003" name="treelistview" title="树列表视图" type="text" memo="">
+			<node id="000003001" name="id" copyid="000001001"/>
+			<node id="000003002" name="name" copyid="000001002"/>
+			<node id="000003003" name="type" copyid="000001003"/>
+			<node id="000003004" name="theme" copyid="000001004"/>
+			<node id="000003005" name="style" copyid="000001005"/>
+			<node id="000003009" name="formpage" copyid="000001009"/>
+			<node id="000003006" name="datainterface" title="数据接口" type="text" memo="数据接口为平台提供统一查询或操作数据库的接口">
+				<node id="000003006001" name="treeview" copyid="000008006001"/>
+				<node id="000003006002" name="listview" copyid="000001006001"/>
+			</node>
+			<node id="000003007" name="query" copyid="000001007"/>
+			<node id="000003008" name="button" copyid="000001008"/>
+			<node id="000003010" name="extend_js" copyid="000001010"/>
+		</node>
+		<node id="000004" name="listtreeview" title="列表树视图" type="text" memo="">
+			<node id="000004001" name="id" copyid="000001001"/>
+			<node id="000004002" name="name" copyid="000001002"/>
+			<node id="000004003" name="type" copyid="000001003"/>
+			<node id="000004004" name="theme" copyid="000001004"/>
+			<node id="000004005" name="style" copyid="000001005"/>
+			<node id="000004009" name="formpage" copyid="000001009"/>
+			<node id="000004006" name="datainterface" title="数据接口" type="text" memo="数据接口为平台提供统一查询或操作数据库的接口">
+				<node id="000004006001" name="listview" copyid="000001006001"/>
+				<node id="000004006002" name="treeview" copyid="000008006001"/>
+			</node>
+			<node id="000004007" name="query" copyid="000001007"/>
+			<node id="000004008" name="button" copyid="000001008"/>
+			<node id="000004010" name="extend_js" copyid="000001010"/>
+		</node>
+		<node id="000005" name="treeformview" title="树表单视图" type="text" memo="">
+			<node id="000005001" name="id" copyid="000001001"/>
+			<node id="000005002" name="name" copyid="000001002"/>
+			<node id="000005003" name="type" copyid="000001003"/>
+			<node id="000005004" name="theme" copyid="000001004"/>
+			<node id="000005005" name="style" copyid="000001005"/>
+			<node id="000005009" name="formpage" copyid="000001009"/>
+			<node id="000005006" name="datainterface" title="数据接口" type="text" memo="数据接口为平台提供统一查询或操作数据库的接口">
+				<node id="000005006001" name="treeview" copyid="000008006001"/>
+			</node>
+			<node id="000005007" name="formcontent" copyid="000002007"/>
+			<node id="000005008" name="button" copyid="000001008"/>
+			<node id="000005010" name="extend_js" copyid="000001010"/>
+		</node>
+		<node id="000006" name="mapview" title="地图视图" type="text" memo="">
+			<node id="000006001" name="id" copyid="000001001"/>
+			<node id="000006002" name="name" copyid="000001002"/>
+			<node id="000006003" name="type" copyid="000001003"/>
+			<node id="000006004" name="theme" copyid="000001004"/>
+			<node id="000006005" name="style" copyid="000001005"/>
+			<node id="000006007" name="maptype" title="地图底图类型" type="text" memo="地图底图类型，包括：gwc、tianditu"/>
+			<node id="000006009" name="formpage" copyid="000001009"/>
+			<node id="000006006" name="datainterface" title="数据接口" type="text" memo="数据接口为平台提供统一查询或操作数据库的接口">
+				<node id="000006006001" name="mapview" title="风格" type="text" memo="视图唯一标识">
+					<node id="000006006001001" name="gwc" title="geowebcache" type="text" memo="geowebcache">
+						<node id="000006006001001001" name="extent" title="四至范围" type="text" memo="四至范围"/>
+						<node id="000006006001001002" name="resolutions" title="分辨率" type="text" memo="分辨率"/>
+						<node id="000006006001001003" name="tools" title="工具栏" type="text" memo="工具栏"/>
+						<node id="000006006001001004" name="exttools" title="扩展工具" type="text" memo="扩展工具"/>
+					</node>
+					<node id="000006006001002" name="tianditu" title="天地图" type="text" memo="天地图">
+						<node id="000006006001002001" name="extent" title="四至范围" type="text" memo="四至范围"/>
+						<node id="000006006001002002" name="resolutions" title="分辨率" type="text" memo="分辨率"/>
+						<node id="000006006001002003" name="tools" title="工具栏" type="text" memo="工具栏"/>
+						<node id="000006006001002004" name="exttools" title="扩展工具" type="text" memo="扩展工具"/>
+					</node>
+				</node>
+				<node id="000006006002" name="listview" title="mapview二次开发引用listview" type="text" memo="mapview二次开发引用listview"/>
+				<node id="000006006003" name="treeview" title="mapview二次开发引用treeview" type="text" memo="mapview二次开发引用treeview"/>
+			</node>
+			<node id="000006010" name="extend_js" copyid="000001010"/>
+		</node>
+		<node id="000007" name="multimapview" title="多地图视图" type="text" memo="">
+			<node id="000007001" name="id" copyid="000001001"/>
+			<node id="000007002" name="name" copyid="000001002"/>
+			<node id="000007003" name="type" copyid="000001003"/>
+			<node id="000007004" name="theme" copyid="000001004"/>
+			<node id="000007005" name="style" copyid="000001005"/>
+			<node id="000007007" name="maptype" title="地图底图类型" type="text" memo="地图底图类型，包括：gwc、tianditu"/>
+			<node id="000007009" name="formpage" copyid="000001009"/>
+			<node id="000007006" name="datainterface" title="数据接口" type="text" memo="数据接口为平台提供统一查询或操作数据库的接口">
+				<node id="000007006001" name="mapview" title="风格" type="text" memo="视图唯一标识">
+					<node id="000007006001001" name="gwc" title="geowebcache" type="text" memo="geowebcache">
+						<node id="000007006001001001" name="extent" title="四至范围" type="text" memo="四至范围"/>
+						<node id="000007006001001002" name="resolutions" title="分辨率" type="text" memo="分辨率"/>
+						<node id="000007006001001003" name="tools" title="工具栏" type="text" memo="工具栏"/>
+						<node id="000007006001001004" name="exttools" title="扩展工具" type="text" memo="扩展工具"/>
+					</node>
+					<node id="000007006001002" name="tianditu" title="天地图" type="text" memo="天地图">
+						<node id="000007006001002001" name="extent" title="四至范围" type="text" memo="四至范围"/>
+						<node id="000007006001002002" name="resolutions" title="分辨率" type="text" memo="分辨率"/>
+						<node id="000007006001002003" name="tools" title="工具栏" type="text" memo="工具栏"/>
+						<node id="000007006001002004" name="exttools" title="扩展工具" type="text" memo="扩展工具"/>
+					</node>
+				</node>
+				<node id="000007006002" name="multimapview" title="multimapview" type="text" memo="multimapview">
+					<node id="000007006002001" name="id" title="唯一标识" type="text" memo="唯一标识"/>
+					<node id="000007006002002" name="layername" title="图层名称" type="text" memo="图层名称"/>
+					<node id="000007006002003" name="layertype" title="图层类型" type="text" memo="图层类型"/>
+					<node id="000007006002004" name="layerurl" title="图层地址" type="text" memo="图层地址"/>
+				</node>
+				<node id="000007006003" name="listview" title="mapview二次开发引用listview" type="text" memo="mapview二次开发引用listview"/>
+			</node>
+			<node id="000007010" name="extend_js" copyid="000001010"/>
+		</node>
+		<node id="000008" name="treeview" title="树视图" type="text" memo="一般用于二次开发">
+			<node id="000008001" name="id" copyid="000001001"/>
+			<node id="000008002" name="name" copyid="000001002"/>
+			<node id="000008003" name="type" copyid="000001003"/>
+			<node id="000008004" name="theme" copyid="000001004"/>
+			<node id="000008005" name="style" copyid="000001005"/>
+			<node id="000008009" name="formpage" copyid="000001009"/>
+			<node id="000008006" name="datainterface" title="数据接口" type="text" memo="数据接口为平台提供统一查询或操作数据库的接口">
+				<node id="000008006001" name="treeview" title="树视图" type="text" memo="树视图">
+					<node id="000001006001001" name="id" title="数据接口唯一标识" type="text" memo="数据接口唯一标识"/>
+					<node id="000001006001002" name="name" title="数据接口名称" type="text" memo="数据接口名称是一个很重要的配置属性，是xml的配置一个数据接口的唯一标识名称"/>
+					<node id="000001006001003" name="title" title="数据接口标题" type="text" memo="数据接口标题负责对数据接口的内容进行描述，便于理解"/>
+					<node id="000001006001004" name="type" title="数据接口类型" type="text" memo="数据接口类型分为getdata和savedata"/>
+					<node id="000001006001005" name="initall" title="是否一次性初始化" type="text" memo="是否一次性初始化"/>
+					<node id="000001006001006" name="showCheckbox" title="是否展示多选框" type="text" memo="是否展示多选框"/>
+					<node id="000001006001007" name="treecontextMenu" title="右键菜单" type="text" memo="右键菜单"/>
+				</node>
+			</node>
+			<node id="000008007" name="button" copyid="000001008"/>
+			<node id="000008010" name="extend_js" copyid="000001010"/>
+		</node>
+	</node>
+	<node id="001" name="数据接口" title="数据接口" type="text" memo="">
+		<node id="001001" name="keywords" title="关键字" type="text" memo="数据接口中可以使用的关键字，数据库设计时避免使用。">
+			<node id="001001001" name="username" title="当前登录用户名" type="text" memo=""/>
+			<node id="001001002" name="deptname" title="当前登录用户所在部门" type="text" memo=""/>
+		</node>
+		<node id="001002" name="getdata" title="获取数据" type="text" memo="">
+			<node id="001001001" name="list" title="列表数据格式" type="text" memo=""/>
+			<node id="001001002" name="bootstarptable" title="bootstrap表格数据格式" type="text" memo=""/>
+			<node id="001001003" name="easyui" title="easyuiGrid数据格式" type="text" memo=""/>
+			<node id="001001004" name="ztree" title="ztree树组件数据格式" type="text" memo=""/>
+			<node id="001001005" name="bootstraptree" title="bootstrap树组件数据格式" type="text" memo=""/>
+		</node>
+		<node id="001003" name="savedata" title="操作数据" type="text" memo="操作数据主要包括：update、insert、delete"/>
+	</node>
+	<node id="002" name="平台组件" title="平台组件" type="text" memo="">
+		<node id="002001" name="listview" title="列表页面视图" type="text" memo="列表页面视图">
+			<node id="002001001" name="mapview-extends.js" title="当前登录用户名" type="text" memo=""/>
+			<node id="002001002" name="mapview-toolbar.js" title="当前登录用户所在部门" type="text" memo=""/>
+		</node>
+		<node id="002002" name="treeview" title="树页面视图" type="text" memo="树页面视图">
+			<node id="002001001" name="mapview-extends.js" title="当前登录用户名" type="text" memo=""/>
+			<node id="002001002" name="mapview-toolbar.js" title="当前登录用户所在部门" type="text" memo=""/>
+		</node>
+		<node id="002003" name="updataview" title="页面操作页面视图" type="text" memo="页面操作页面视图">
+			<node id="002001001" name="updataview-button.js" title="当前登录用户名" type="text" memo=""/>
+		</node>
+		<node id="002004" name="mapview" title="地图页面视图" type="text" memo="地图页面视图">
+			<node id="002001001" name="mapview-extends.js" title="当前登录用户名" type="text" memo=""/>
+			<node id="002001002" name="mapview-toolbar.js" title="当前登录用户所在部门" type="text" memo=""/>
+		</node>
+	</node>
+	<node id="003" name="应用管理" title="应用管理" type="text" memo="">
+		<node id="003001" name="应用配置" title="应用配置" type="text" memo=""/>
+		<node id="003002" name="应用主界面" title="应用主界面" type="text" memo=""/>
+		<node id="003003" name="应用登录页" title="应用登录页" type="text" memo=""/>
+	</node>
+	<node id="004" name="导航管理" title="导航管理" type="text" memo="">
+		<node id="003001" name="新建导航" title="新建导航" type="text" memo=""/>
+		<node id="003002" name="新建常用导航" title="新建常用导航" type="text" memo=""/>
+	</node>
+	<node id="005" name="示例代码" title="应用管理" type="text" memo="">
+		<node id="005001" name="listview" title="列表页面视图" type="url" memo="../pageview/list/uadpsample/sample?pvgresid=5a4f2b9b-5a7f-4c1e-ba5c-87ac07b7c091">
+			<node id="005001001" name="listview_sample.json" title="页面配置文件" type="json" memo=""><![CDATA[
+				{
+				  "id": "",
+				  "name": "单点登录应用列表",
+				  "type": "listview",
+				  "theme": "bootstrap",
+				  "style": "primary",
+				  "button": [
+						{"id":"01","name":"addapp","title":"增加","icon":"glyphicon glyphicon-plus","clickevent":"addRecord('form','添加自定义表单信息','sample01','layer',{},100,100);"},
+						{"id":"02","name":"editapp","title":"修改","icon":"glyphicon glyphicon-pencil","clickevent":"editRecord('form','编辑自定义表单信息','sample01','modal',{},100,98);"},
+						{"id":"03","name":"delapp","title":"删除","icon":"glyphicon  glyphicon-trash","clickevent":"deleteRecords('delBgs','删除办公室信息');"},
+						{"id":"04","name":"exportyhjh","title":"导出","icon":"glyphicon glyphicon-log-out","clickevent":"exportExcel('公司办公室信息表');"},
+						{"id":"05","name":"import","title":"导入","icon":"glyphicon glyphicon-log-in","clickevent":"importData('import', 'excel', 'app_uadp_sample01', 'saveFileInfo');"},
+						{"id":"06","name":"repairs","title":"报修","icon":"glyphicon glyphicon-wrench","clickevent":"executeDataInterfaceForRows('RepairInfo','报修');"}
+				  ],
+				  "formpage": [
+				    {
+				      "id": "1",
+				      "type":"design",
+				      "name": "listview-bootstrap"
+				    }
+				  ],
+				  "datainterface": {
+					  "listview":[{
+					      "id": "",
+					      "name": "queryBgsList",
+					      "title": "查询办公室列表",
+					      "type": "querydata",
+					      "dblclick": "showdetail(name, row);",
+					      "metadata": [
+					      		{"checkbox":true},
+					       		{"field":"AUSID","title":"办公室编号"},
+								{"field":"AUSDEP","title":"使用部门"},
+								{"field":"AUSRENT","title":"月租金"},
+								{"field":"AUSNUM","title":"入住人数"},
+								{"field":"AUSREP","title":"是否维修","hidden":true},
+								{"field":"AUSREPTITLE","title":"是否维修"},
+								{"field":"AUSTIME","title":"维修时间"},
+								{"field":"AUSDESC","title":"描述"},
+								{"field":"REPNUM","title":"报修次数"}
+					      ]
+					    }]
+					  },
+				      "query": [
+				   		    {"id":"1","name":"ausid","title":"办公室编号","type":"text"},
+							{"id":"2","name":"ausdep","title":"使用部门","type":"select","min":1,"options":[
+								{"id":"1","title":"IT"},{"id":"2","title":"软件产品部"},{"id":"3","title":"人力资源部"}
+							]}
+				      ]
+				}
+	    	]]></node>
+			<node id="005001002" name="listview_sample.xml" title="数据配置文件" type="xml" memo=""><![CDATA[
+				<?xml version="1.0" encoding="UTF-8"?>
+				<properties>
+					<!--根据条件查询办公室信息列表-->
+					<entry key="queryBgsList">
+							select case when asss.repnum is null then '0' else asss.repnum end as repnum,aid,ausid,ausdep,ausrent,ausnum,ausrep,(case when ausrep=1 then '是' when ausrep=0 then '否' end) as ausreptitle,to_char(austime,'yyyy-mm-dd') as austime,ausdesc from (select asssid,count(asssid) as repnum from app_uadp_sample01_sapple02 group by asssid) asss right join app_uadp_sample01 on asss.asssid=app_uadp_sample01.aid where 1=1
+							<#if ausid??>
+					 			<#if ausid != "">
+					 				and ausid like '%${ausid}%'
+					 			</#if>
+						 	</#if>
+						 	<#if ausdep??>
+					 			<#if ausdep != "">
+					 				and ausdep like '%${ausdep}%'
+					 			</#if>
+						 	</#if>
+						 		 	
+						 	order by ausdep,ausid asc
+					</entry>
+					
+					<!--保存办公室信息-->
+					<entry key="saveBgsInfo">
+					 		<#if aid??>
+					 			<#if aid == "">
+							 		insert into app_uadp_sample01(aid,ausid,ausdep,ausdate,ausrent,ausnum,ausrep,austime,ausdesc
+							 		<#if treeparentid??>
+							 			<#if treeparentid != "">
+							 				,apid
+							 			</#if>
+								 	<#elseif apid??>
+							 			<#if apid != "">
+							 				,apid
+							 			</#if>
+								 	</#if>
+							 		) 
+									values (:uuid,:ausid,:ausdep,now(),:ausrent::double precision,:ausnum::integer,:ausrep::integer,:austime::date,:ausdesc::text
+									<#if treeparentid??>
+							 			<#if treeparentid != "">
+							 				,:treeparentid
+							 			</#if>
+								 	<#elseif apid??>
+							 			<#if apid != "">
+							 				,:apid
+							 			</#if>
+								 	</#if>
+									)
+								<#else>
+									update app_uadp_sample01 set ausid=:ausid,ausdep = :ausdep,ausdate = now(),ausrent = :ausrent::double precision,ausnum = :ausnum::integer,
+									ausrep = :ausrep::integer,austime = :austime::date,ausdesc = :ausdesc::text where aid = :aid
+					 			</#if>
+						 	</#if>
+					</entry>
+					
+					<!--删除办公室信息-->
+					<entry key="delBgs">
+							delete from app_uadp_sample01 where ausid = :AUSID
+					</entry>
+				</properties>
+	    	]]></node>
+			<node id="005001003" name="listview_sample.js" title="JS代码文件" type="js" memo=""><![CDATA[
+				function change(opt, id){
+					var value = $(opt).val();
+					if(value != '-1'){
+						$("#text"+id).attr("readonly","readonly").val(" ");
+					}else{
+						$("#text"+id).attr("readonly",false).val("");
+					}
+				}
+			]]></node>
+		</node>
+		<node id="005002" name="formview" title="当前登录用户所在部门" type="text" memo=""/>
+		<node id="005003" name="treeformview" title="当前登录用户所在部门" type="text" memo=""/>
+	</node>
+	<node id="006" name="平台数据库" title="平台数据库" type="text" memo="">
+		<node id="006001" name="平台数据表" title="平台数据表" type="text" memo="">
+			<node id="006001001" name="URP" title="统一资源管理平台" type="tables" memo="ta_;ca_ta_;log_">
+			</node>
+			<node id="006001002" name="SISP" title="空间信息服务平台" type="tables" memo="ro_;portal_;at_">
+			</node>
+			<node id="006001003" name="UADP" title="统一应用开发平台" type="tables" memo="at_uadp;sys_">
+			</node>
+		</node>
+		<node id="006002" name="平台示例数据表" title="平台示例数据表" type="tables" memo="app_uadp_">
+		</node>
+		<node id="006003" name="业务数据表" title="业务数据表" type="tables" memo="app_wfa_">
+		</node>
+	</node>
+</node>

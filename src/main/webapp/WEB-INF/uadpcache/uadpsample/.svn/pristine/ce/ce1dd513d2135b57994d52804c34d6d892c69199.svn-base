@@ -1,0 +1,17 @@
+{
+  "id": "1",
+  "name": "公司办公室信息维护",
+  "type": "updateview",
+  "theme": "bootstrap",
+  "formpage": [
+    {
+      "id": "1",
+      "type":"develop",
+      "name": "datamanage_sample"
+    }
+  ],
+  "button": [
+  		{"id":"01","name":"ok","title":"保存","icon":"up","clickevent":"saveFormData('saveBgsInfo','公司办公室信息')"}
+  ]
+
+}

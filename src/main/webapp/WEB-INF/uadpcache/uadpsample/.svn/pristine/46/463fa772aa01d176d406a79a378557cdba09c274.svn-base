@@ -1,0 +1,95 @@
+{
+	"id": "1",
+	"name": "mapselect",
+	"type": "mapview",
+	"maptype": "gwc",
+	"theme": "bootstrap",
+	"style": "blue",
+	"formpage":[
+		{
+			"id":"",
+			"type":"design",
+			"name":"mapview-bootstrap"
+		}
+	],
+	"datainterface": {
+		"mapview": {
+		"gwc":{
+
+				"extent": [326335.701161546,222498.798765796,685640.586437984,460359.691154248],
+				"projection": {
+					"code":"EPSG:2422", 
+					"units":"m", 
+					"extent": [326335.701161546,222498.798765796,685640.586437984,460359.691154248],
+					"proj4":"+proj=tmerc +lat_0=0 +lon_0=75 +k=1 +x_0=500000 +y_0=0 +ellps=krass +towgs84=15.8,-154.4,-82.3,0,0,0,0 +units=m +no_defs"
+				},
+				"resolutions": [280.0, 140.0, 70.0, 27.999999999999996, 13.999999999999998, 6.999999999999999, 2.8, 1.4, 0.7, 0.504],
+				"matrixset": "bj54",
+				// "wmtsurl": "/service/wmts",
+				// "wmtslayers": ["baseimgnew", "swyztDEMnew", "swyztnew", "swyztzhujinew"],
+				// "baselayer_vector": "swyztDEMnew",
+				// "baselayer_satellite": "baseimgnew",
+				// "defaultlayer": "baselayer_satellite",
+				"wmtsurl": "",
+				"wmtslayers": ["baseimg_2012", "HydroMap_DEM", "HydroMap_Vector", "HydroMap_Anno"],
+				"baselayer_vector": "HydroMap_DEM",
+				"baselayer_satellite": "baseimg_2012",
+				"defaultlayer": "baselayer_satellite",					
+				"center": [503554, 303651],
+				"initzoom": 2,
+				"maxResolution": 280.0,
+				"minResolution": 0.504,
+				"format": "image/png",
+				"style": "default",
+				"mapbar": [
+					"pedit"
+				],
+				"tools": {
+					"mainbar": false,
+					"fullscreen": false,
+					"globe": false,
+					"move": false,
+					"zoomin": false,
+					"zoomout": false,
+					"measureline": false,
+					"measurearea": false,
+					"pointsearch": false, 
+					"boxsearch": false,
+					"polygonsearch": false,
+					"clear":false,
+					"export":false,
+					"buffertool": false,
+					"drawtool": false,
+					"drawpoint":{"show":true,"active":true}
+				},
+				"exttools":[
+				
+				],
+				"linstring": {
+					"show": false,
+					"dataset": "getYhrLinstring",
+					"params": {}
+				},
+				"pointpoi": false,
+				"poioption": {
+					"dataset": "queryWeizhi",
+					"params": {},
+					"poishadow": "true",
+					"poiform": "marker",
+					"poigradient": "false",
+					"poifontsize": "1",
+					"poiradius": "15",
+					"poirotation": "0",
+					"poistrokecolor": "white",
+					"poifillcolor": "green",
+					"poicolor": "white",
+					"poiborder": "3",
+					"poifont": "fa-pied-piper-alt"
+				},
+				"poilight": false,
+				"popup": true
+			}
+		}
+	},
+	"extend_js":[]
+}

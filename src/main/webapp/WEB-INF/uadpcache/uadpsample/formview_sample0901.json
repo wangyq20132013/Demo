@@ -1,0 +1,28 @@
+{
+  "id": "1",
+  "name": "表单例子",
+  "type": "formview",
+  "theme": "bootstrap",
+  "formpage": [
+    {
+      "id": "1",
+      "type":"design",
+      "name": "formview-bootstrap"
+    }
+  ],
+  "formcontent": [
+  		{"id":"0","name":"mid","title":"主键","type":"hidden"},
+  		{"id":"5","name":"PID","title":"外键","type":"text"},
+   		{"id":"1","name":"mname","title":"姓名","type":"text","isnull":false,"min":2,"max":10,"defaultvalue":"","info":"文本输入框输入规则提示"},
+   		{"id":"2","name":"msex","title":"性别","type":"radio","isnull":false,"datainterface":"","options":[{"id":"1","title":"男"},{"id":"0","title":"女"}]},
+   		{"id":"3","name":"mage","title":"年龄","type":"number","isnull":true,"min":1,"max":99,"defaultvalue":""},
+   		{"id":"4","name":"mrelation","title":"爱好","type":"select","datainterface":"","isnull":false,"options":[
+   		{"id":"父亲","title":"父亲"},{"id":"母亲","title":"母亲"},
+   		{"id":"哥哥","title":"哥哥"},{"id":"姐姐","title":"姐姐"},
+   		{"id":"弟弟","title":"弟弟"},{"id":"妹妹","title":"妹妹"}
+   		]}
+  ],
+  "button": [
+  		{"id":"01","name":"ok","title":"保存","icon":"up","clickevent":"saveFormData('saveMemberInfo','示例信息')"}
+  ]
+}

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<!--查询影像数量及大小 -->
+	<entry key="queryImageNumAndSize">
+		<![CDATA[
+		<#if TREESTATUS?? && lv??>
+			<#if lv=='1'>
+				select aa.xzqmc,bb.* from (
+				select substr(xzqbm,1,2)as xzqbm,xzqmc from app_qth_datadisplay_imginfo where parentbm='1' order by xzqbm)aa
+				inner join
+				(select  sum(imgcount)  as imgcount,sum(imgsize)/(1024*1024) as imgsize,substr(xzqbm,1,2) as ll from app_qth_datadisplay_imginfo WHERE datatime=:monitoringdate and type=:TREESTATUS group by ll )bb on aa.xzqbm=bb.ll order by xzqbm
+			<#else>
+				<#if lv=='2' && CODE?? && (CODE =='110000' || CODE == '120000' || CODE == '310000' || CODE == '500000')>
+					select aa.xzqmc,bb.* from 
+					(select substr(xzqbm,1,(:lv::integer+1)*2)as xzqbm,xzqmc from 
+					app_qth_datadisplay_imginfo where parentbm=:CODE order by xzqbm)aa
+					
+					inner join 
+					(select sum(imgcount) as imgcount,sum(imgsize)/(1024*1024) as imgsize,ll from
+					(with RECURSIVE cteTree as(select * from app_qth_datadisplay_imginfo where xzqbm =:CODE union all select app_qth_datadisplay_imginfo.* from cteTree inner join app_qth_datadisplay_imginfo on app_qth_datadisplay_imginfo.parentbm=cteTree.xzqbm)
+					select *,substr(xzqbm,1,(:lv::integer+1)*2) as ll from cteTree where datatime=:monitoringdate and type=:TREESTATUS )t group by ll)bb on aa.xzqbm =bb.ll order by xzqbm
+				<#else>
+					select aa.xzqmc,bb.* from 
+					(select substr(xzqbm,1,:lv::integer*2)as xzqbm,xzqmc from 
+					app_qth_datadisplay_imginfo where parentbm=:CODE order by xzqbm)aa
+					
+					inner join 
+					(select sum(imgcount) as imgcount,sum(imgsize)/(1024*1024) as imgsize,ll from
+					(with RECURSIVE cteTree as(select * from app_qth_datadisplay_imginfo where xzqbm =:CODE union all select app_qth_datadisplay_imginfo.* from cteTree inner join app_qth_datadisplay_imginfo on app_qth_datadisplay_imginfo.parentbm=cteTree.xzqbm)
+					select *,substr(xzqbm,1,:lv::integer*2) as ll from cteTree where datatime=:monitoringdate and type=:TREESTATUS )t group by ll)bb on aa.xzqbm =bb.ll order by xzqbm
+				</#if>
+			</#if>
+		</#if>
+
+    	]]>
+	</entry>
+	
+	
+	<!--查询所有历史记录 -->
+	<entry key="queryAllHistory">
+		<![CDATA[
+		<#if treestatus?? && lv??>
+			<#if lv=='1'>
+				select sum(typenum) as typenum,(sum(typearea))::numeric(22,1) as typearea,tblx,tbqs,period from 
+				(select a.*,b.*,c.name as tblx,d.name as tbqs from app_qth_datadisplay_statistics a,
+				app_qth_datadisplay_statistics_data b,app_qth_datadisplay_dict c,app_qth_datadisplay_period d 
+				where a.id=b.statisticsid and b.typecode=c.code and a.period=d.period and c.type='landtype')aa where navtype=:treestatus 
+				group by period,tblx,tbqs order by period
+			</#if>
+			<#if lv=='2'>
+				select sum(typenum) as typenum,(sum(typearea))::numeric(22,1) as typearea,tblx,tbqs,period from 
+				(select a.*,b.*,c.name as tblx,d.name as tbqs from app_qth_datadisplay_statistics a,
+				app_qth_datadisplay_statistics_data b,app_qth_datadisplay_dict c,app_qth_datadisplay_period d 
+				where a.id=b.statisticsid and b.typecode=c.code and a.period=d.period and c.type='landtype')aa where navtype=:treestatus and  procode=:xzqhbm
+				group by period,tblx,tbqs order by period
+			</#if>
+			<#if lv=='3'>
+				select sum(typenum) as typenum,(sum(typearea))::numeric(22,1) as typearea,tblx,tbqs,period from 
+				(select a.*,b.*,c.name as tblx,d.name as tbqs from app_qth_datadisplay_statistics a,
+				app_qth_datadisplay_statistics_data b,app_qth_datadisplay_dict c,app_qth_datadisplay_period d 
+				where a.id=b.statisticsid and b.typecode=c.code and a.period=d.period and c.type='landtype')aa where navtype=:treestatus and citycode=:xzqhbm
+				group by period,tblx,tbqs order by period
+			</#if>
+		</#if>
+    	]]>
+	</entry>
+	
+	
+	<!--查询所有期数 -->
+	<entry key="queryAllQS">
+		<![CDATA[
+		 	select period,name from app_qth_datadisplay_period where navtype=:treestatus order by period desc
+    	]]>
+	</entry>
+
+
+</properties>

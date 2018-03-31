@@ -1,0 +1,28 @@
+{
+  "id": "1",
+  "name": "表单例子",
+  "type": "formview",
+  "theme": "bootstrap",
+  "formpage": [
+    {
+      "id": "1",
+      "type":"design",
+      "name": "formview-bootstrap"
+    }
+  ],
+  "formcontent": [
+  		{"id":"0","name":"pid","title":"","type":"hidden"},
+   		{"id":"1","name":"pno","title":"学号","type":"serial","datainterface":"pageview","info":"文本输入框输入规则提示"},
+   		{"id":"2","name":"pname","title":"姓名","type":"text","isnull":false,"min":2,"max":10,"defaultvalue":"","info":"文本输入框输入规则提示"},
+   		{"id":"4","name":"pbirthday","title":"出生日期","type":"date","isnull":false},
+   		{"id":"5","name":"psex","title":"性别","type":"radio","isnull":false,"datainterface":"","options":[{"id":"1","title":"男"},{"id":"0","title":"女"}]},
+   		{"id":"3","name":"perage","title":"年龄","type":"number","isnull":false,"min":1,"max":99,"defaultvalue":""},
+   		{"id":"6","name":"plover","title":"爱好","type":"checkbox","datainterface":"","isnull":false,"options":[{"id":"1","title":"篮球"},{"id":"0","title":"足球"},{"id":"0","title":"乒乓球"}]},
+   		{"id":"7","name":"paddress","title":"家庭住址","type":"text","isnull":false,"min":2,"max":50,"rule":"","defaultvalue":""},
+   		{"id":"8","name":"pmember","title":"家庭成员","type":"table","pageview":"sample0901"}
+  ],
+  "button": [
+  		{"id":"01","name":"ok","title":"保存","icon":"glyphicon glyphicon-ok","clickevent":"saveFormData('savePersonInfo','人员信息')"},
+  		{"id":"02","name":"back","title":"返回","icon":"glyphicon glyphicon-arrow-left","clickevent":""}
+  ]
+}

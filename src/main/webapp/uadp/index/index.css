@@ -1,0 +1,32 @@
+html,body{
+	height: 100%;
+	width: 100%;
+	font-family: "微软雅黑";
+	overflow:hidden;
+}
+.navbar{
+	margin-bottom: 0px;
+	border-color: #44546e;
+	border-radius: 0px;
+}
+.navbar-default{
+	background:#44546e right top no-repeat;
+}
+.navbar-header{
+	
+}
+.navbar-brand{
+	color: #FFFFFF!important;
+}
+
+.navbar-nav > li > a{
+	color:#b4c6d6!important;
+}
+.navbar-nav > li > a:HOVER{
+	color:#07bf84!important;
+}
+
+.main_iframe{
+	height: calc(100% - 50px);
+	width: 100%;
+}

@@ -1,0 +1,26 @@
+{
+  "id": "1",
+  "name": "表单例子",
+  "type": "formview",
+  "theme": "bootstrap",
+  "formpage": [
+    {
+      "id": "1",
+      "type":"design",
+      "name": "formview-bootstrap"
+    }
+  ],
+  "formcontent": [
+  		{"id":"0","name":"aussid","title":"主键","type":"hidden"},
+   		{"id":"1","name":"ausname","title":"人员姓名","type":"text","min":1,"isnull":true,"rule":"","defaultvalue":""},
+   		{"id":"2","name":"aussex","title":"人员性别","type":"radio","initdata":true,"min":1,"datainterface":"","options":[{"id":"-1","title":"男"},{"id":"1","title":"女"}]},
+   		{"id":"3","name":"ausage","title":"人员年龄","type":"number","min":1,"isnull":true,"defaultvalue":""},
+   		{"id":"4","name":"ausphone","title":"电话","type":"text","min":1,"isnull":true,"rule":"","defaultvalue":""},
+   		{"id":"5","name":"ausemail","title":"email","type":"text","min":1,"isnull":true,"rule":"","defaultvalue":""},
+   		{"id":"6","name":"aid","title":"外键","type":"hidden"}
+
+  ],
+  "button": [
+  		{"id":"01","name":"ok","title":"保存","icon":"up","clickevent":"saveFormData('savePersonInfo','办公室信息')"}
+  ]
+}

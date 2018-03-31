@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<!--根据机构查询数据权限-->
+	<entry key="queryDataPowers">
+		<![CDATA[
+	 		select id as uuid,stdname as name, -1 as parentid from app_wfa_organizations where stdcode like '035%' order by orderindex
+    	]]>
+	</entry>
+	<!--查询组织机构数据权限-->
+	<entry key="queryDataPowerByOrg">
+		<![CDATA[
+			select * from view_wfa_bytrack_tauser_power where destroyedtrackindex is null and ta_user_id = :uroid order by updatetime  limit 1
+    	]]>
+	</entry>	
+	<!--保存权限-->
+	<entry key="saveDataPowerCfg">
+		<![CDATA[
+			select * from wfa_save_datapower(:ta_user_id,:org_unit_ids) as resultcount
+    	]]>
+	</entry>
+</properties>

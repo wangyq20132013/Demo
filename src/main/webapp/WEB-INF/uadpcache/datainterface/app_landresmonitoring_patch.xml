@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+
+<!-- 首页查询图斑，违法图斑 -->
+<properties>
+	<entry key="queryTable">
+		<![CDATA[
+	<#if typecode??>
+	    	select cityname as name,SUM(typenum) as count, round(SUM(typearea)::NUMERIC,2) as mianji 
+	    	from app_qth_datadisplay_statistics s 
+	    	INNER JOIN app_qth_datadisplay_statistics_data d ON s."id"=d.statisticsid
+        	INNER JOIN app_qth_datadisplay_dict ad ON ad.code=d.typecode
+        	WHERE  s.period=:period  and s.navtype=:navtype  AND d.typecode  in (:typecode) 
+    		<#if citycode??>
+   		     <#if citycode?length == 2>
+   		         AND citycode LIKE  :citycode||'%'
+   		     </#if>
+      		  <#if citycode?length gt 2>
+      		     AND citycode= :citycode
+      		  </#if>
+      	<#else>
+      	   <#if pid!='0' && navtype=='1'>
+      	    AND citycode in (select code from app_qth_datadisplay_nav where pid=:treeid)
+      	   </#if>
+   		</#if> 
+    <#else>
+   		  select citycode, cityname as name,landnum as count, round(landarea::NUMERIC,2) as mianji 
+   		  from app_qth_datadisplay_statistics s 
+   		  INNER JOIN app_qth_datadisplay_statistics_data d ON s."id"=d.statisticsid
+		  INNER JOIN app_qth_datadisplay_dict ad ON ad.code=d.typecode
+          WHERE  s.period=:period  and s.navtype=:navtype
+    	 <#if citycode??>
+   		     <#if citycode?length == 2>
+   		         AND citycode LIKE  :citycode||'%'
+   		     </#if>
+      		  <#if citycode?length gt 2>
+      		     AND citycode= :citycode
+      		  </#if>
+      	<#else>
+      	   <#if pid!='0' && navtype=='1'>
+      	    AND citycode in (select code from app_qth_datadisplay_nav where pid=:treeid)
+      	   </#if>
+   		</#if> 
+    </#if>
+        GROUP BY cityname,landnum,citycode,landarea
+        ORDER BY citycode 
+		]]>
+	</entry>
+	<!-- 根据时期查询全部的图斑的类型-->
+	<entry key="queryPatchType">
+		<![CDATA[
+		SELECT DISTINCT code as id,name from app_qth_datadisplay_dict  where type='landtype'
+		]]>
+	</entry>
+	
+	
+	<!-- 查询图斑全部的性质 -->
+	<entry key="queryPatchProp">
+		<![CDATA[
+		 SELECT DISTINCT code as id,name from app_qth_datadisplay_dict  where type='landillegaltype'
+		]]>
+	</entry>
+	
+	
+
+	<!-- 根据某一个地区，某一个时期，各个类型的图斑信息 -->
+	<entry key="queryPatchinfo">
+		<![CDATA[
+	<#if typecode??>
+		<#if typecode?size gt 1>
+		 SELECT 'max' as  cityname, MAX(landnum) as landnum,MAX(landarea) as landarea from (select SUM(typenum) AS landnum,round(SUM(typearea)::NUMERIC,0) AS landarea from app_qth_datadisplay_statistics s INNER JOIN app_qth_datadisplay_statistics_data d ON s."id"=d.statisticsid
+ 			WHERE  s.period=:period  and s.navtype=:navtype AND d.typecode  in (:typecode)
+     		<#if citycode??>
+	   		     <#if citycode?length == 2>
+	   		         AND citycode LIKE  :citycode||'%'
+	   		     </#if>
+	      		  <#if citycode?length gt 2>
+	      		     AND citycode= :citycode
+	      		  </#if>
+      	   <#else>
+		      	   <#if pid!='0' && navtype=='1'>
+		      	    AND citycode in (select code from app_qth_datadisplay_nav where pid=:treeid)
+		      	   </#if>
+   		   </#if> 
+   		  group by cityname,navtype)a
+		    union all
+			select distinct CASE WHEN "navtype"='1' THEN substr(cityname,1,length(cityname)-1) ELSE cityname END as cityname,
+			SUM(typenum),round(SUM(typearea)::NUMERIC,2) from app_qth_datadisplay_statistics s 
+			INNER JOIN app_qth_datadisplay_statistics_data d ON s."id"=d.statisticsid
+ 			WHERE  s.period=:period  and s.navtype=:navtype  AND d.typecode  in (:typecode)
+     		<#if citycode??>
+	   		     <#if citycode?length == 2>
+	   		         AND citycode LIKE  :citycode||'%'
+	   		     </#if>
+	      		  <#if citycode?length gt 2>
+	      		     AND citycode= :citycode
+	      		  </#if>
+      	   <#else>
+      	   		<#if pid!='0' && navtype=='1'>
+      	    		AND citycode in (select code from app_qth_datadisplay_nav where pid=:treeid)
+      	   		</#if>
+   		   </#if> 
+   		     group by cityname,navtype    
+	<#else>
+	     select 'max' as cityname,
+			MAX(typenum) as typenum,round(MAX(typearea)::NUMERIC,0) as typearea
+			from app_qth_datadisplay_statistics s 
+			INNER JOIN app_qth_datadisplay_statistics_data d ON s."id"=d.statisticsid
+ 			WHERE  s.period=:period     and s.navtype=:navtype    AND d.typecode  in (:typecode)
+		     <#if citycode??>
+   		     <#if citycode?length == 2>
+   		         AND citycode LIKE  :citycode||'%'
+   		     </#if>
+      		  <#if citycode?length gt 2>
+      		     AND citycode= :citycode
+      		  </#if>
+      	<#else>
+      	   <#if pid!='0' && navtype=='1'>
+      	    AND citycode in (select code from app_qth_datadisplay_nav where pid=:treeid)
+      	   </#if>
+   		</#if> 
+		    union all
+			select CASE WHEN "navtype"='1' THEN substr(cityname,1,length(cityname)-1) ELSE cityname END as cityname,
+			typenum,round(typearea::NUMERIC,2) 
+			from app_qth_datadisplay_statistics s 
+			INNER JOIN app_qth_datadisplay_statistics_data d ON s."id"=d.statisticsid
+ 			WHERE  s.period=:period     and s.navtype=:navtype    AND d.typecode  in (:typecode)
+		    <#if citycode??>
+   		     <#if citycode?length == 2>
+   		         AND citycode LIKE  :citycode||'%'
+   		     </#if>
+      		  <#if citycode?length gt 2>
+      		     AND citycode= :citycode
+      		  </#if>
+      	<#else>
+      	   <#if pid!='0' && navtype=='1'>
+      	    AND citycode in (select code from app_qth_datadisplay_nav where pid=:treeid)
+      	   </#if>
+   		</#if>   
+  </#if>  
+</#if>
+		
+		]]>
+	</entry>
+	
+	<!-- 根据时期查询全部的图斑的类型-->
+	<entry key="queryEchart">
+		<![CDATA[	
+		select ad."name" as leixing,SUM(typenum) as count,round(SUM(typearea)::NUMERIC,2) as mianji 
+		from app_qth_datadisplay_statistics s 
+		INNER JOIN app_qth_datadisplay_statistics_data d ON s."id"=d.statisticsid
+		INNER JOIN app_qth_datadisplay_dict ad ON ad.code=d.typecode
+		WHERE  s.period=:period  and s.navtype=:navtype 
+		
+   		<#if typecode??> 
+      		AND d.typecode  in (:typecode)  
+   		</#if>
+   		
+   		<#if citycode??>
+   		     <#if citycode?length == 2>
+   		         AND citycode LIKE  :citycode||'%'
+   		     </#if>
+      		  <#if citycode?length gt 2>
+      		     AND citycode= :citycode
+      		  </#if>
+      	<#else>
+      	   <#if pid!='0' && navtype=='1'>
+      	    AND citycode in (select code from app_qth_datadisplay_nav where pid=:treeid)
+      	   </#if>
+   		</#if> 
+		GROUP BY ad."name"
+		]]>
+	</entry>
+	
+	
+	<entry key="queryEchartAll">
+		<![CDATA[
+		SELECT CASE WHEN sum(landnum)=0 THEN NULL ELSE sum(landnum) END as count, round(SUM(mianji)::NUMERIC,2) as mianji 
+		FROM (select landarea as mianji,citycode,landnum from app_qth_datadisplay_statistics s 
+		INNER JOIN app_qth_datadisplay_statistics_data d ON s."id"=d.statisticsid
+		INNER JOIN app_qth_datadisplay_dict ad ON ad.code=d.typecode
+		WHERE  s.period=:period  and s.navtype=:navtype 
+ 		<#if citycode??>
+   		     <#if citycode?length == 2>
+   		         AND citycode LIKE  :citycode||'%'
+   		     </#if>
+      		  <#if citycode?length gt 2>
+      		     AND citycode= :citycode
+      		  </#if>
+      	<#else>
+      	   <#if pid!='0' && navtype=='1'>
+      	    AND citycode in (select code from app_qth_datadisplay_nav where pid=:treeid)
+      	   </#if>
+   		</#if> 
+    			and landarea>:minMian 
+	    <#if maxMian?? && maxMian!=0>
+	       and landarea<=:maxMian 
+	     </#if>
+		GROUP BY citycode,landnum,landarea)a 
+		]]>
+	</entry>
+</properties>

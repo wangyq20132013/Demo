@@ -1,0 +1,18 @@
+{
+  "id": "1",
+  "name": "修改密码",
+  "type": "updateview",
+  "theme": "bootstrap",
+  "style":"primary",
+  "formpage": [
+    {
+      "id": "1",
+      "type":"develop",
+      "name": "landresmonitoring_updatePwd"
+   }
+  ],
+  "button": [
+  		{"id":"01","name":"ok","title":"确定","icon":"up","clickevent":"saveFormData('savePwd','修改密码');"}
+  ]
+
+}

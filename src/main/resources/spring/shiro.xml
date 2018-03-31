@@ -18,7 +18,7 @@
 		<!-- securityManager -->
 		<property name="securityManager" ref="securityManager" />
 		<!-- 登录路径 -->
-		<property name="loginUrl" value="/login" />
+		<property name="loginUrl" value="/admin/login" />
 		<!-- 用户访问无权限的链接时跳转此页面 -->
 		<property name="unauthorizedUrl" value="/redirect.jsp" />
 		<!-- 过滤链定义 -->

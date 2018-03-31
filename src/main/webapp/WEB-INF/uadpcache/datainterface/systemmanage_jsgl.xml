@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<!--角色维护查询-->
+	<entry key="queryJSWH">
+		<![CDATA[
+	 		select roleid as roid ,roletitle,roledesc from ta_roles
+    	]]>
+	</entry>
+	
+	<!--新增角色信息-->
+	<entry key="saveJSWH">
+		<![CDATA[
+	 		insert into ta_roles(roleid,roletitle,roledesc) values(:uuid,:roletitle,:roledesc);
+	    ]]>
+	</entry>
+	
+	<!--修改角色信息-->
+	<entry key="updateJSWH">
+		<![CDATA[
+	 		update ta_roles set roletitle = :roletitle,roledesc = :roledesc where roleid = :roid
+	    ]]>
+	</entry>
+	
+	<!--删除角色信息-->
+	<entry key="delJSWH">
+		<![CDATA[
+	 		delete from ta_roles where roleid = :ROID;
+	    ]]>
+	</entry>
+	
+	<!--查询 未分配用户角色信息-->
+	<entry key="queryWFPYHJS">
+		<![CDATA[
+	 		select a.loginname,a.logintitle,b.usertitle,a.lid,:roid as roid from ta_login a,ta_users b where a.luserid = b.userid and a.ltype != 1
+				and a.lid not in(select c.userid from ta_login a,ta_users b,ta_pvg_relation c where a.luserid = b.userid and c.userid = a.lid and a.ltype != 1 and c.rtype = 1
+				and c.roleid = :roid
+				)
+	 		<#if loginnamew??>
+		 		<#if loginnamew!="">
+		 		and a.loginname like :loginnamew 
+		 		</#if>
+			</#if>
+			<#if logintitlew??>
+		 		<#if logintitlew!="">
+		 		and a.logintitle like :logintitlew 
+		 		</#if>
+			</#if>
+			<#if usertitlew??>
+		 		<#if usertitlew!="">
+		 		and b.usertitle like :usertitlew 
+		 		</#if>
+			</#if>
+	    ]]>
+	</entry>
+	
+	<!--查询 已分配用户角色信息-->
+	<entry key="queryYFPYHJS">
+		<![CDATA[
+	 		select a.loginname,a.logintitle,b.usertitle,c.roleid as roid,c.userid,c.rtype from ta_login a,ta_users b,ta_pvg_relation c where a.luserid = b.userid and c.userid = a.lid and a.ltype != 1 and c.rtype = 1
+				and c.roleid = :roid
+
+	 		<#if loginnamey??>
+		 		<#if loginnamey!="">
+		 		and a.loginname like :loginnamey 
+		 		</#if>
+			</#if>
+			<#if logintitley??>
+		 		<#if logintitley!="">
+		 		and a.logintitle like :logintitley 
+		 		</#if>
+			</#if>
+			<#if usertitley??>
+		 		<#if usertitley!="">
+		 		and b.usertitle like :usertitley 
+		 		</#if>
+			</#if>
+	    ]]>
+	</entry>
+	
+	<!--新增用户角色分配-->
+	<entry key="saveYHJSFP">
+		<![CDATA[
+	 		insert into ta_pvg_relation(roleid, userid, rtype) values(:ROID,:LID,1);
+	    ]]>
+	</entry>
+	
+	<!--删除用户角色分配-->
+	<entry key="delYHJSFP">
+		<![CDATA[
+	 		delete from ta_pvg_relation where roleid = :ROID and userid = :USERID and rtype = 1;
+	    ]]>
+	</entry>
+	
+	<!--查询 未分配TOKEN角色信息-->
+	<entry key="queryWFPTOKEN">
+		<![CDATA[
+	 		select a.tid,a.tname,a.ttitle,:roid as roid from ta_token a 
+				
+				where a.tid not in(select b.userid from ta_token a,ta_pvg_relation b where a.tid = b.userid and b.rtype = 2
+				and b.roleid = :roid
+				)
+	    ]]>
+	</entry>
+	
+	<!--查询 已分配TOKEN角色信息-->
+	<entry key="queryYFPTOKEN">
+		<![CDATA[
+	 		select a.tid,a.tname,a.ttitle,b.roleid as roid,b.userid,b.rtype from ta_token a,ta_pvg_relation b where a.tid = b.userid and b.rtype = 2
+				and b.roleid = :roid
+
+	    ]]>
+	</entry>
+	
+	<!--新增TOKEN角色分配-->
+	<entry key="saveTOKENJSFP">
+		<![CDATA[
+	 		insert into ta_pvg_relation(roleid, userid, rtype) values(:ROID,:TID,2);
+	    ]]>
+	</entry>
+	
+	<!--删除TOKEN角色分配-->
+	<entry key="delTOKENJSFP">
+		<![CDATA[
+	 		delete from ta_pvg_relation where roleid = :ROID and userid = :USERID and rtype = 2;
+	    ]]>
+	</entry>
+	
+	<!--查询 组织机构角色分配 信息 获取分配过该角色的组织机构-->
+	<entry key="queryZZJGJSFP">
+		<![CDATA[
+	 		SELECT b.usertitle as name FROM TA_PVG_RELATION a,ta_users b WHERE a.USERID = b.userid and a.ROLEID = :roid AND a.RTYPE = 0;
+	    ]]>
+	</entry>
+	
+	<!--新增 组织机构角色分配 信息-->
+	<entry key="saveZZJGJSFP">
+		<![CDATA[
+	 		delete from ta_pvg_relation where roleid = :ROID and userid = :id and rtype = 0;
+	 		insert into ta_pvg_relation(roleid, userid, rtype) values(:ROID,:id,0);
+	    ]]>
+	</entry>
+	
+	<!--删除 组织机构角色分配 信息-->
+	<entry key="delZZJGJSFP">
+		<![CDATA[
+	 		delete from ta_pvg_relation where roleid = :ROID and userid = :id and rtype = 0;
+	    ]]>
+	</entry>
+	
+</properties>

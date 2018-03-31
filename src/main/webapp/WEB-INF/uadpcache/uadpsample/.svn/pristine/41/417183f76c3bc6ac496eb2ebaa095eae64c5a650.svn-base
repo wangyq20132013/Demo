@@ -1,0 +1,41 @@
+{
+  "id": "",
+  "name": "查询流水号列表",
+  "type": "listview",
+  "theme": "bootstrap",
+  "style": "primary",
+  "button": [
+		{"id":"01","name":"addformapproval","title":"增加","icon":"glyphicon glyphicon-plus","clickevent":"addRecord('form','添加流水号','approval','modal');"},
+		{"id":"02","name":"editformapproval","title":"修改","icon":"glyphicon glyphicon-pencil","clickevent":"editRecord('form','编辑流水号','approval','modal');"}
+  ],
+  "formpage": [
+    {
+      "id": "1",
+      "type":"design",
+      "name": "listview-bootstrap"
+    }
+  ],
+  "datainterface": {
+	  "listview":[{
+	      "id": "",
+	      "name": "queryApprovalList",
+	      "title": "查询土地资产列表",
+	      "type": "querydata",
+	      "metadata": [
+	      		{"checkbox":true},
+	       		{"field":"NAME","title":"流水号名称"},
+	       		{"field":"TITLE","title":"中文名称"},
+	       		{"field":"CONSTANT","title":"常量"},
+				{"field":"DATEFORMAT","title":"时间格式"},
+				{"field":"SQLFORMAT","title":"SQL格式"},
+				{"field":"SERIALNUMBER","title":"当前序号"},
+				{"field":"SERIALSIZE","title":"序号位数"},
+				{"field":"LASTUPDATETIME","title":"最后更新时间"}
+	      ]
+	    }]
+	  },
+      "query": [
+   		    {"id":"01","name":"name","title":"流水号名称","type":"text"},
+  			{"id":"02","name":"title","title":"中文名称","type":"text"}
+  		]
+}
